@@ -1,0 +1,61 @@
+game_admin:
+    path:     /
+    defaults: { _controller: GameBundle:Admin/Default:index }
+
+game_admin_ressource:
+    path:     /ressource
+    defaults: { _controller: GameBundle:Admin/Ressource:index }
+game_admin_ressource_add:
+    path:     /ressource/add
+    defaults: { _controller: GameBundle:Admin/Ressource:add }
+game_admin_ressource_list:
+    path:     /ressource/list
+    defaults: { _controller: GameBundle:Admin/Ressource:list }
+game_admin_ressource_edit:
+    path:     /ressource/edit/{id}
+    defaults: { _controller: GameBundle:Admin/Ressource:edit }
+
+game_admin_building:
+    path:     /batiment
+    defaults: { _controller: GameBundle:Admin/Building:index }
+game_admin_building_add:
+    path:     /batiment/add
+    defaults: { _controller: GameBundle:Admin/Building:add }
+game_admin_building_list:
+    path:     /batiment/list
+    defaults: { _controller: GameBundle:Admin/Building:list }
+game_admin_building_edit:
+    path:     /batiment/edit/{id}
+    defaults: { _controller: GameBundle:Admin/Building:edit }
+game_admin_building_edit_ressource:
+    path:     /batiment/edit/ressource/{id}
+    defaults: { _controller: GameBundle:Admin/Building:editRessource }
+
+game_admin_infantry:
+    path:     /infantry
+    defaults: { _controller: GameBundle:Admin/Infantry:index }
+game_admin_infantry_add:
+    path:     /infantry/add
+    defaults: { _controller: GameBundle:Admin/Infantry:add }
+game_admin_infantry_list:
+    path:     /infantry/list
+    defaults: { _controller: GameBundle:Admin/Infantry:list }
+game_admin_infantry_edit:
+    path:     /infantry/edit/{id}
+    defaults: { _controller: GameBundle:Admin/Infantry:edit }
+
+game_admin_building_ressource:
+    path:     /batiment/ressource
+    defaults: { _controller: GameBundle:Admin/BuildingRessource:index }
+game_admin_building_ressource_add:
+    path:     /batiment/ressource/add
+    defaults: { _controller: GameBundle:Admin/BuildingRessource:add }
+game_admin_building_ressource_list:
+    path:     /batiment/ressource/list
+    defaults: { _controller: GameBundle:Admin/BuildingRessource:list }
+game_admin_building_ressource_list_id:
+    path:    /batiment/ressource/listId/{id}
+    defaults: { _controller: GameBundle:Admin/BuildingRessource:listId }
+game_admin_building_ressource_edit:
+    path:     /batiment/ressource/edit/{id}
+    defaults: { _controller: GameBundle:Admin/BuildingRessource:edit }

@@ -1,0 +1,13 @@
+{% extends 'GameBundle::Admin/index.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ title }} :<br>
+    <a href="{{ path('game_admin_building_add') }}">Ajouter un batiment</a><br>
+    <a href="{{ path('game_admin_building_list') }}">Liste</a>
+{% endblock %}

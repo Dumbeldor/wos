@@ -1,0 +1,26 @@
+game_homepage:
+    path:     /
+    defaults: { _controller: GameBundle:Default:index }
+
+game_admin_route:
+    resource: "routing_admin.yml"
+    prefix:   /admin
+
+game_add_town:
+    path:    /town/add
+    defaults: { _controller: GameBundle:Town:add }
+
+game_town:
+    path:    /town/
+    defaults: { _controller: GameBundle:Town:index }
+
+game_choice_town:
+    path:    /town/choice/{id}
+    defaults: { _controller: GameBundle:Town:choice }
+
+game_building:
+    path:    /building
+    defaults: { _controller: GameBundle:Town:index }
+
+
+

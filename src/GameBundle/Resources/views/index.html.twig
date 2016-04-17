@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}WOS | {{ title }}{% endblock %}</title>
+</head>
+<body>
+<h1>{{ title }}</h1>
+<div id="sidebar">
+    {% block sidebar %}
+        <ul>
+            <li><a href="{{ path('game_homepage') }}">Accueil</a></li>
+            <li><a href="{{ path('game_homepage') }}">Mon village</a></li>
+            <li><a href="{{ path('game_building') }}">Vos batiments</a></li>
+            <li><a href="{{ path('game_admin') }}">Admin</a></li>
+
+    {% endblock %}
+        </ul>
+</div>
+
+<div id="content">
+    {% block body %}{% endblock %}
+</div>
+</body>
+</html>

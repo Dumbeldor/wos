@@ -1,0 +1,19 @@
+{% extends 'GameBundle::index.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ title }} {{ town.name }} :<br>
+    habitant : {{ town.resident }}<br>
+    Point: {{ town.point }}<br>
+
+    <!-- Affichage des ressources -->
+    {% for ressource in ressources %}
+        {{ ressource.ressource.name }} : {{ ressource.nb }}/{{ ressource.stock + ressource.ressource.stock }} gain {{ ressource.add + ressource.ressource.add}} par heure <br>
+    {% endfor %}
+
+{% endblock %}

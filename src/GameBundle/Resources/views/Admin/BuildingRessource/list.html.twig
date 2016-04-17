@@ -1,0 +1,14 @@
+{% extends 'GameBundle::Admin/index.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ title }} :<br>
+    {% for r in ressources %}
+        {{ r.nb }} {{ r.ressource.name }} pour {{ r.building.name }} <a href="{{ path('game_admin_building_ressource_edit', {'id': r.id}) }}">Modifier</a><br>
+    {% endfor %}
+{% endblock %}
