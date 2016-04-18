@@ -8,7 +8,7 @@
 
 {% block body %}
     {{ title }} :<br>
-    {% for r in ressource %}
-        <a href="{{ path('game_admin_ressource_edit', {'id': r.id}) }}">{{ r.name }}</a><br>
+    {% for bt in buildingTypes %}
+        {{ bt.name }} <a href="{{ path('game_admin_building_type_edit', {'id': bt.id}) }}">Modifier</a><br>
     {% endfor %}
 {% endblock %}

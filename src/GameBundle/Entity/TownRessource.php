@@ -22,9 +22,9 @@ class TownRessource
     private $id;
 
     /**
-     * @var int
+     * @var float
      *
-     * @ORM\Column(name="nb", type="integer")
+     * @ORM\Column(name="nb", type="float")
      */
     private $nb;
 

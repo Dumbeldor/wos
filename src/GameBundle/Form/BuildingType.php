@@ -20,13 +20,16 @@ class BuildingType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('lvlMax')
+            ->add('buildingType', EntityType::class, array(
+                'class' => 'GameBundle:BuildingType',
+                'choice_label' => 'name',
+                'label' => 'Type de batiment'
+            ))
+            ->add('lvl', IntegerType::class, array('label' => 'Lvl'))
             ->add('add', IntegerType::class, array('required' => false,
-                                                    'label' => 'Ajout'))
+                                                    'label' => 'Ajout (si batiment de ressource)'))
             ->add('addHabitant', IntegerType::class, array('label' => 'Ajout d\'habitant'))
             ->add('addPoint', IntegerType::class, array('label' => 'Ajout de point'))
-            ->add('description')
            /* ->add('ressources', EntityType::class, array(
                 'class' => 'GameBundle:Ressource',
                 'choice_label' => 'name'
@@ -36,12 +39,12 @@ class BuildingType extends AbstractType
                )
            )*/
             ->add('required', EntityType::class, array(
-                'class' => 'GameBundle:Building',
+                'class' => 'GameBundle:BuildingType',
                 'choice_label' => 'name',
+                'multiple' => true,
                 'required' => false,
                 'label' => 'Batiment requis'
                 ))
-            ->add('lvlRequired', IntegerType::class, array('required' => false, 'label' => 'Lvl du batiment requis'))
         ;
     }
     

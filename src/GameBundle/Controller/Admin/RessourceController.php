@@ -33,7 +33,7 @@ class RessourceController extends Controller
 
     public function listAction() {
         $ressources = $this->getDoctrine()->getRepository('GameBundle:Ressource')->findAll();
-        return $this->render('GameBundle:Admin/Ressource:list.html.twig', array('title' => 'Liste ressources', 'ressources' => $ressources));
+        return $this->render('GameBundle:Admin/Ressource:list.html.twig', array('title' => 'Liste ressources', 'ressource' => $ressources));
     }
 
     public function editAction($id, Request $request) {

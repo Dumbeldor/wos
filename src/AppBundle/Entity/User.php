@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @ORM\Entity
@@ -28,6 +29,12 @@ class User extends BaseUser
      * @ORM\OneToOne(targetEntity="GameBundle\Entity\Town", cascade={"persist"})
      */
     protected $townCurrant;
+
+    /**
+     * @var \DateTime
+     * * @ORM\Column(name="last_activity", type="datetime", nullable=true)
+     */
+    protected $lastActivity;
 
 
 
@@ -95,5 +102,30 @@ class User extends BaseUser
     public function getTownCurrant()
     {
         return $this->townCurrant;
+    }
+    
+
+    /**
+     * Set lastActivity
+     *
+     * @param \DateTime $lastActivity
+     *
+     * @return User
+     */
+    public function setLastActivity($lastActivity)
+    {
+        $this->lastActivity = $lastActivity;
+
+        return $this;
+    }
+
+    /**
+     * Get lastActivity
+     *
+     * @return \DateTime
+     */
+    public function getLastActivity()
+    {
+        return $this->lastActivity;
     }
 }

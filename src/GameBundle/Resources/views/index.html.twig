@@ -7,6 +7,11 @@
 <body>
 <h1>{{ title }}</h1>
 <div id="sidebar">
+    <!-- Affichage des ressources -->
+    {% for r in ressources %}
+        {{ r.ressource.name }} : {{ r.nb|round(1, 'floor') }}/{{ r.stock + r.ressource.stock }} gain {{ r.add + r.ressource.add}} par heure <br>
+    {% endfor %}
+
     {% block sidebar %}
         <ul>
             <li><a href="{{ path('game_homepage') }}">Accueil</a></li>

@@ -21,19 +21,14 @@ class Building
      */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=100)
-     */
-    private $name;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="lvlMax", type="integer")
+     * @ORM\Column(name="lvl", type="integer")
      */
-    private $lvlMax;
+    private $lvl;
+
 
     /**
      * @var int
@@ -56,32 +51,33 @@ class Building
      */
     private $addPoint;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="string", length=255)
-     */
-    private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Building")
-     * @ORM\JoinColumn(name="required", referencedColumnName="id")
+     * @ORM\OneToMany(targetEntity="BuildingRequired", mappedBy="buildingChild")
      */
     private $required;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="lvlRequired", type="integer", nullable=true)
+     * @ORM\OneToMany(targetEntity="BuildingRequired", mappedBy="buildingFather")
      */
-    private $lvlRequired;
+    private $buildingFather;
 
     /**
      * @ORM\OneToMany(targetEntity="BuildingRessource", mappedBy="building")
      */
     private $ressources;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="BuildingType", inversedBy="buildings")
+     * @ORM\JoinColumn(name="building_type_id", referencedColumnName="id")
+     */
+    private $buildingType;
 
+
+
+    public function getName() {
+        return ' lvl '.$this->lvl.' '.$this->buildingType->getName();
+    }
     /**
      * Get id
      *
@@ -92,29 +88,6 @@ class Building
         return $this->id;
     }
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Building
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
 
     /**
      * Set lvlMax
@@ -325,5 +298,111 @@ class Building
     public function getRessources()
     {
         return $this->ressources;
+    }
+
+    /**
+     * Set buildingType
+     *
+     * @param \GameBundle\Entity\BuildingType $buildingType
+     *
+     * @return Building
+     */
+    public function setBuildingType(\GameBundle\Entity\BuildingType $buildingType = null)
+    {
+        $this->buildingType = $buildingType;
+
+        return $this;
+    }
+
+    /**
+     * Get buildingType
+     *
+     * @return \GameBundle\Entity\BuildingType
+     */
+    public function getBuildingType()
+    {
+        return $this->buildingType;
+    }
+
+    /**
+     * Add required
+     *
+     * @param \GameBundle\Entity\BuildingRequired $required
+     *
+     * @return Building
+     */
+    public function addRequired(\GameBundle\Entity\BuildingRequired $required)
+    {
+        $this->required[] = $required;
+
+        return $this;
+    }
+
+    /**
+     * Remove required
+     *
+     * @param \GameBundle\Entity\BuildingRequired $required
+     */
+    public function removeRequired(\GameBundle\Entity\BuildingRequired $required)
+    {
+        $this->required->removeElement($required);
+    }
+
+    /**
+     * Add buildingFather
+     *
+     * @param \GameBundle\Entity\BuildingRequired $buildingFather
+     *
+     * @return Building
+     */
+    public function addBuildingFather(\GameBundle\Entity\BuildingRequired $buildingFather)
+    {
+        $this->buildingFather[] = $buildingFather;
+
+        return $this;
+    }
+
+    /**
+     * Remove buildingFather
+     *
+     * @param \GameBundle\Entity\BuildingRequired $buildingFather
+     */
+    public function removeBuildingFather(\GameBundle\Entity\BuildingRequired $buildingFather)
+    {
+        $this->buildingFather->removeElement($buildingFather);
+    }
+
+    /**
+     * Get buildingFather
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBuildingFather()
+    {
+        return $this->buildingFather;
+    }
+
+    /**
+     * Set lvl
+     *
+     * @param integer $lvl
+     *
+     * @return Building
+     */
+    public function setLvl($lvl)
+    {
+        $this->lvl = $lvl;
+
+        return $this;
+    }
+
+    /**
+     * Get lvl
+     *
+     * @return integer
+     */
+    public function getLvl()
+    {
+        return $this->lvl;
     }
 }

@@ -11,9 +11,4 @@
     habitant : {{ town.resident }}<br>
     Point: {{ town.point }}<br>
 
-    <!-- Affichage des ressources -->
-    {% for ressource in ressources %}
-        {{ ressource.ressource.name }} : {{ ressource.nb }}/{{ ressource.stock + ressource.ressource.stock }} gain {{ ressource.add + ressource.ressource.add}} par heure <br>
-    {% endfor %}
-
 {% endblock %}

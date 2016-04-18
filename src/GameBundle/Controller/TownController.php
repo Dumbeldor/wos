@@ -12,10 +12,8 @@ class TownController extends Controller
 {
     public function indexAction()
     {
-        $town = $this->getUser()->getTownCurrant();
-        $ressources = $this->getDoctrine()->getRepository('GameBundle:Town')->getRessource($town->getId());
-        return $this->render('GameBundle:Town:index.html.twig', array('title' => 'Vue générale du village', 'user' => $this->getUser(),
-                                                                      'town' => $town, 'ressources' => $ressources));
+
+        return $this->render('GameBundle:Town:index.html.twig', array('title' => 'Vue générale du village', 'user' => $this->getUser()));
     }
 
     public function addAction(Request $request) {

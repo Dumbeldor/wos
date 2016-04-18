@@ -27,6 +27,27 @@ class BuildingRessourceController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($building);
             $em->flush();
+            $msg = "Bien enregistré";
+        }
+
+        return $this->render('GameBundle:Admin/BuildingRessource:form.html.twig', array('title' => 'Ajout de ressource nécessaire pour les batiments',
+            'form' => $form->createView()));
+    }
+
+    public function addIdAction($id, Request $request)
+    {
+        $building = new BuildingRessource();
+        $b = $this->getDoctrine()->getRepository('GameBundle:Building')->findOneById($id);
+        $building->setBuilding($b);
+
+        $form = $this->createForm(BuildingRessourceType::class, $building);
+        $form->handleRequest($request);
+
+        if($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($building);
+            $em->flush();
+            $msg = "Bien enregistré";
         }
 
         return $this->render('GameBundle:Admin/BuildingRessource:form.html.twig', array('title' => 'Ajout de ressource nécessaire pour les batiments',
@@ -35,12 +56,15 @@ class BuildingRessourceController extends Controller
 
     public function listAction() {
         $building = $this->getDoctrine()->getRepository('GameBundle:BuildingRessource')->getAll();
-        return $this->render('GameBundle:Admin/BuildingRessource:list.html.twig', array('title' => 'Liste des batiments', 'ressources' => $building));
+        return $this->render('GameBundle:Admin/BuildingRessource:list.html.twig', array('title' => 'Liste des batiments',
+                                                                                        'building' => $building));
     }
 
     public function listIdAction($id) {
         $building = $this->getDoctrine()->getRepository('GameBundle:BuildingRessource')->getAllById($id);
-        return $this->render('GameBundle:Admin/BuildingRessource:list.html.twig', array('title' => 'Liste des batiments', 'ressources' => $building));
+        return $this->render('GameBundle:Admin/BuildingRessource:list.html.twig', array('title' => 'Liste des batiments',
+                                                                                        'building' => $building,
+                                                                                        'id' => $id));
     }
 
     public function editAction($id, Request $request) {
