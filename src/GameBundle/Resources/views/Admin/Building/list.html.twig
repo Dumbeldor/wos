@@ -11,6 +11,9 @@
 
     {% for r in buildings %}
         LVL {{ r.lvl }} <a href="{{ path('game_admin_building_edit', {'id': r.id}) }}">{{ r.buildingType.name }}</a>
-        <a href="{{ path('game_admin_building_ressource_list_id', {'id': r.id}) }}">Ressource nécessaire</a><br>
+        |
+        <a href="{{ path('game_admin_building_ressource_list_id', {'id': r.id}) }}">Ressource requis</a>
+        |
+        <a href="{{ path('game_admin_building_required_view', {'id': r.id}) }}">Batiment requis</a><br>
     {% endfor %}
 {% endblock %}

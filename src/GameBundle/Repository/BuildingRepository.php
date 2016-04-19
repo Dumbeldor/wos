@@ -10,4 +10,28 @@ namespace GameBundle\Repository;
  */
 class BuildingRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getBuilding($id) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT b, r, bt FROM GameBundle:Building b
+                     LEFT JOIN b.required r
+                     JOIN b.buildingType bt
+                     JOIN b.towns on
+                     WHERE b.id = :id'
+            )
+            ->setParameter('id', $id)
+            ->getOneOrNullResult();
+    }
+    public function getBuildings(){
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT b, r, bt FROM GameBundle:Building b
+                     LEFT JOIN b.required r
+                     JOIN b.buildingType bt
+                     ORDER BY b.id'
+            )
+            ->getResult();
+    }
+
+
 }

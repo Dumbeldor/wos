@@ -70,6 +70,11 @@ class Town
     private $ressources;
 
     /**
+     * @ORM\OneToMany(targetEntity="TownBuilding", mappedBy="town")
+     */
+    private $buildings;
+
+    /**
      * @ORM\OneToMany(targetEntity="TownInfantry", mappedBy="town")
      */
     private $infantrys;
@@ -327,5 +332,39 @@ class Town
     public function getInfantrys()
     {
         return $this->infantrys;
+    }
+
+    /**
+     * Add building
+     *
+     * @param \GameBundle\Entity\TownBuilding $building
+     *
+     * @return Town
+     */
+    public function addBuilding(\GameBundle\Entity\TownBuilding $building)
+    {
+        $this->buildings[] = $building;
+
+        return $this;
+    }
+
+    /**
+     * Remove building
+     *
+     * @param \GameBundle\Entity\TownBuilding $building
+     */
+    public function removeBuilding(\GameBundle\Entity\TownBuilding $building)
+    {
+        $this->buildings->removeElement($building);
+    }
+
+    /**
+     * Get buildings
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBuildings()
+    {
+        return $this->buildings;
     }
 }

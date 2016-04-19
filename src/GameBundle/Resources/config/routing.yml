@@ -11,7 +11,7 @@ game_add_town:
     defaults: { _controller: GameBundle:Town:add }
 
 game_town:
-    path:    /town/
+    path:    /town
     defaults: { _controller: GameBundle:Town:index }
 
 game_choice_town:
@@ -22,5 +22,9 @@ game_building:
     path:    /building
     defaults: { _controller: GameBundle:Town:index }
 
-
-
+game_town_building_view:
+    path:    /building/{id}
+    defaults: { _controller: GameBundle:Building:view }
+game_town_building_view_specific:
+    path:    /building/s/{id}
+    defaults: { _controller: GameBundle:Building:specific }

@@ -10,4 +10,14 @@ namespace GameBundle\Repository;
  */
 class RessourceRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getRessource($id) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT tr, r FROM GameBundle:TownRessource tr
+                 JOIN tr.ressource r
+                 WHERE tr.town = :id'
+            )
+            ->setParameter('id', $id)
+            ->getResult();
+    }
 }

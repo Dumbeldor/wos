@@ -73,6 +73,11 @@ class Building
      */
     private $buildingType;
 
+    /**
+     * @ORM\OneToMany(targetEntity="TownBuilding", mappedBy="building")
+     */
+    private $towns;
+
 
 
     public function getName() {
@@ -404,5 +409,39 @@ class Building
     public function getLvl()
     {
         return $this->lvl;
+    }
+
+    /**
+     * Add town
+     *
+     * @param \GameBundle\Entity\TownBuilding $town
+     *
+     * @return Building
+     */
+    public function addTown(\GameBundle\Entity\TownBuilding $town)
+    {
+        $this->towns[] = $town;
+
+        return $this;
+    }
+
+    /**
+     * Remove town
+     *
+     * @param \GameBundle\Entity\TownBuilding $town
+     */
+    public function removeTown(\GameBundle\Entity\TownBuilding $town)
+    {
+        $this->towns->removeElement($town);
+    }
+
+    /**
+     * Get towns
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTowns()
+    {
+        return $this->towns;
     }
 }

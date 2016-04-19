@@ -1,0 +1,33 @@
+{% extends 'GameBundle::index.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ title }}:<br><br>
+
+
+        {{ b.name }}  |
+        {{ b.addHabitant }} + habitants<br>
+        {{ b.addPoint }} + points<br>
+        {{ b.add }} + production fer<br><br>
+        <strong>Ressource nécessaire :</strong><br>
+        {% for r in b.ressources %}
+            {{ r.nb }} {{ r.ressource.name }}<br>
+        {% endfor %}
+        <br>
+        <br>
+        <strong>Batiment requis :</strong><br>
+        {% for r in b.required %}
+            {{ r.buildingFather.name }}
+        {% endfor %}
+        <br>
+        ---------------------
+        <br>
+
+
+
+{% endblock %}

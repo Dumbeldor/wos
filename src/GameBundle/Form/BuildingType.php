@@ -38,13 +38,13 @@ class BuildingType extends AbstractType
                     'entry_type' => BuildingRessourceType::class
                )
            )*/
-            ->add('required', EntityType::class, array(
+            /*->add('required', EntityType::class, array(
                 'class' => 'GameBundle:BuildingType',
                 'choice_label' => 'name',
                 'multiple' => true,
                 'required' => false,
                 'label' => 'Batiment requis'
-                ))
+                )) */
         ;
     }
     

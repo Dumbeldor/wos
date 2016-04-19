@@ -1,0 +1,24 @@
+{% extends 'GameBundle::Admin/index.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ title }} :<br>
+    <h2>{{ building.buildingType.name }}</h2>
+    <br>
+    <a href="{{ path('game_admin_building_required_add', {'id': building.id}) }}">Ajouter</a><br><br>
+
+    {% if building.required is not empty %}
+    {% for b in building.required %}
+        lvl {{ b.buildingFather.lvl }} {{ b.buildingFather.buildingType.name }}
+        <a href="{{ path('game_admin_building_required_delete', {'idBat': building.id, 'idBuild': b.id}) }}">Supprimer</a>
+        <br>
+    {% endfor %}
+    {% else %}
+        <strong>Le batiment {{ building.buildingType.name }} n'a pas de prérequis pour être construit</strong><br>
+     {% endif %}
+{% endblock %}

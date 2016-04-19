@@ -27,6 +27,7 @@ class BuildingController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($building);
             $em->flush();
+            return $this->redirectToRoute('game_admin_building_ressource_add_id', array('id' => $building->getId()));
         }
 
         return $this->render('GameBundle:Admin/Building:form.html.twig', array('title' => 'Ajout de batiment',
@@ -34,7 +35,7 @@ class BuildingController extends Controller
     }
 
     public function listAction() {
-        $building = $this->getDoctrine()->getRepository('GameBundle:Building')->findAll();
+        $building = $this->getDoctrine()->getRepository('GameBundle:Building')->getBuildings();
         return $this->render('GameBundle:Admin/Building:list.html.twig', array('title' => 'Liste des batiments', 'buildings' => $building));
     }
 
@@ -48,6 +49,7 @@ class BuildingController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($building);
             $em->flush();
+            return $this->redirectToRoute('game_admin_building_ressource_add_id', array('id' => $building->getId()));
         }
 
         return $this->render('GameBundle:Admin/Building:form.html.twig', array('title' => 'Edit de batiment',

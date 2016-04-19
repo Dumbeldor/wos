@@ -1,0 +1,17 @@
+{% extends 'GameBundle::Admin/index.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ title }} :<br>
+    {% if id is defined %}
+     <a href="{{ path('game_admin_building_ressource_add_id', {'id': id}) }}">Ajouter des ressources pour construire ce batiment</a><br>
+     {% endif %}
+    {% for r in building %}
+        {{ r.nb }} {{ r.ressource.name }} pour {{ r.building.buildingType.name }} lvl {{ r.building.lvl }} <a href="{{ path('game_admin_building_ressource_edit', {'id': r.id}) }}">Modifier</a><br>
+    {% endfor %}
+{% endblock %}

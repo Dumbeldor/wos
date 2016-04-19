@@ -11,4 +11,11 @@
     habitant : {{ town.resident }}<br>
     Point: {{ town.point }}<br>
 
+    <strong>Les batiments de ressource disponible :</strong><br>
+    {% for b in buildingProducts %}
+        <a href="{{ path('game_town_building_view', {'id': b.id}) }}">{{ b.name }}</a>
+        <br>
+    {% endfor %}
+
+
 {% endblock %}

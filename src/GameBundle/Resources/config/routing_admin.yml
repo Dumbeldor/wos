@@ -63,6 +63,19 @@ game_admin_building_ressource_add_id:
     path:    /batiment/ressource/add/{id}
     defaults: { _controller: GameBundle:Admin/BuildingRessource:addId }
 
+game_admin_building_required:
+    path:    /batiment/required
+    defaults: { _controller: GameBundle:Admin/Building:list }
+game_admin_building_required_view:
+    path:    /batiment/required/{id}
+    defaults: { _controller: GameBundle:Admin/BuildingRequired:view }
+game_admin_building_required_add:
+    path:    /batiment/required/add/{id}
+    defaults: { _controller: GameBundle:Admin/BuildingRequired:add }
+game_admin_building_required_delete:
+    path:    /batiment/required/delete/{idBat}/{idBuild}
+    defaults: { _controller: GameBundle:Admin/BuildingRequired:delete }
+
 game_admin_building_type:
     path:     /batiment/type
     defaults: { _controller: GameBundle:Admin/BuildingType:index }
