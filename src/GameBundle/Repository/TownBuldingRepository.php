@@ -34,7 +34,12 @@ class TownBuldingRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('id', $id)
             ->getOneOrNullResult();
     }
+
     public function exist($batiment, $town) {
+        return true;
+    }
+
+    public function building($batiment, $town) {
         $i = 0;
         $where = '';
         foreach($batiment as $b) {

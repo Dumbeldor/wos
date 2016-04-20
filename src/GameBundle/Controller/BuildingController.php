@@ -18,13 +18,29 @@ class BuildingController extends Controller
 
     public function specificAction($id) {
         $building = $this->getDoctrine()->getRepository('GameBundle:Building')->getBuilding($id);
+        $test = $this->getDoctrine()->getRepository('GameBundle:TownBuilding')->exist($building, $this->getUser()->getTownCurrant());
         $requis = false;
-        if($building->getRequired()[0]) {
-            $nb = $this->getDoctrine()->getRepository('GameBundle:TownBuilding')->exist($building->getRequired(), $this->getUser()->getTownCurrant());
-            if($nb == count($building->getRequired()))
-                $requis = true;
+        $exist = true;
+        if(!$test) {
+            $requis = true;
+            $ressources = $this->getUser()->getTownCurrant()->getRessources();
+            $i = 0;
+            foreach ($building->getRessources() as $r) {
+                if ($r->getNb() > $ressources[$i]->getNb()) {
+                    $requis = false;
+                    break;
+                }
+                $i++;
+            }
+            if ($building->getRequired()[0] AND $requis) {
+                $nb = $this->getDoctrine()->getRepository('GameBundle:TownBuilding')->buildable($building->getRequired(), $this->getUser()->getTownCurrant());
+                if ($nb == count($building->getRequired()))
+                    $requis = true;
+            } else {
+                $requis = false;
+            }
         }
         return $this->render('GameBundle:Building:viewSpecific.html.twig', array('title' => $building->getName(), 'user' => $this->getUser(),
-            'building' => $building, 'requis' => $requis));
+            'building' => $building, 'requis' => $requis, 'exist' => $exist));
     }
 }

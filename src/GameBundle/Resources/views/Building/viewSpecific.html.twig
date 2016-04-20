@@ -44,10 +44,14 @@
         {% endfor %}
     {% endif %}
     <br><br>
-    {% if requis %}
-        Vous pouvez construire !
+    {% if exist %}
+        Vous avez déjà ce batiment.
     {% else %}
-        Vous ne pouvez pas construire ce batiment encore...
+        {% if requis %}
+            Vous pouvez construire !
+        {% else %}
+            Vous ne pouvez pas construire ce batiment encore...
+        {% endif %}
     {% endif %}
 
 {% endblock %}

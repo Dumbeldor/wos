@@ -52,6 +52,7 @@ class ActivityListener
             $user->setLastActivity(new DateTime());
             $this->em->persist($user);
             $this->em->flush();
+            return $ressources;
         }
     }
 }
