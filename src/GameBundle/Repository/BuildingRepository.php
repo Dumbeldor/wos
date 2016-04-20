@@ -13,10 +13,21 @@ class BuildingRepository extends \Doctrine\ORM\EntityRepository
     public function getBuilding($id) {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT b, r, bt FROM GameBundle:Building b
+                'SELECT PARTIAL b.{id, lvl, add, addHabitant, addPoint},
+                      PARTIAL r.{id, buildingFather,lvl},
+                      PARTIAL bf.{id, buildingChild, lvl},
+                      PARTIAL bf2.{id, lvl, buildingType},
+                      PARTIAL bt2.{id, name},
+                      PARTIAL bc.{id, lvl},
+                      PARTIAL re.{id, nb},
+                      PARTIAL bt.{id, name, descr, is_ressource} FROM GameBundle:Building b
                      LEFT JOIN b.required r
+                     LEFT JOIN b.buildingFather bf
+                     LEFT JOIN r.buildingFather bf2
+                     LEFT JOIN bf2.buildingType bt2
+                     LEFT JOIN bf.buildingChild bc
+                     JOIN b.ressources re
                      JOIN b.buildingType bt
-                     JOIN b.towns on
                      WHERE b.id = :id'
             )
             ->setParameter('id', $id)

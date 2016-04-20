@@ -7,27 +7,47 @@
 {% endblock %}
 
 {% block body %}
-    {{ title }}:<br><br>
-
-
-        {{ b.name }}  |
-        {{ b.addHabitant }} + habitants<br>
-        {{ b.addPoint }} + points<br>
-        {{ b.add }} + production fer<br><br>
-        <strong>Ressource nécessaire :</strong><br>
-        {% for r in b.ressources %}
-            {{ r.nb }} {{ r.ressource.name }}<br>
+    <strong>{{ title }}</strong><br>
+    <i>{{ building.buildingType.descr }}</i><br>
+    + {{ building.addHabitant }} habitants<br>
+    + {{ building.addPoint }} points<br>
+    {% if building.buildingType.isRessource %}
+        + {{ building.add }} de production<br>
+    {% endif %}
+    <br>
+    <strong>Ressource nécessaire</strong><br>
+    <table>
+        <tr>
+            <td>Pierre</td><td>Bois</td><td>Fer</td><td>Nourriture</td>
+        </tr>
+        <tr>
+            {% for r in building.ressources %}
+                <td>{{ r.nb }}</td>
+            {% endfor %}
+        </tr>
+    </table>
+    <strong>Batiments requis :</strong><br>
+    {% if building.required is empty %}
+        Aucun<br>
+    {% else %}
+        {% for b in building.required %}
+            {{ b.buildingFather.name }}<br>
         {% endfor %}
-        <br>
-        <br>
-        <strong>Batiment requis :</strong><br>
-        {% for r in b.required %}
-            {{ r.buildingFather.name }}
+    {% endif %}
+    <br>
+    <strong>Batiments père :</strong><br>
+    {% if building.buildingFather is empty %}
+        Aucun<br>
+    {% else %}
+        {% for b in building.buildingFather %}
+            {{ b.buildingChild.name }}<br>
         {% endfor %}
-        <br>
-        ---------------------
-        <br>
-
-
+    {% endif %}
+    <br><br>
+    {% if requis %}
+        Vous pouvez construire !
+    {% else %}
+        Vous ne pouvez pas construire ce batiment encore...
+    {% endif %}
 
 {% endblock %}

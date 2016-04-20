@@ -23,7 +23,7 @@ class Town
 
     /**
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="town")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;

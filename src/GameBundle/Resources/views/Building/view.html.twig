@@ -1,16 +1,6 @@
 {% extends 'GameBundle::index.html.twig' %}
 
 {% block title %}{{ parent() }}
-<style>
-    table
-    {
-        border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
-    }
-    td
-    {
-        border: 1px solid black;
-    }
-</style>
 {% endblock %}
 
 {% block sidebar %}
@@ -19,10 +9,20 @@
 
 {% block body %}
     {{ title }}:<br><br>
-    {{ dump(townBuilding) }}
+    {% if townBuilding.lvl is defined and townBuilding.lvl is not empty %}
+        Vous possedez {{ building.name }} au lvl {{ townBuilding.lvl }}<br>
+    {% else %}
+        Vous ne possedez pas {{ building.name }}<br>
+    {% endif %}
+    <br>
     <table>
         <tr>
-            <td>lvl</td><td>nom</td><td>Habitants</td><td>points</td><td>production</td><td>ajout</td><td>Pierre</td><td>Bois</td><td>Fer</td><td>Nourriture</td>
+            <td>lvl</td><td>nom</td><td>Habitants</td><td>points</td>
+            {% if building.isRessource == true %}
+                <td>ajout</td>
+            {% endif %}
+            <td>Pierre</td><td>Bois</td><td>Fer</td><td>Nourriture</td><td>Information</td>
+            <td>Construire</td>
         </tr>
         {% for b in building.buildings %}
             <tr>
@@ -30,10 +30,16 @@
                 <td>{{ building.name }}</td>
                 <td>{{ b.addHabitant }}</td>
                 <td>{{ b.addPoint }}</td>
-                <td>{{ b.add }}</td>
+                {% if building.isRessource == true %}
+                    <td>{{ b.add }}</td>
+                {% endif %}
                 {% for r in b.ressources %}
                     <td>{{ r.nb }}</td>
                 {% endfor %}
+                {% if townBuilding.lvl is defined and b.lvl == townBuilding.lvl+1 or townBuilding.lvl is not defined and b.lvl == 1 %}
+                    <td><a href="{{ path('game_town_building_view_specific', {'id': b.id}) }}">Information</a></td>
+                    <td><a href="{{ path('game_town_building_build', {'id': b.id}) }}">Construire</a></td>
+                {% endif %}
             </tr>
         {% endfor %}
     </table>

@@ -81,6 +81,7 @@ class Building
 
 
     public function getName() {
+
         return ' lvl '.$this->lvl.' '.$this->buildingType->getName();
     }
     /**
