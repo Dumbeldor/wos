@@ -28,7 +28,7 @@ class BuildingTypeRepository extends \Doctrine\ORM\EntityRepository
                  LEFT JOIN b.required r
                  JOIN b.ressources re
                  WHERE bt.id = :id
-                 ORDER BY b.lvl, re.id'
+                 ORDER BY b.lvl DESC, re.id'
             )
             ->setParameter('id', $id)
             ->getOneOrNullResult();

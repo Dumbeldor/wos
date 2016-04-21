@@ -2,6 +2,7 @@
 
 namespace GameBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -26,6 +27,11 @@ class BuildingTypeType extends AbstractType
             ))
             ->add('is_ressource', CheckboxType::class, array(
                 'label' => 'Batiment de ressource',
+                'required' => false
+            ))
+            ->add('ressource', EntityType::class, array(
+                'class' => 'GameBundle:Ressource',
+                'choice_label' => 'name',
                 'required' => false
             ))
         ;

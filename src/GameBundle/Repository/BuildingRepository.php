@@ -20,7 +20,7 @@ class BuildingRepository extends \Doctrine\ORM\EntityRepository
                       PARTIAL bt2.{id, name},
                       PARTIAL bc.{id, lvl},
                       PARTIAL re.{id, nb},
-                      PARTIAL bt.{id, name, descr, is_ressource} FROM GameBundle:Building b
+                      PARTIAL bt.{id, name, descr, is_ressource}, PARTIAL r.{id} FROM GameBundle:Building b
                      LEFT JOIN b.required r
                      LEFT JOIN b.buildingFather bf
                      LEFT JOIN r.buildingFather bf2
@@ -28,6 +28,7 @@ class BuildingRepository extends \Doctrine\ORM\EntityRepository
                      LEFT JOIN bf.buildingChild bc
                      JOIN b.ressources re
                      JOIN b.buildingType bt
+                     LEFT JOIN bt.ressource r2
                      WHERE b.id = :id'
             )
             ->setParameter('id', $id)

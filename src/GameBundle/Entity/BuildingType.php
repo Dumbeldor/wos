@@ -43,6 +43,12 @@ class BuildingType
     private $is_ressource;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Ressource")
+     * @ORM\JoinColumn(name="ressource_id", referencedColumnName="id")
+     */
+    private $ressource;
+
+    /**
      * @ORM\OneToMany(targetEntity="Building", mappedBy="buildingType")
      */
     private $buildings;
@@ -168,5 +174,29 @@ class BuildingType
     public function getBuildings()
     {
         return $this->buildings;
+    }
+
+    /**
+     * Set ressource
+     *
+     * @param \GameBundle\Entity\Ressource $ressource
+     *
+     * @return BuildingType
+     */
+    public function setRessource(\GameBundle\Entity\Ressource $ressource = null)
+    {
+        $this->ressource = $ressource;
+
+        return $this;
+    }
+
+    /**
+     * Get ressource
+     *
+     * @return \GameBundle\Entity\Ressource
+     */
+    public function getRessource()
+    {
+        return $this->ressource;
     }
 }

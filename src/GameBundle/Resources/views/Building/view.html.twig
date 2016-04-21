@@ -8,6 +8,8 @@
 {% endblock %}
 
 {% block body %}
+    {{ dump(building) }}
+    {{ dump(townBuilding) }}
     {{ title }}:<br><br>
     {% if townBuilding.lvl is defined and townBuilding.lvl is not empty %}
         Vous possedez {{ building.name }} au lvl {{ townBuilding.lvl }}<br>
@@ -36,7 +38,7 @@
                 {% for r in b.ressources %}
                     <td>{{ r.nb }}</td>
                 {% endfor %}
-                {% if townBuilding.lvl is defined and b.lvl == townBuilding.lvl+1 or townBuilding.lvl is not defined and b.lvl == 1 %}
+                {% if townBuilding.lvl is defined and b.lvl == townBuilding.lvl+1 or townBuilding.lvl is not defined and b.lvl == 1 or townBuilding is empty %}
                     <td><a href="{{ path('game_town_building_view_specific', {'id': b.id}) }}">Information</a></td>
                     <td><a href="{{ path('game_town_building_build', {'id': b.id}) }}">Construire</a></td>
                 {% endif %}

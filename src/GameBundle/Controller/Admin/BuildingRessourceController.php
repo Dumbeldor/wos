@@ -91,7 +91,7 @@ class BuildingRessourceController extends Controller
         }
 
         return $this->render('GameBundle:Admin/BuildingRessource:form.html.twig', array('title' => 'Edit de batiment',
-            'form' => $form->createView()));
+            'form' => $form->createView(), 'building' => $building));
     }
 
 }

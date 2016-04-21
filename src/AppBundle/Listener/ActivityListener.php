@@ -40,7 +40,7 @@ class ActivityListener
                 $nb = $r->getNb();
                 $stockMax = $r->getStock() + $r->getRessource()->getStock();
                 $add = $r->getAdd() + $r->getRessource()->getAdd();
-                $ajout = $nb + (($add / 3600) * $interval);
+                $ajout = $nb + (($add / 3600 +50) * $interval);
                 if ($ajout > $stockMax)
                     $ajout = $stockMax;
 

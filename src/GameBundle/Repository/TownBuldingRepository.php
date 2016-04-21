@@ -24,19 +24,25 @@ class TownBuldingRepository extends \Doctrine\ORM\EntityRepository
             ->getOneOrNullResult();
     }
 
-    public function getLvl($id) {
+    public function getLvl($building, $town) {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT PARTIAL tb.{id, lvl} FROM GameBundle:TownBuilding tb
-                 JOIN tb.building b
-                 WHERE b.id = :id'
+                'SELECT MAX(b.lvl) AS lvl FROM GameBundle:TownBuilding tb
+                 INNER JOIN tb.building b
+                 WHERE tb.town = :town AND b.buildingType = :building'
             )
-            ->setParameter('id', $id)
+            ->setParameters(array(':town' => $town, 'building' => $building))
             ->getOneOrNullResult();
     }
 
-    public function exist($batiment, $town) {
-        return true;
+    public function exist($building, $town) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT COUNT(tb.id) AS nb FROM GameBundle:TownBuilding tb
+                WHERE tb.town = :town AND tb.building = :building'
+            )
+            ->setParameters(array(':town' => $town, 'building' => $building))
+            ->getOneOrNullResult();
     }
 
     public function building($batiment, $town) {

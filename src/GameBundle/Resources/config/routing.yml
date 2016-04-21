@@ -31,3 +31,6 @@ game_town_building_view_specific:
 game_town_building_build:
     path:    /building/b/{id}
     defaults: { _controller: GameBundle:Building:building }
+game_build:
+    path:    /building/build/{id}
+    defaults: { _controller: GameBundle:Building:build }

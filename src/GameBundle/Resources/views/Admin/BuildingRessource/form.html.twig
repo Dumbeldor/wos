@@ -9,10 +9,6 @@
 {% block body %}
     {{ title }} :<br>
     <br>
-    Ressource déjà ajouté :<br>
-    {% for r in building.ressources %}
-        {{ r.ressource.name }} : {{ r.nb }}<br>
-    {% endfor %}
     <br>
     <a href="{{ path('game_admin_building_required_add', {'id': building.id}) }}">Ajouter des prérequis pour construire {{ building.name }}</a>
     {{ form_start(form) }}<br>
