@@ -115,6 +115,7 @@ class Town
         return $this->name;
     }
 
+
     /**
      * Set habitant
      *
@@ -137,6 +138,10 @@ class Town
     public function getHabitant()
     {
         return $this->habitant;
+    }
+
+    public function addPoint($point) {
+        $this->point += $point;
     }
 
     /**
@@ -274,6 +279,10 @@ class Town
     public function getRessources()
     {
         return $this->ressources;
+    }
+
+    public function addResident($habitant) {
+        $this->resident += $habitant;
     }
 
     /**

@@ -39,6 +39,8 @@ class BuildingController extends Controller
            return $this->redirectToRoute('game_town_building_view_specific', array('id' => $id));
 
         $townBuilding = new TownBuilding();
+        $town = $this->getUser()->getTownCurrant();
+
         $building = $requis['building'];
         $townBuilding->setLvl($building->getLvl());
         $townBuilding->setBuilding($building);
@@ -46,31 +48,31 @@ class BuildingController extends Controller
 
         $buildingType = $building->getBuildingType();
         $isRessource = $buildingType->getIsRessource();
-        $ressource = $this->getUser()->getTownCurrant()->getRessources();
+        $em = $this->getDoctrine()->getManager();
 
-        $idR = $buildingType->getRessource()->getId();
-
-        foreach($ressource AS $r) {
-            if($r->getRessource()->getId() == $idR){
-                $ajout = $r->getAdd() + $building->getAdd();
-                $r->setAdd($ajout);
+        if($isRessource) {
+            $ressource = $this->getUser()->getTownCurrant()->getRessources();
+            $idR = $buildingType->getRessource()->getId();
+            foreach ($ressource AS $r) {
+                if ($r->getRessource()->getId() == $idR) {
+                    $ajout = $r->getAdd() + $building->getAdd();
+                    $r->setAdd($ajout);
+                    $em->persist($r);
+                }
             }
         }
-
-
-
-        $i=0;
-        $em = $this->getDoctrine()->getManager();
-        foreach($requis['building']->getRessources() as $r){
-            echo $r->getNb().' : '.$ressource[$i]->getNb().'<br>';
-            echo $ressource[$i]->getNb()-$r->getNb().'<br>';
-            $moins = $ressource[$i]->getNb()-$r->getNb();
-            $ressource[$i]->setNb($moins);
-            $em->persist($ressource[$i]);
-            $i++;
+        else {
+            
         }
 
+        $town->addResident($building->getAddHabitant());
+        $town->addPoint($building->getAddPoint());
+
+
+        $em = $this->getDoctrine()->getManager();
+
         $em->persist($townBuilding);
+        $em->persist($town);
         $em->flush();
         return $this->redirectToRoute('game_town_building_view_specific', array('id' => $id));
     }

@@ -17,10 +17,20 @@
 <body>
 <h1>{{ title }}</h1>
 <div id="sidebar">
-    <!-- Affichage des ressources -->
-    {% for r in ressources %}
-        {{ r.ressource.name }} : {{ r.nb|round(1, 'floor') }}/{{ r.stock + r.ressource.stock }} gain {{ r.add + r.ressource.add}} par heure <br>
-    {% endfor %}
+    <!-- Info joueur -->
+    Pseudo : {{ user.username }}<br>
+    {% if town is not empty or ressource is not empty %}
+        Village : {{ town.name }}<br>
+        Habitant : {{ town.resident }}<br>
+        Points : {{ town.point }}<br><br>
+
+
+
+        <!-- Affichage des ressources -->
+        {% for r in ressources %}
+            {{ r.ressource.name }} : {{ r.nb|round(1, 'floor') }}/{{ r.stock + r.ressource.stock }} gain {{ r.add + r.ressource.add}} par heure <br>
+        {% endfor %}
+    {% endif %}
 
     {% block sidebar %}
         <ul>

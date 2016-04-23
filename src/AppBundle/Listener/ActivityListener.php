@@ -49,6 +49,7 @@ class ActivityListener
 
             $this->twig->addGlobal('town', $town);
             $this->twig->addGlobal('ressources', $ressources);
+            $this->twig->addGlobal('user', $user);
             $user->setLastActivity(new DateTime());
             $this->em->persist($user);
             $this->em->flush();
