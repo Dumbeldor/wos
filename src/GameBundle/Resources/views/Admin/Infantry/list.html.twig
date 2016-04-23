@@ -9,6 +9,6 @@
 {% block body %}
     {{ title }} :<br>
     {% for r in infantrys %}
-        <a href="{{ path('game_admin_infantry_edit', {'id': r.id}) }}">{{ r.name }}</a><br>
+        <a href="{{ path('game_admin_infantry_edit', {'id': r.id}) }}">{{ r.name }}</a> {{ r.atk }} {{ r.defense }}<br>
     {% endfor %}
 {% endblock %}

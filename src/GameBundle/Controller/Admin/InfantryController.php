@@ -11,6 +11,7 @@ class InfantryController extends Controller
 {
     public function indexAction()
     {
+        echo $this->container->getParameter('academie');
         return $this->render('GameBundle:Admin/Infantry:index.html.twig', array('title' => 'Gestion des unités'));
     }
 

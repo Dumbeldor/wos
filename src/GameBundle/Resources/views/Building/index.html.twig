@@ -1,0 +1,25 @@
+{% extends 'GameBundle::index.html.twig' %}
+
+{% block title %}{{ parent() }}
+{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <table>
+        <tr>
+            <td>Nom</td><td>Description</td>
+        </tr>
+
+        {% for b in buildings %}
+            <tr>
+                <td><a href="{{ path('game_town_building_view', {'id': b.id}) }}">{{ b.name }}</a></td>
+                <td>{{ b.descr }}</td>
+            </tr>
+
+        {% endfor %}
+    </table>
+
+{% endblock %}

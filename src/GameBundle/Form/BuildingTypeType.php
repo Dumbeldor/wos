@@ -25,14 +25,13 @@ class BuildingTypeType extends AbstractType
             ->add('descr', TextareaType::class, array(
                 'label' => 'Description'
             ))
-            ->add('is_ressource', CheckboxType::class, array(
-                'label' => 'Batiment de ressource',
-                'required' => false
-            ))
+            ->add('isRessource')
+
             ->add('ressource', EntityType::class, array(
                 'class' => 'GameBundle:Ressource',
                 'choice_label' => 'name',
-                'required' => false
+                'required' => false,
+                'label' => '(Si batiment de ressource) Choisir ressource ajouté'
             ))
         ;
     }

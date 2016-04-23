@@ -10,6 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 class BuildingController extends Controller
 {
+    public function indexAction() {
+        $buildings = $this->getDoctrine()->getRepository('GameBundle:BuildingType')->getBuildings();
+        return $this->render('GameBundle:Building:index.html.twig', array('title' => 'Listes des batiments',
+                                                                    'buildings' => $buildings));
+    }
     public function viewAction($id) {
         $building = $this->getDoctrine()->getRepository('GameBundle:BuildingType')->getBuilding($id);
         $townBuilding = $this->getDoctrine()->getRepository('GameBundle:TownBuilding')->getLvl($id, $this->getUser()->getTownCurrant()->getId());
@@ -93,9 +98,11 @@ class BuildingController extends Controller
                 $requis = true;
             else if ($building->getRequired()[0] AND $requis) {
                 $nb = $this->getDoctrine()->getRepository('GameBundle:TownBuilding')->building($building->getRequired(), $this->getUser()->getTownCurrant());
+                $requis = false;
                 if ($nb == count($building->getRequired()))
                     $requis = true;
             } else {
+                echo "ICI ?";
                 $requis = false;
             }
         }

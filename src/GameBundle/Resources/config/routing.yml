@@ -20,7 +20,7 @@ game_choice_town:
 
 game_building:
     path:    /building
-    defaults: { _controller: GameBundle:Town:index }
+    defaults: { _controller: GameBundle:Building:index }
 
 game_town_building_view:
     path:    /building/{id}

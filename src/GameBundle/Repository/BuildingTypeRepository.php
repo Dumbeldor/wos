@@ -14,8 +14,18 @@ class BuildingTypeRepository extends \Doctrine\ORM\EntityRepository
         return $this->getEntityManager()
             ->createQuery(
                 'SELECT bt FROM GameBundle:BuildingType bt
-                WHERE bt.is_ressource = TRUE
+                WHERE bt.ressource is not null
                      '
+            )
+            ->getResult();
+    }
+
+    public function getBuildings() {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT bt FROM GameBundle:BuildingType bt
+                 WHERE bt.ressource is null
+                 ORDER BY bt.id'
             )
             ->getResult();
     }

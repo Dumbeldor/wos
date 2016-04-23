@@ -20,7 +20,8 @@ class BuildingRepository extends \Doctrine\ORM\EntityRepository
                       PARTIAL bt2.{id, name},
                       PARTIAL bc.{id, lvl},
                       PARTIAL re.{id, nb},
-                      PARTIAL bt.{id, name, descr, is_ressource}, PARTIAL r.{id} FROM GameBundle:Building b
+                      PARTIAL bt.{id, name, descr, isRessource}, PARTIAL r.{id}
+                      FROM GameBundle:Building b
                      LEFT JOIN b.required r
                      LEFT JOIN b.buildingFather bf
                      LEFT JOIN r.buildingFather bf2

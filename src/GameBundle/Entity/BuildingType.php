@@ -29,24 +29,27 @@ class BuildingType
     private $name;
 
     /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_ressource", type="boolean", nullable=true)
+     */
+    private $isRessource;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="descr", type="text")
      */
     private $descr;
 
-    /**
-     * @var bool
-     *
-     * @ORM\Column(name="is_ressource", type="boolean")
-     */
-    private $is_ressource;
 
     /**
      * @ORM\ManyToOne(targetEntity="Ressource")
      * @ORM\JoinColumn(name="ressource_id", referencedColumnName="id")
      */
     private $ressource;
+
+
 
     /**
      * @ORM\OneToMany(targetEntity="Building", mappedBy="buildingType")
@@ -127,7 +130,7 @@ class BuildingType
      */
     public function setIsRessource($isRessource)
     {
-        $this->is_ressource = $isRessource;
+        $this->isRessource = $isRessource;
 
         return $this;
     }
@@ -139,7 +142,7 @@ class BuildingType
      */
     public function getIsRessource()
     {
-        return $this->is_ressource;
+        return $this->isRessource;
     }
 
     /**
@@ -199,4 +202,5 @@ class BuildingType
     {
         return $this->ressource;
     }
+
 }

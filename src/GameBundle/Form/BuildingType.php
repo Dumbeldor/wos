@@ -26,8 +26,9 @@ class BuildingType extends AbstractType
                 'label' => 'Type de batiment'
             ))
             ->add('lvl', IntegerType::class, array('label' => 'Lvl'))
+
             ->add('add', IntegerType::class, array('required' => false,
-                                                    'label' => 'Ajout (si batiment de ressource)'))
+                                                    'label' => 'Ajout suivant le type de bat'))
             ->add('addHabitant', IntegerType::class, array('label' => 'Ajout d\'habitant'))
             ->add('addPoint', IntegerType::class, array('label' => 'Ajout de point'))
            /* ->add('ressources', EntityType::class, array(
