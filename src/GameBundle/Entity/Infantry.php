@@ -47,6 +47,11 @@ class Infantry
      */
     private $towns;
 
+    /**
+     * @ORM\OneToMany(targetEntity="InfantryRessource", mappedBy="infantry")
+     */
+    private $ressources;
+
 
     /**
      * Get id
@@ -193,5 +198,39 @@ class Infantry
     public function getTowns()
     {
         return $this->towns;
+    }
+
+    /**
+     * Add ressource
+     *
+     * @param \GameBundle\Entity\InfantryRessource $ressource
+     *
+     * @return Infantry
+     */
+    public function addRessource(\GameBundle\Entity\InfantryRessource $ressource)
+    {
+        $this->ressources[] = $ressource;
+
+        return $this;
+    }
+
+    /**
+     * Remove ressource
+     *
+     * @param \GameBundle\Entity\InfantryRessource $ressource
+     */
+    public function removeRessource(\GameBundle\Entity\InfantryRessource $ressource)
+    {
+        $this->ressources->removeElement($ressource);
+    }
+
+    /**
+     * Get ressources
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRessources()
+    {
+        return $this->ressources;
     }
 }

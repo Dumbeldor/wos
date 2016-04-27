@@ -59,6 +59,11 @@ class Ressource
      */
     private $buildings;
 
+    /**
+     * @ORM\OneToMany(targetEntity="InfantryRessource", mappedBy="ressource")
+     */
+    private $infantrys;
+
 
 
     /**
@@ -298,5 +303,39 @@ class Ressource
     public function getBuildings()
     {
         return $this->buildings;
+    }
+
+    /**
+     * Add infantry
+     *
+     * @param \GameBundle\Entity\InfantryRessource $infantry
+     *
+     * @return Ressource
+     */
+    public function addInfantry(\GameBundle\Entity\InfantryRessource $infantry)
+    {
+        $this->infantrys[] = $infantry;
+
+        return $this;
+    }
+
+    /**
+     * Remove infantry
+     *
+     * @param \GameBundle\Entity\InfantryRessource $infantry
+     */
+    public function removeInfantry(\GameBundle\Entity\InfantryRessource $infantry)
+    {
+        $this->infantrys->removeElement($infantry);
+    }
+
+    /**
+     * Get infantrys
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getInfantrys()
+    {
+        return $this->infantrys;
     }
 }
