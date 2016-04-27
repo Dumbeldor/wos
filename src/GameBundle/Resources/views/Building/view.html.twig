@@ -8,11 +8,12 @@
 {% endblock %}
 
 {% block body %}
-    {{ dump(building) }}
-    {{ dump(townBuilding) }}
-    {{ title }}:<br><br>
+    {{ title }}<br><br>
     {% if townBuilding.lvl is defined and townBuilding.lvl is not empty %}
         Vous possedez {{ building.name }} au lvl {{ townBuilding.lvl }}<br>
+        {% if building.name == 'Académie' %}
+            {% include 'GameBundle::Building/include/academie.html.twig' %}
+        {% endif %}
     {% else %}
         Vous ne possedez pas {{ building.name }}<br>
     {% endif %}

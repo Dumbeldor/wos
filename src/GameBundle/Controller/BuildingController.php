@@ -3,7 +3,9 @@
 namespace GameBundle\Controller;
 
 
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use GameBundle\Entity\BuildingRequired;
+use GameBundle\Entity\InfantryTown;
 use GameBundle\Entity\TownBuilding;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -62,7 +64,7 @@ class BuildingController extends Controller
             }
         }
         else {
-            
+
         }
 
         $town->addResident($building->getAddHabitant());

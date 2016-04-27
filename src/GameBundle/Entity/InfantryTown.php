@@ -28,6 +28,18 @@ class InfantryTown
      */
     private $nb;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Town", inversedBy="infantrys")
+     * @ORM\JoinColumn(name="town_id", referencedColumnName="id")
+     */
+    private $town;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Infantry", inversedBy="towns")
+     * @ORM\JoinColumn(name="infantry_id", referencedColumnName="id")
+     */
+    private $infantry;
+
 
     /**
      * Get id
@@ -61,5 +73,53 @@ class InfantryTown
     public function getNb()
     {
         return $this->nb;
+    }
+
+    /**
+     * Set town
+     *
+     * @param \GameBundle\Entity\Town $town
+     *
+     * @return InfantryTown
+     */
+    public function setTown(\GameBundle\Entity\Town $town = null)
+    {
+        $this->town = $town;
+
+        return $this;
+    }
+
+    /**
+     * Get town
+     *
+     * @return \GameBundle\Entity\Town
+     */
+    public function getTown()
+    {
+        return $this->town;
+    }
+
+    /**
+     * Set infantry
+     *
+     * @param \GameBundle\Entity\Infantry $infantry
+     *
+     * @return InfantryTown
+     */
+    public function setInfantry(\GameBundle\Entity\Infantry $infantry = null)
+    {
+        $this->infantry = $infantry;
+
+        return $this;
+    }
+
+    /**
+     * Get infantry
+     *
+     * @return \GameBundle\Entity\Infantry
+     */
+    public function getInfantry()
+    {
+        return $this->infantry;
     }
 }
