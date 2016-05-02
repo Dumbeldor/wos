@@ -7,8 +7,18 @@
 {% endblock %}
 
 {% block body %}
-    {{ title }} :<br>
+    <table>
+        <tr>
+            <td>Nom</td><td>Attaque</td><td>Défense</td><td>Ajout ressource</td>
+        </tr>
+
     {% for r in infantrys %}
-        <a href="{{ path('game_admin_infantry_edit', {'id': r.id}) }}">{{ r.name }}</a> {{ r.atk }} {{ r.defense }}<br>
+        <tr>
+            <td><a href="{{ path('game_admin_infantry_edit', {'id': r.id}) }}">{{ r.name }}</a></td>
+            <td>{{ r.atk }}</td>
+            <td>{{ r.defense }}</td>
+            <td><a href="{{ path('game_admin_infantry_ressource_add', {'id': r.id}) }}">Ajout ressource</a></td>
+        </tr>
     {% endfor %}
+    </table>
 {% endblock %}

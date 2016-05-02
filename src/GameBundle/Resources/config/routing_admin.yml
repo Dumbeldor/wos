@@ -44,6 +44,10 @@ game_admin_infantry_edit:
     path:     /infantry/edit/{id}
     defaults: { _controller: GameBundle:Admin/Infantry:edit }
 
+game_admin_infantry_ressource_add:
+    path:    /infantry/r/add/{id}
+    defaults: { _controller: GameBundle:Admin/InfantryRessource:add }
+
 game_admin_building_ressource:
     path:     /batiment/ressource
     defaults: { _controller: GameBundle:Admin/BuildingRessource:index }

@@ -2,17 +2,17 @@
 
 namespace GameBundle\Controller\Admin;
 
-use Doctrine\DBAL\Types\IntegerType;
 use GameBundle\Entity\InfantryRessource;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class InfantryRessourceController extends Controller
 {
     public function addAction($id, Request $request) {
         $infantryRessource = new InfantryRessource();
-        $infantry = $this->getDoctrine()->getRepository('GameBundle:Infantry')->findOneBy($id);
+        $infantry = $this->getDoctrine()->getRepository('GameBundle:Infantry')->findOneById($id);
         $infantryRessource->setInfantry($infantry);
 
         $form = $this->createFormBuilder($infantryRessource)
@@ -32,10 +32,11 @@ class InfantryRessourceController extends Controller
                 return $this->redirectToRoute('game_admin_infantry_ressource_add', array('id' => $infantry->getId()));
         }
 
-        return $this->render('GameBundle:Admin/InfantryRessource:form.html.twig', array('title' => 'Ajout de ressource pour l\'unité',
+        return $this->render('GameBundle:Admin/InfantryRessource:form.html.twig', array('title' => 'Ajout de ressource pour '.$infantry->getName(),
             'infantryRessource' => $infantryRessource,
             'infantry' => $infantry,
             'form' => $form->createView()));
     }
+
 
 }

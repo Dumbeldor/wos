@@ -10,6 +10,18 @@
 {% block body %}
     Vous avez actuellement {{ nb }} genin(s).
     <br><br>
+    Genin : <br>
+    <table>
+        <tr>
+            <td>Attaque</td><td>Défense</td><td>Pierre</td><td>Bois</td><td>Fer</td><td>Nourriture</td>
+        </tr>
+        <tr>
+            <td>{{ genin.atk }}</td><td>{{ genin.defense }}</td>
+            {% for r in genin.ressources %}
+                <td>{{ r.nb }}</td>
+            {% endfor %}
+        </tr>
+    </table>
     Recrutez en ici :
 
     {{ form_start(form) }}<br>

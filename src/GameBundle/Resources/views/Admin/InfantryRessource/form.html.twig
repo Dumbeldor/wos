@@ -1,0 +1,19 @@
+{% extends 'GameBundle::Admin/index.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <h2>{{ title }} :</h2><br>
+    <strong>Ressource déjà associé :</strong><br>
+    {% for r in infantry.ressources %}
+        {{ r.ressource.name }} {{ r.nb }}<br>
+    {% endfor %}
+    {{ form_start(form) }}<br>
+    {{ form_widget(form) }}<br>
+    <input type="submit" class="button" value="Submit" />
+    {{ form_end(form) }}
+{% endblock %}
