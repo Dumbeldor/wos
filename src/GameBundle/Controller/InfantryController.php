@@ -3,6 +3,7 @@
 namespace GameBundle\Controller;
 
 
+use GameBundle\Entity\InfantryBuild;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use GameBundle\Entity\InfantryTown;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -12,21 +13,22 @@ class InfantryController extends Controller
 {
     public function academieAction(Request $request)
     {
-        $infantry = new InfantryTown();
+        $infantryBuild = new InfantryBuild();
         $genin = $this->getDoctrine()->getRepository('GameBundle:Infantry')->findOneById(1);
-        $infantry->setTown($this->getUser()->getTownCurrant());
-        $infantry->setInfantry($genin);
+        $infantryBuild->setTown($this->getUser()->getTownCurrant());
+        $infantryBuild->setInfantry($genin);
         $nb = $this->getDoctrine()->getRepository('GameBundle:TownInfantry')->nb(1);
 
-        $form = $this->createFormBuilder($infantry)
+        $form = $this->createFormBuilder($infantryBuild)
             ->add('nb', IntegerType::class, array('label' => 'Nombre'))
             ->getForm();;
 
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            
             $em = $this->getDoctrine()->getManager();
-            $em->persist($infantry);
+            $em->persist($infantryBuild);
             $em->flush();
         }
 

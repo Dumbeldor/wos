@@ -19,6 +19,7 @@ class InfantryType extends AbstractType
             ->add('name')
             ->add('atk', IntegerType::class, array('label' => 'Attaque'))
             ->add('defense')
+            ->add('time', IntegerType::class, array('label' => 'Temps de formation en mn'))
         ;
     }
     

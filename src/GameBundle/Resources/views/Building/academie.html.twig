@@ -13,13 +13,14 @@
     Genin : <br>
     <table>
         <tr>
-            <td>Attaque</td><td>Défense</td><td>Pierre</td><td>Bois</td><td>Fer</td><td>Nourriture</td>
+            <td>Attaque</td><td>Défense</td><td>Pierre</td><td>Bois</td><td>Fer</td><td>Nourriture</td><td>Temps formation (mn)</td>
         </tr>
         <tr>
             <td>{{ genin.atk }}</td><td>{{ genin.defense }}</td>
             {% for r in genin.ressources %}
                 <td>{{ r.nb }}</td>
             {% endfor %}
+        <td>{{ genin.time }}</td>
         </tr>
     </table>
     Recrutez en ici :

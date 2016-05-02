@@ -43,6 +43,13 @@ class Infantry
     private $defense;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="time", type="integer", nullable=true)
+     */
+    private $time;
+
+    /**
      * @ORM\OneToMany(targetEntity="TownInfantry", mappedBy="infantry")
      */
     private $towns;
@@ -232,5 +239,30 @@ class Infantry
     public function getRessources()
     {
         return $this->ressources;
+    }
+
+
+    /**
+     * Set time
+     *
+     * @param integer $time
+     *
+     * @return Infantry
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * Get time
+     *
+     * @return integer
+     */
+    public function getTime()
+    {
+        return $this->time;
     }
 }
