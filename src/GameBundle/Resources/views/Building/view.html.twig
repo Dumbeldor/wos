@@ -11,8 +11,8 @@
     {{ title }}<br><br>
     {% if townBuilding.lvl is defined and townBuilding.lvl is not empty %}
         Vous possedez {{ building.name }} au lvl {{ townBuilding.lvl }}<br>
-        {% if building.name == 'Académie' %}
-            {% include 'GameBundle::Building/include/academie.html.twig' %}
+        {% if infantry is not empty %}
+            <i><a href="{{ path('game_building_infantry', {'id': infantry.id}) }}">Information sur vos {{ infantry.name }}</a></i>
         {% endif %}
     {% else %}
         Vous ne possedez pas {{ building.name }}<br>

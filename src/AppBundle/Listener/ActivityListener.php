@@ -6,7 +6,6 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 use Symfony\Bundle\DoctrineBundle\Registry as Doctrine;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 use AppBundle\Entity\User;
-use GameBundle\Entity\Town;
 use DateTime;
 
 

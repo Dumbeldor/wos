@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="infantry_build")
  * @ORM\Entity(repositoryClass="GameBundle\Repository\InfantryBuildRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class InfantryBuild
 {
@@ -24,9 +25,16 @@ class InfantryBuild
     /**
      * @var int
      *
-     * @ORM\Column(name="endFormation", type="integer")
+     * @ORM\Column(name="nb", type="integer")
      */
-    private $endFormation;
+    private $nb;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="beginFormation", type="integer")
+     */
+    private $beginFormation;
 
     /**
      * @ORM\ManyToOne(targetEntity="Infantry", inversedBy="ressources")
@@ -35,10 +43,10 @@ class InfantryBuild
     private $infantry;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Ressource", inversedBy="infantrys")
-     * @ORM\JoinColumn(name="ressource_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Town", inversedBy="infantrys")
+     * @ORM\JoinColumn(name="town_id", referencedColumnName="id")
      */
-    private $ressource;
+    private $town;
 
 
 
@@ -52,29 +60,6 @@ class InfantryBuild
         return $this->id;
     }
 
-    /**
-     * Set endFormation
-     *
-     * @param integer $endFormation
-     *
-     * @return InfantryBuild
-     */
-    public function setEndFormation($endFormation)
-    {
-        $this->endFormation = $endFormation;
-
-        return $this;
-    }
-
-    /**
-     * Get endFormation
-     *
-     * @return int
-     */
-    public function getEndFormation()
-    {
-        return $this->endFormation;
-    }
 
     /**
      * Set infantry
@@ -100,27 +85,76 @@ class InfantryBuild
         return $this->infantry;
     }
 
+
     /**
-     * Set ressource
+     * Set beginFormation
      *
-     * @param \GameBundle\Entity\Ressource $ressource
+     * @param integer $beginFormation
      *
      * @return InfantryBuild
      */
-    public function setRessource(\GameBundle\Entity\Ressource $ressource = null)
+    public function setBeginFormation($beginFormation)
     {
-        $this->ressource = $ressource;
+        $this->beginFormation = $beginFormation;
 
         return $this;
     }
 
     /**
-     * Get ressource
+     * Get beginFormation
      *
-     * @return \GameBundle\Entity\Ressource
+     * @return integer
      */
-    public function getRessource()
+    public function getBeginFormation()
     {
-        return $this->ressource;
+        return $this->beginFormation;
+    }
+
+    /**
+     * Set nb
+     *
+     * @param integer $nb
+     *
+     * @return InfantryBuild
+     */
+    public function setNb($nb)
+    {
+        $this->nb = $nb;
+
+        return $this;
+    }
+
+    /**
+     * Get nb
+     *
+     * @return integer
+     */
+    public function getNb()
+    {
+        return $this->nb;
+    }
+
+    /**
+     * Set town
+     *
+     * @param \GameBundle\Entity\Town $town
+     *
+     * @return InfantryBuild
+     */
+    public function setTown(\GameBundle\Entity\Town $town = null)
+    {
+        $this->town = $town;
+
+        return $this;
+    }
+
+    /**
+     * Get town
+     *
+     * @return \GameBundle\Entity\Town
+     */
+    public function getTown()
+    {
+        return $this->town;
     }
 }

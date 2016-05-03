@@ -1,2 +1,6 @@
 services:
-
+    game.infantry_manager:
+        class: GameBundle\Model\InfantryManager
+        arguments:
+            token: "@security.token_storage"
+            entityManager: "@doctrine.orm.entity_manager"

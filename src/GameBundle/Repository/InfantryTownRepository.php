@@ -10,4 +10,22 @@ namespace GameBundle\Repository;
  */
 class InfantryTownRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function createInfantry($infantry, $toCreate, $town) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'UPDATE GameBundle:InfantryTown i SET i.nb = i.nb + :nombre WHERE i.town = :town AND i.infantry = :infantry'
+            )
+            ->setParameters(array('nombre' => $toCreate, 'town' => $town, 'infantry'=>$infantry))
+            ->execute();
+    }
+
+    public function nb($id, $town)
+    {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT PARTIAL ti.{id, nb} FROM GameBundle:InfantryTown ti
+            WHERE ti.town = :town AND ti.infantry = :id')
+            ->setParameters(array('town' => $town, 'id' => $id))
+            ->getOneOrNullResult();
+    }
 }

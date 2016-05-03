@@ -21,6 +21,9 @@ game_choice_town:
 game_building:
     path:    /building
     defaults: { _controller: GameBundle:Building:index }
+game_building_infantry:
+    path:    /b/i/{id}
+    defaults: { _controller: GameBundle:Infantry:index }
 game_academie:
     path:    /academie
     defaults: { _controller: GameBundle:Infantry:academie }

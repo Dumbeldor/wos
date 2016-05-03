@@ -19,11 +19,12 @@ class BuildingController extends Controller
     }
     public function viewAction($id) {
         $building = $this->getDoctrine()->getRepository('GameBundle:BuildingType')->getBuilding($id);
+        $infantry = $this->getDoctrine()->getRepository('GameBundle:Infantry')->ifInBuilding($id);
         $townBuilding = $this->getDoctrine()->getRepository('GameBundle:TownBuilding')->getLvl($id, $this->getUser()->getTownCurrant()->getId());
         if(empty($townBuilding))
             echo "ooo";
         return $this->render('GameBundle:Building:view.html.twig', array('title' => '', 'user' => $this->getUser(),
-            'building' => $building, 'townBuilding' => $townBuilding));
+            'building' => $building, 'townBuilding' => $townBuilding, 'infantry' => $infantry));
     }
 
     public function specificAction($id) {

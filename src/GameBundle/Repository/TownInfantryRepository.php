@@ -10,13 +10,5 @@ namespace GameBundle\Repository;
  */
 class TownInfantryRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function nb($id)
-    {
-        return $this->getEntityManager()
-            ->createQuery(
-                'SELECT COUNT(ti.id) as nb FROM GameBundle:TownInfantry ti
-            WHERE ti.infantry = :id')
-            ->setParameter('id', $id)
-            ->getSingleScalarResult();
-    }
+
 }

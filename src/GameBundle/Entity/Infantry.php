@@ -59,6 +59,11 @@ class Infantry
      */
     private $ressources;
 
+    /**
+     * @ORM\OneToOne(targetEntity="BuildingType", cascade={"persist"})
+     */
+    private $buildingType;
+
 
     /**
      * Get id
@@ -264,5 +269,29 @@ class Infantry
     public function getTime()
     {
         return $this->time;
+    }
+
+    /**
+     * Set buildingType
+     *
+     * @param \GameBundle\Entity\BuildingType $buildingType
+     *
+     * @return Infantry
+     */
+    public function setBuildingType(\GameBundle\Entity\BuildingType $buildingType = null)
+    {
+        $this->buildingType = $buildingType;
+
+        return $this;
+    }
+
+    /**
+     * Get buildingType
+     *
+     * @return \GameBundle\Entity\BuildingType
+     */
+    public function getBuildingType()
+    {
+        return $this->buildingType;
     }
 }

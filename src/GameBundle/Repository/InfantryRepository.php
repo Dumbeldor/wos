@@ -10,4 +10,11 @@ namespace GameBundle\Repository;
  */
 class InfantryRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function ifInBuilding($id) {
+        return $this->getEntityManager()
+            ->createQuery('SELECT PARTIAL i.{id, name} FROM GameBundle:Infantry i
+                          WHERE i.buildingType = :id')
+            ->setParameter('id', $id)
+            ->getOneOrNullResult();
+    }
 }

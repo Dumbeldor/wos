@@ -11,13 +11,16 @@ use Symfony\Component\HttpFoundation\Request;
 
 class InfantryController extends Controller
 {
-    public function academieAction(Request $request)
-    {
+    public function indexAction($id, Request $request) {
         $infantryBuild = new InfantryBuild();
-        $genin = $this->getDoctrine()->getRepository('GameBundle:Infantry')->findOneById(1);
+        $genin = $this->getDoctrine()->getRepository('GameBundle:Infantry')->findOneById($id);
+        $infantryInBuild = $this->container->get('game.infantry_manager')->getInfantryBuild($genin);
+
+        //
+
         $infantryBuild->setTown($this->getUser()->getTownCurrant());
         $infantryBuild->setInfantry($genin);
-        $nb = $this->getDoctrine()->getRepository('GameBundle:TownInfantry')->nb(1);
+        $nb = $this->getDoctrine()->getRepository('GameBundle:InfantryTown')->nb($id, $this->getUser()->getTownCurrant());
 
         $form = $this->createFormBuilder($infantryBuild)
             ->add('nb', IntegerType::class, array('label' => 'Nombre'))
@@ -26,13 +29,21 @@ class InfantryController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            
+            $infantryBuild->setBeginFormation(time());
             $em = $this->getDoctrine()->getManager();
             $em->persist($infantryBuild);
             $em->flush();
         }
 
         return $this->render('GameBundle:Building:academie.html.twig', array('title' => 'Recrutement Genin',
-            'form' => $form->createView(), 'nb' => $nb, 'genin' => $genin));
+            'form' => $form->createView(), 'infTown' => $nb->getNb(), 'infInBuild' => $infantryInBuild->getNb(), 'genin' => $genin));
+    }
+
+    public function academieAction(Request $request)
+    {
+        //Mise à jour unité
+        $this->getDoctrine()->getRepository('GameBundle:InfantryBuild')->maj(1);
+
+
     }
 }

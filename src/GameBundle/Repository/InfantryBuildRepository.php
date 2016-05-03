@@ -10,4 +10,12 @@ namespace GameBundle\Repository;
  */
 class InfantryBuildRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function createInfantry($infantry, $toCreate, $town) {
+        return $this->getEntityManager()
+            ->createQuery(
+            'UPDATE GameBundle:InfantryBuild i SET i.nb = i.nb - :nombre, i.beginFormation = :begin WHERE i.town = :town AND i.infantry = :infantry'
+            )
+            ->setParameters(array('nombre' => $toCreate, 'begin' => time(), 'town' => $town, 'infantry'=>$infantry))
+            ->execute();
+    }
 }
