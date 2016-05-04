@@ -103,6 +103,7 @@ class BuildingController extends Controller
                 $requis = true;
             else if ($building->getRequired()[0] AND $requis) {
                 $nb = $this->getDoctrine()->getRepository('GameBundle:TownBuilding')->building($building->getRequired(), $this->getUser()->getTownCurrant());
+
                 $requis = false;
                 if ($nb == count($building->getRequired()))
                     $requis = true;

@@ -8,20 +8,20 @@
 {% endblock %}
 
 {% block body %}
-    Vous avez actuellement {{ infTown }} genin(s).<br>
+    Vous avez actuellement {{ infTown }} {{ infantry.name }}.<br>
     Et {{ infInBuild }} en formation.
     <br><br>
-    Genin : <br>
+    {{ infantry.name }} : <br>
     <table>
         <tr>
             <td>Attaque</td><td>Défense</td><td>Pierre</td><td>Bois</td><td>Fer</td><td>Nourriture</td><td>Temps formation (mn)</td>
         </tr>
         <tr>
-            <td>{{ genin.atk }}</td><td>{{ genin.defense }}</td>
-            {% for r in genin.ressources %}
+            <td>{{ infantry.atk }}</td><td>{{ infantry.defense }}</td>
+            {% for r in infantry.ressources %}
                 <td>{{ r.nb }}</td>
             {% endfor %}
-        <td>{{ genin.time }}</td>
+        <td>{{ infantry.time }}</td>
         </tr>
     </table>
     Recrutez en ici :

@@ -89,6 +89,20 @@ class TownRessource
         return $this->nb;
     }
 
+    public function addNb($nb)
+    {
+        $this->nb += $nb;
+
+        return $this;
+    }
+
+    public function removeNb($nb)
+    {
+        $this->nb -= $nb;
+
+        return $this;
+    }
+
     /**
      * Set add
      *

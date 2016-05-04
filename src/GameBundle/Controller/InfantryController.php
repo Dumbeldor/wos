@@ -16,8 +16,6 @@ class InfantryController extends Controller
         $genin = $this->getDoctrine()->getRepository('GameBundle:Infantry')->findOneById($id);
         $infantryInBuild = $this->container->get('game.infantry_manager')->getInfantryBuild($genin);
 
-        //
-
         $infantryBuild->setTown($this->getUser()->getTownCurrant());
         $infantryBuild->setInfantry($genin);
         $nb = $this->getDoctrine()->getRepository('GameBundle:InfantryTown')->nb($id, $this->getUser()->getTownCurrant());
@@ -27,16 +25,20 @@ class InfantryController extends Controller
             ->getForm();;
 
         $form->handleRequest($request);
-
         if ($form->isValid()) {
-            $infantryBuild->setBeginFormation(time());
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($infantryBuild);
-            $em->flush();
+            //Voir si assez de ressource
+            $isBuildable = $this->container->get('game.infantry_manager')->ifBuildable($genin, $infantryBuild->getNb());
+
+            if($isBuildable) {
+                $infantryBuild->setBeginFormation(time());
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($infantryBuild);
+                $em->flush();
+            }
         }
 
         return $this->render('GameBundle:Building:academie.html.twig', array('title' => 'Recrutement Genin',
-            'form' => $form->createView(), 'infTown' => $nb->getNb(), 'infInBuild' => $infantryInBuild->getNb(), 'genin' => $genin));
+            'form' => $form->createView(), 'infTown' => $nb->getNb(), 'infInBuild' => $infantryInBuild, 'infantry' => $genin));
     }
 
     public function academieAction(Request $request)
