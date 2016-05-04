@@ -18,7 +18,7 @@ class InfantryManager{
     public function getInfantryBuild(Infantry $infantry) {
         $infantryBuild = $this->em->getRepository('GameBundle:InfantryBuild')->findOneByInfantry($infantry->getId());
 
-        if($infantryBuild instanceof InfantryBuild AND $infantryBuild->getNb() > 0) {
+        if($infantryBuild instanceof InfantryBuild AND $infantryBuild->getNb() >= 0) {
             $timeForm = $infantry->getTime() * 60;
             $timeBegin = $infantryBuild->getBeginFormation();
             $diffTime = time() - $timeBegin;
@@ -27,14 +27,22 @@ class InfantryManager{
                 $townId =$this->token->getToken()->getUser()->getTownCurrant();
                 $toCreate = floor($diffTime/$timeForm);
 
+                if($toCreate > $infantryBuild->getNb())
+                    $toCreate = $infantryBuild->getNb();
+
                 $infantryBuild->setNb($infantryBuild->getNb() - $toCreate);
 
                 $this->em->getRepository('GameBundle:InfantryBuild')->createInfantry($infantry->getId(), $toCreate, $townId);
                 $this->em->getRepository('GameBundle:InfantryTown')->createInfantry($infantry->getId(), $toCreate, $townId);
             }
-            return $infantryBuild->getNb();
+            echo "ooo";
+            return $infantryBuild;
         }
-        return 0;
+        $infantryBuild = new InfantryBuild();
+        $infantryBuild->setNb(0);
+        $infantryBuild->setTown($this->token->getToken()->getUser()->getTownCurrant());
+        $infantryBuild->setInfantry($infantry);
+        return $infantryBuild;
     }
 
     public function ifBuildable(Infantry $infantry, $nb) {
@@ -43,6 +51,7 @@ class InfantryManager{
 
         $i = 0;
         foreach($ressourceNecessaire as $r) {
+            echo $r->getNb().' : '.$ressourceDispo[$i]->getNb().'<br>';
             if($r->getNb() * $nb > $ressourceDispo[$i]->getNb()){
                 return false;
             }

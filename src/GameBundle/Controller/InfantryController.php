@@ -30,15 +30,16 @@ class InfantryController extends Controller
             $isBuildable = $this->container->get('game.infantry_manager')->ifBuildable($genin, $infantryBuild->getNb());
 
             if($isBuildable) {
-                $infantryBuild->setBeginFormation(time());
+                $infantryInBuild->setBeginFormation(time());
+                $infantryInBuild->addNb($infantryBuild->getNb());
                 $em = $this->getDoctrine()->getManager();
-                $em->persist($infantryBuild);
+                $em->persist($infantryInBuild);
                 $em->flush();
             }
         }
 
         return $this->render('GameBundle:Building:academie.html.twig', array('title' => 'Recrutement Genin',
-            'form' => $form->createView(), 'infTown' => $nb->getNb(), 'infInBuild' => $infantryInBuild, 'infantry' => $genin));
+            'form' => $form->createView(), 'infTown' => 0, 'infInBuild' => $infantryInBuild->getNb(), 'infantry' => $genin));
     }
 
     public function academieAction(Request $request)

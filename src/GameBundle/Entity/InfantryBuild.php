@@ -134,6 +134,13 @@ class InfantryBuild
         return $this->nb;
     }
 
+    public function addNb($nb)
+    {
+        $this->nb += $nb;
+
+        return $this;
+    }
+
     /**
      * Set town
      *
