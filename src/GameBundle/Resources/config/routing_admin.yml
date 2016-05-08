@@ -95,3 +95,21 @@ game_admin_building_type_list_id:
 game_admin_building_type_edit:
     path:     /batiment/type/edit/{id}
     defaults: { _controller: GameBundle:Admin/BuildingType:edit }
+
+game_admin_element:
+    path:     /element
+    defaults: { _controller: GameBundle:Admin/Element:index }
+game_admin_element_add:
+    path:     /element/add
+    defaults: { _controller: GameBundle:Admin/Element:add }
+game_admin_element_list:
+    path:     /element/list
+    defaults: { _controller: GameBundle:Admin/Element:list }
+game_admin_element_edit:
+    path:     /element/edit/{id}
+    defaults: { _controller: GameBundle:Admin/Element:edit }
+
+
+game_admin_map:
+    path:    /map
+    defaults: { _controller: GameBundle:Admin/Map:index }

@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TownType extends AbstractType
+class ElementType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -17,10 +17,12 @@ class TownType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('element', EntityType::class, array(
+            ->add('attack')
+            ->add('defense')
+            ->add('speed')
+            ->add('stronger', EntityType::class, array(
                 'class' => 'GameBundle:Element',
-                'choice_label' => 'name',
-                'label' => 'Element de votre village'
+                'choice_label' => 'name'
             ))
         ;
     }
@@ -31,7 +33,7 @@ class TownType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'GameBundle\Entity\Town'
+            'data_class' => 'GameBundle\Entity\Element'
         ));
     }
 }

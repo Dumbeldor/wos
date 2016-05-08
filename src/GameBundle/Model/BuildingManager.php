@@ -13,6 +13,4 @@ class BuildingManager{
         $this->token = $token;
         $this->em = $entityManager;
     }
-
-   public function get
 }

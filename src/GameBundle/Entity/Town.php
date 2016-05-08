@@ -28,6 +28,13 @@ class Town
      */
     private $user;
 
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Element", inversedBy="town")
+     * @ORM\JoinColumn(name="element_id", referencedColumnName="id")
+     */
+    private $element;
+
 
     /**
      * @var string
@@ -51,18 +58,9 @@ class Town
     private $point;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="x", type="integer")
+     * @ORM\OneToMany(targetEntity="Map", mappedBy="town")
      */
-    private $x;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="y", type="integer")
-     */
-    private $y;
+    protected $map;
 
     /**
      * @ORM\OneToMany(targetEntity="TownRessource", mappedBy="town")
@@ -375,5 +373,63 @@ class Town
     public function getBuildings()
     {
         return $this->buildings;
+    }
+
+    /**
+     * Add map
+     *
+     * @param \GameBundle\Entity\Map $map
+     *
+     * @return Town
+     */
+    public function addMap(\GameBundle\Entity\Map $map)
+    {
+        $this->map[] = $map;
+
+        return $this;
+    }
+
+    /**
+     * Remove map
+     *
+     * @param \GameBundle\Entity\Map $map
+     */
+    public function removeMap(\GameBundle\Entity\Map $map)
+    {
+        $this->map->removeElement($map);
+    }
+
+    /**
+     * Get map
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMap()
+    {
+        return $this->map;
+    }
+
+    /**
+     * Set element
+     *
+     * @param \GameBundle\Entity\Element $element
+     *
+     * @return Town
+     */
+    public function setElement(\GameBundle\Entity\Element $element = null)
+    {
+        $this->element = $element;
+
+        return $this;
+    }
+
+    /**
+     * Get element
+     *
+     * @return \GameBundle\Entity\Element
+     */
+    public function getElement()
+    {
+        return $this->element;
     }
 }

@@ -19,6 +19,10 @@ class InfantryController extends Controller
         $infantryBuild->setTown($this->getUser()->getTownCurrant());
         $infantryBuild->setInfantry($genin);
         $nb = $this->getDoctrine()->getRepository('GameBundle:InfantryTown')->nb($id, $this->getUser()->getTownCurrant());
+        if($nb instanceof InfantryTown)
+            $nb = $nb->getNb();
+        else
+            $nb = 0;
 
         $form = $this->createFormBuilder($infantryBuild)
             ->add('nb', IntegerType::class, array('label' => 'Nombre'))
@@ -39,7 +43,7 @@ class InfantryController extends Controller
         }
 
         return $this->render('GameBundle:Building:academie.html.twig', array('title' => 'Recrutement Genin',
-            'form' => $form->createView(), 'infTown' => 0, 'infInBuild' => $infantryInBuild->getNb(), 'infantry' => $genin));
+            'form' => $form->createView(), 'infTown' => $nb, 'infInBuild' => $infantryInBuild->getNb(), 'infantry' => $genin));
     }
 
     public function academieAction(Request $request)

@@ -1,0 +1,31 @@
+{% extends 'GameBundle::Admin/index.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ title }} :<br>
+
+    <table>
+        <tr>
+            <td>Nom</td><td>Attaque</td><td>Défense</td><td>Vitesse</td><td>La faiblesse de</td>
+        </tr>
+
+        {% for e in elements %}
+            <tr>
+                <td><a href="{{ path('game_admin_element_edit', {'id': e.id}) }}">{{ e.name }}</a></td>
+                <td>{{ e.attack }}</td>
+                <td>{{ e.defense }}</td>
+                <td>{{ e.speed }}</td>
+                {% if e.stronger is not empty %}
+                    <td>{{ e.stronger.name }}</td>
+                {% else %}
+                    <td>Aucune</td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
