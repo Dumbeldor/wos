@@ -14,6 +14,9 @@
         {% if infantry is not empty %}
             <i><a href="{{ path('game_building_infantry', {'id': infantry.id}) }}">Information sur vos {{ infantry.name }}</a></i>
         {% endif %}
+        {% if building.name == 'Haut conseil' %}
+            <i><a href="{{ path('game_haut_conseil') }}">Accès à votre Haut Conseil</a></i>
+        {% endif %}
     {% else %}
         Vous ne possedez pas {{ building.name }}<br>
     {% endif %}

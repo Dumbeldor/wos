@@ -26,6 +26,16 @@ class User extends BaseUser
     protected $town;
 
     /**
+     * @ORM\OneToMany(targetEntity="GameBundle\Entity\Clan", mappedBy="user")
+     */
+    protected $clan;
+
+    /**
+     * @ORM\OneToMany(targetEntity="GameBundle\Entity\ClanCandidature", mappedBy="user")
+     */
+    protected $clanCandidatures;
+
+    /**
      * @ORM\OneToOne(targetEntity="GameBundle\Entity\Town", cascade={"persist"})
      */
     protected $townCurrant;
@@ -127,5 +137,73 @@ class User extends BaseUser
     public function getLastActivity()
     {
         return $this->lastActivity;
+    }
+
+    /**
+     * Add clan
+     *
+     * @param \GameBundle\Entity\Clan $clan
+     *
+     * @return User
+     */
+    public function addClan(\GameBundle\Entity\Clan $clan)
+    {
+        $this->clan[] = $clan;
+
+        return $this;
+    }
+
+    /**
+     * Remove clan
+     *
+     * @param \GameBundle\Entity\Clan $clan
+     */
+    public function removeClan(\GameBundle\Entity\Clan $clan)
+    {
+        $this->clan->removeElement($clan);
+    }
+
+    /**
+     * Get clan
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getClan()
+    {
+        return $this->clan;
+    }
+
+    /**
+     * Add clanCandidature
+     *
+     * @param \GameBundle\Entity\ClanCandidature $clanCandidature
+     *
+     * @return User
+     */
+    public function addClanCandidature(\GameBundle\Entity\ClanCandidature $clanCandidature)
+    {
+        $this->clanCandidatures[] = $clanCandidature;
+
+        return $this;
+    }
+
+    /**
+     * Remove clanCandidature
+     *
+     * @param \GameBundle\Entity\ClanCandidature $clanCandidature
+     */
+    public function removeClanCandidature(\GameBundle\Entity\ClanCandidature $clanCandidature)
+    {
+        $this->clanCandidatures->removeElement($clanCandidature);
+    }
+
+    /**
+     * Get clanCandidatures
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getClanCandidatures()
+    {
+        return $this->clanCandidatures;
     }
 }
