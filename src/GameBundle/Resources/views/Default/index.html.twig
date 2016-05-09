@@ -7,12 +7,19 @@
 {% endblock %}
 
 {% block body %}
-    Bienvenue {{ user.username }} voilà la liste de vos villages :<br>
-    {% if user.town is empty %}
-        <a href="{{ path('game_add_town') }}">Ajouter un village</a>
+    {% if user is empty %}
+        Veuillez vous logguer/enregistrer. <br>
+        <a href="{{ path('fos_user_security_login') }}">Connexion</a> <br>
+        <a href="{{ path('fos_user_registration_register') }}">Inscription</a> <br>
+        <a href="#">Forum</a> <br>
     {% else %}
-        {% for town in user.town %}
-            <a href="{{ path('game_choice_town', {'id': town.id}) }}">{{ town.name }}</a> <br>
-        {% endfor %}
+        Bienvenue {{ user.username }} voilà la liste de vos villages :<br>
+        {% if user.town is empty %}
+            <a href="{{ path('game_add_town') }}">Ajouter un village</a>
+        {% else %}
+            {% for town in user.town %}
+                <a href="{{ path('game_choice_town', {'id': town.id}) }}">{{ town.name }}</a> <br>
+            {% endfor %}
+        {% endif %}
     {% endif %}
 {% endblock %}
