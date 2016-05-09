@@ -17,30 +17,33 @@
 <body>
 <h1>{{ title }}</h1>
 <div id="sidebar">
-    <!-- Info joueur -->
-    Pseudo : {{ user.username }}<br>
-    {% if town is not empty or ressource is not empty %}
-        Village : {{ town.name }}<br>
-        Habitant : {{ town.resident }}<br>
-        Points : {{ town.point }}<br><br>
+    {% if user is not empty %}
+        <!-- Info joueur -->
+        Pseudo : {{ user.username }}<br>
+        {% if town is not empty or ressource is not empty %}
+            Village : {{ town.name }}<br>
+            Habitant : {{ town.resident }}<br>
+            Points : {{ town.point }}<br><br>
 
 
 
-        <!-- Affichage des ressources -->
-        {% for r in ressources %}
-            {{ r.ressource.name }} : {{ r.nb|round(1, 'floor') }}/{{ r.stock + r.ressource.stock }} gain {{ r.add + r.ressource.add}} par heure <br>
-        {% endfor %}
+            <!-- Affichage des ressources -->
+            {% for r in ressources %}
+                {{ r.ressource.name }} : {{ r.nb|round(1, 'floor') }}/{{ r.stock + r.ressource.stock }} gain {{ r.add + r.ressource.add}} par heure <br>
+            {% endfor %}
+        {% endif %}
+    
+    
+        {% block sidebar %}
+            <ul>
+                <li><a href="{{ path('game_homepage') }}">Accueil</a></li>
+                <li><a href="{{ path('game_homepage') }}">Mon village</a></li>
+                <li><a href="{{ path('game_building') }}">Vos batiments</a></li>
+                <li><a href="{{ path('game_admin') }}">Admin</a></li>
+                <li><a href="{{ path('fos_user_security_logout') }}">Deconnexion</a></li>
+            </ul>
+        {% endblock %}
     {% endif %}
-
-    {% block sidebar %}
-        <ul>
-            <li><a href="{{ path('game_homepage') }}">Accueil</a></li>
-            <li><a href="{{ path('game_homepage') }}">Mon village</a></li>
-            <li><a href="{{ path('game_building') }}">Vos batiments</a></li>
-            <li><a href="{{ path('game_admin') }}">Admin</a></li>
-
-    {% endblock %}
-        </ul>
 </div>
 
 <div id="content">
