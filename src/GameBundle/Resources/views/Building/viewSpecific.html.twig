@@ -49,7 +49,7 @@
         <strong>Vous avez déjà ce batiment.</strong>
     {% else %}
         {% if requis %}
-            <a href="{{ path('game_build', {'id': id}) }}">Construire</a>
+            <a href="{{ path('game_town_building_build', {'id': id}) }}">Construire</a>
         {% else %}
             <strong>Il vous manque des ressources pour pouvoir construire ce batiment</strong>
         {% endif %}
