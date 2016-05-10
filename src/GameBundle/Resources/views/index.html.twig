@@ -39,7 +39,9 @@
                 <li><a href="{{ path('game_homepage') }}">Accueil</a></li>
                 <li><a href="{{ path('game_homepage') }}">Mon village</a></li>
                 <li><a href="{{ path('game_building') }}">Vos batiments</a></li>
-                <li><a href="{{ path('game_admin') }}">Admin</a></li>
+                {% if (user.hasRole('ROLE_ADMIN')) %}
+                    <li><a href="{{ path('game_admin') }}">Admin</a></li>
+                {% endif %}
                 <li><a href="{{ path('fos_user_security_logout') }}">Deconnexion</a></li>
             </ul>
         {% endblock %}
