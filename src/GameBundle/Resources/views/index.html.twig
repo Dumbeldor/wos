@@ -2,54 +2,31 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <style>
-        table
-        {
-            border-collapse: collapse; /* Les bordures du tableau seront collées (plus joli) */
-        }
-        td
-        {
-            border: 1px solid black;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('foundation/css/app.css') }}">
+
     <title>{% block title %}WOS | {{ title }}{% endblock %}</title>
 </head>
 <body>
-<h1>{{ title }}</h1>
-<div id="sidebar">
-    {% if user is not empty %}
-        <!-- Info joueur -->
-        Pseudo : {{ user.username }}<br>
-        {% if town is not empty or ressource is not empty %}
-            Village : {{ town.name }}<br>
-            Habitant : {{ town.resident }}<br>
-            Points : {{ town.point }}<br><br>
 
+{{ include('GameBundle::infoUser.html.twig') }}
 
+{% block sidebar %}
+    {{ include('GameBundle::menu.html.twig') }}
+{% endblock %}
 
-            <!-- Affichage des ressources -->
-            {% for r in ressources %}
-                {{ r.ressource.name }} : {{ r.nb|round(1, 'floor') }}/{{ r.stock + r.ressource.stock }} gain {{ r.add + r.ressource.add}} par heure <br>
-            {% endfor %}
-        {% endif %}
-    
-    
-        {% block sidebar %}
-            <ul>
-                <li><a href="{{ path('game_homepage') }}">Accueil</a></li>
-                <li><a href="{{ path('game_homepage') }}">Mon village</a></li>
-                <li><a href="{{ path('game_building') }}">Vos batiments</a></li>
-                {% if (user.hasRole('ROLE_ADMIN')) %}
-                    <li><a href="{{ path('game_admin') }}">Admin</a></li>
-                {% endif %}
-                <li><a href="{{ path('fos_user_security_logout') }}">Deconnexion</a></li>
-            </ul>
-        {% endblock %}
-    {% endif %}
-</div>
+<!-- Ressource -->
+{{ include('GameBundle::ressource.html.twig') }}
 
 <div id="content">
     {% block body %}{% endblock %}
 </div>
 </body>
+
+{% block js %}
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <script src="{{ asset('foundation/bower_components/what-input/what-input.js')}}"></script>
+    <script src="{{ asset('foundation/bower_components/foundation-sites/dist/foundation.js') }}"></script>
+    <script src="{{ asset('foundation/js/app.js') }}"></script>
+{% endblock %}
+
 </html>

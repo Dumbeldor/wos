@@ -29,8 +29,6 @@ class BuildingController extends Controller
 
     public function specificAction($id) {
         $requis = $this->isBuildable($id);
-        var_dump($requis['exist']);
-        var_dump($requis['requis']);
         return $this->render('GameBundle:Building:viewSpecific.html.twig', array('title' => $requis['building']->getName(), 'user' => $this->getUser(),
             'building' => $requis['building'], 'requis' => $requis['requis'], 'exist' => $requis['exist'], 'id' => $id));
     }
@@ -92,7 +90,6 @@ class BuildingController extends Controller
             $ressources = $this->getUser()->getTownCurrant()->getRessources();
             $i = 0;
             foreach ($building->getRessources() as $r) {
-                echo '<br>'.$r->getNb().' : '.$ressources[$i]->getNb();
                 if ($r->getNb() > $ressources[$i]->getNb()) {
                     $requis = false;
                     break;
@@ -108,7 +105,6 @@ class BuildingController extends Controller
                 if ($nb == count($building->getRequired()))
                     $requis = true;
             } else {
-                echo "ICI ?";
                 $requis = false;
             }
         }

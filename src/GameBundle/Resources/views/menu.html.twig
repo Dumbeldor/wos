@@ -1,0 +1,43 @@
+<div id="menu" class="top-bar">
+    <div class="top-bar-title">
+    <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
+      <button class="menu-icon dark" type="button" data-toggle></button>
+    </span>
+        <strong>{{ title }}</strong>
+    </div>
+    <div id="responsive-menu">
+        <div class="top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu>
+                <li><a href="{{ path('game_homepage') }}">Accueil</a></li>
+                <li><a href="{{ path('game_homepage') }}">Mon village</a></li>
+                <li><a href="{{ path('game_building') }}">Vos batiments</a></li>
+
+                {# SI ADMIN alors afficher le menu ADMIN#}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li>
+                        <a href="#">Administration</a>
+                        <ul class="menu vertical">
+                            <li><a href="{{ path('game_admin_ressource') }}">Gestion ressource</a></li>
+                            <li><a href="{{ path('game_admin_building_type') }}">Gestion des types de batiment</a></li>
+                            <li><a href="{{ path('game_admin_building') }}">Gestion des batiments</a></li>
+                            <li><a href="{{ path('game_admin_building_ressource') }}">Gestion des ressources construction batiments</a></li>
+                            <li><a href="{{ path('game_admin_infantry') }}">Gestion des unités</a></li>
+                            <li><a href="{{ path('game_admin_element') }}">Gestion des éléments</a></li>
+                            <li><a href="{{ path('game_admin_map') }}">Gestion de la map</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                {% endif %}
+            </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="dropdown menu" data-dropdown-menu>
+                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    <li><a href="{{ path('fos_user_security_logout') }}">Deconnexion</a></li>
+                {% else %}
+                    <li><a href="{{ path('login') }}">Connexion</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div id="info">
+    {% if town is not empty or ressource is not empty %}
+
+        <h1 class="medium-8" id="townName">{{ town.name }}</h1>
+
+        <div id="infoTown">
+            <!-- Info joueur -->
+            <table class="infoTown">
+                <tr>
+                    <td>Pseudo</td><td>{{ user.username }}</td>
+                </tr>
+                <tr>
+                    <td>Niveau</td><td>0</td>
+                </tr>
+                <tr>
+                    <td>Expérience&nbsp;</td><td>0/154</td>
+                </tr>
+                <tr>
+                    <td>Habitant</td><td>{{ town.resident }}</td>
+                </tr>
+                <tr>
+                    <td>Points</td><td>{{ town.point }}</td>
+                </tr>
+            </table>
+        </div>
+</div>
+{% endif %}
