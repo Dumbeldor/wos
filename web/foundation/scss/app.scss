@@ -4,8 +4,6 @@
 @import 'foundation';
 @import 'motion-ui';
 
-
-
 @include foundation-global-styles;
 @include foundation-grid;
 // @include foundation-flex-grid;
@@ -51,40 +49,41 @@
 @include motion-ui-transitions;
 @include motion-ui-animations;
 
+$fondDiv: $light-gray;
 
 
 #info{
-  background-color: $black;
-  background-image: url(../../../img/banierre.png);
-  background-repeat:no-repeat;
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  @include grid-column();
+	background-color: $black;
+	background-image: url(../../../img/banierre.png);
+	background-repeat:no-repeat;
+	background-size: cover;
+	background-position: center;
+	width: 100%;
+	@include grid-column();
 }
 #ressource{
-  background-color: $light-gray;
+	background-color: $light-gray;
 }
 #townName{
-  float: left;
-  color: $light-gray;
+	float: left;
+	color: $light-gray;
 }
 #infoTown{
-  float: right;
-  background-color: $light-gray;
-  opacity: 0.5;
+	float: right;
+	background-color: $light-gray;
+	opacity: 0.5;
 }
 #infoTown table{
 
 }
 table:not(.infoTown) {
-  @include table;
+	@include table;
 }
 #content{
-  border-top: 10px;
-  border-radius: 10px;
-  background-color: $light-gray;
-  margin: 50px;
-  @include grid-row;
+	border-top: 10px;
+	border-radius: 10px;
+	background-color: $fondDiv;
+	margin: 50px;
+	@include grid-row;
 }
 

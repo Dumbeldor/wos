@@ -1,5 +1,5 @@
 <div id="info">
-    {% if town is not empty or ressource is not empty %}
+    {% if town is defined and ressource is defined and town is not empty and ressource is not empty %}
 
         <h1 class="medium-8" id="townName">{{ town.name }}</h1>
 
@@ -23,5 +23,6 @@
                 </tr>
             </table>
         </div>
-</div>
+
 {% endif %}
+</div>

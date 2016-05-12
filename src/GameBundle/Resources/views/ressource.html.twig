@@ -1,6 +1,8 @@
 <!-- Affichage des ressources -->
 <div class="row" id="ressource">
+{% if ressources is defined %}
     {% for r in ressources %}
         <acronym title="{{ r.ressource.name }} gain {{ r.add + r.ressource.add}} par heure">{{ r.nb|round(1, 'floor') }}/{{ r.stock + r.ressource.stock }}</acronym>
     {% endfor %}
+{% endif %}
 </div>

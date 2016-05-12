@@ -3,7 +3,7 @@
     <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
       <button class="menu-icon dark" type="button" data-toggle></button>
     </span>
-        <strong>{{ title }}</strong>
+        <strong>{#{{ title }}#}</strong>
     </div>
     <div id="responsive-menu">
         <div class="top-bar-left">
@@ -35,7 +35,7 @@
                 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <li><a href="{{ path('fos_user_security_logout') }}">Deconnexion</a></li>
                 {% else %}
-                    <li><a href="{{ path('login') }}">Connexion</a></li>
+                    <li><a href="">Connexion</a></li>
                 {% endif %}
             </ul>
         </div>

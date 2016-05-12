@@ -7,6 +7,7 @@ use FOS\UserBundle\FOSUserEvents;
 use FOS\UserBundle\Event\FormEvent;
 use GameBundle\Entity\Town;
 use GameBundle\Entity\TownRessource;
+use GameBundle\Entity\Ressource;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Doctrine\ORM\EntityManager;
@@ -33,9 +34,30 @@ class UserRegistrationSuccessListener implements EventSubscriberInterface
     public function onRegistrationSuccess(FormEvent $event)
     {
         $user = $event->getForm()->getData();
+	$town = $user->getTownCurrant();
 
+	$ressources = $this->em->getRepository('GameBundle:Ressource')->findAll();
 
+	foreach($ressources as $r) {
+		$townR = new TownRessource();
+		$townR->setRessource($r);
+		$townR->setNb(400);
+		$townR->setAdd(0);
+		$townR->setStock(0);
+		$townR->setTown($town);
+	
+		$this->em->persist($townR);
+		unset($townR);
+	}
+
+	
         $this->em->persist($user);
+	$town->setResident(0);
+	$town->setPoint(0);
+	$town->setUser($user);
+	$this->em->persist($town);
+
+	
         $this->em->flush();
     }
 

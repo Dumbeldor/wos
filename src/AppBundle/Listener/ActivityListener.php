@@ -34,7 +34,9 @@ class ActivityListener
             $town = $user->getTownCurrant();
             $ressources = $this->em->getRepository('GameBundle:Town')->getRessource($town->getId());
 
-            $interval = $user->getLastActivity()->diff(new DateTime())->format('%s');
+	    $interval = 0;
+	    if($user->getLastActivity() != null)
+            	$interval = $user->getLastActivity()->diff(new DateTime())->format('%s');
             foreach ($ressources as $r) {
                 $nb = $r->getNb();
                 $stockMax = $r->getStock() + $r->getRessource()->getStock();

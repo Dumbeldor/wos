@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('foundation/css/app.css') }}">
 
-    <title>{% block title %}WOS | {{ title }}{% endblock %}</title>
+    <title>{% block title %}WOS | {#{{ title }}#}{% endblock %}</title>
 </head>
 <body>
 
@@ -17,7 +19,7 @@
 <!-- Ressource -->
 {{ include('GameBundle::ressource.html.twig') }}
 
-<div id="content">
+<div id="content" class="row">
     {% block body %}{% endblock %}
 </div>
 </body>
