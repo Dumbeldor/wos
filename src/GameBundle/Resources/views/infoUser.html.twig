@@ -1,6 +1,6 @@
 <div id="info">
-    {% if town is defined and ressource is defined and town is not empty and ressource is not empty %}
 
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <h1 class="medium-8" id="townName">{{ town.name }}</h1>
 
         <div id="infoTown">
@@ -23,6 +23,8 @@
                 </tr>
             </table>
         </div>
+    {% else %}
+        <h1 class="medium-8" id="townName">WOS</h1>
+    {% endif %}
 
-{% endif %}
 </div>
