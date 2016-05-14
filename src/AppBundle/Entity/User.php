@@ -26,7 +26,7 @@ class User extends BaseUser
     protected $town;
 
     /**
-     * @ORM\OneToMany(targetEntity="GameBundle\Entity\Clan", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="GameBundle\Entity\ClanUser", mappedBy="user")
      */
     protected $clan;
 
