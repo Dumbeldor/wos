@@ -4,3 +4,15 @@ services:
         arguments:
             token: "@security.token_storage"
             entityManager: "@doctrine.orm.entity_manager"
+
+    game.building_manager:
+         class: GameBundle\Model\BuildingManager
+         arguments:
+             token: "@security.token_storage"
+             entityManager: "@doctrine.orm.entity_manager"
+
+    game.ressource_manager:
+         class: GameBundle\Model\RessourceManager
+         arguments:
+             token: "@security.token_storage"
+             entityManager: "@doctrine.orm.entity_manager"
