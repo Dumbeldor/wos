@@ -8,7 +8,15 @@
 
 {% block body %}
     {{ title }} :<br>
-    {% for bt in buildingTypes %}
-        {{ bt.name }} <a href="{{ path('game_admin_building_type_edit', {'id': bt.id}) }}">Modifier</a><br>
-    {% endfor %}
+    <table>
+        <tr>
+            <td>Nom</td><td>Modifier</td><td>Liste batiments</td>
+        </tr>
+        {% for bt in buildingTypes %}
+            <tr>
+                <td>{{ bt.name }}</td><td><a href="{{ path('game_admin_building_type_edit', {'id': bt.id}) }}">Modifier</a></td>
+                <td><a href="{{ path('game_admin_building_list_by_type', {'id': bt.id}) }}">liste</a></td>
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

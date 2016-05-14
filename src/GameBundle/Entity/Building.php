@@ -29,6 +29,13 @@ class Building
      */
     private $lvl;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="time", type="integer", nullable=true)
+     */
+    private $time;
+
 
     /**
      * @var int
@@ -50,7 +57,6 @@ class Building
      * @ORM\Column(name="addPoint", type="integer")
      */
     private $addPoint;
-
 
     /**
      * @ORM\OneToMany(targetEntity="BuildingRequired", mappedBy="buildingChild")
@@ -444,5 +450,29 @@ class Building
     public function getTowns()
     {
         return $this->towns;
+    }
+
+    /**
+     * Set time
+     *
+     * @param integer $time
+     *
+     * @return Building
+     */
+    public function setTime($time)
+    {
+        $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * Get time
+     *
+     * @return integer
+     */
+    public function getTime()
+    {
+        return $this->time;
     }
 }

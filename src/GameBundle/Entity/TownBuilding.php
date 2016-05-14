@@ -29,6 +29,12 @@ class TownBuilding
     private $lvl;
 
     /**
+     * @ORM\ManyToOne(targetEntity="BuildingType", inversedBy="towns")
+     * @ORM\JoinColumn(name="building_type_id", referencedColumnName="id")
+     */
+    private $buildingType;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Town", inversedBy="buildings")
      * @ORM\JoinColumn(name="town_id", referencedColumnName="id")
      */
@@ -121,5 +127,29 @@ class TownBuilding
     public function getBuilding()
     {
         return $this->building;
+    }
+
+    /**
+     * Set buildingType
+     *
+     * @param \GameBundle\Entity\BuildingType $buildingType
+     *
+     * @return TownBuilding
+     */
+    public function setBuildingType(\GameBundle\Entity\BuildingType $buildingType = null)
+    {
+        $this->buildingType = $buildingType;
+
+        return $this;
+    }
+
+    /**
+     * Get buildingType
+     *
+     * @return \GameBundle\Entity\BuildingType
+     */
+    public function getBuildingType()
+    {
+        return $this->buildingType;
     }
 }

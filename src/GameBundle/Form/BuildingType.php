@@ -26,6 +26,7 @@ class BuildingType extends AbstractType
                 'label' => 'Type de batiment'
             ))
             ->add('lvl', IntegerType::class, array('label' => 'Lvl'))
+            ->add('time', IntegerType::class, array('label' => 'Temps de construction (en mn)'))
 
             ->add('add', IntegerType::class, array('required' => false,
                                                     'label' => 'Ajout suivant le type de bat'))

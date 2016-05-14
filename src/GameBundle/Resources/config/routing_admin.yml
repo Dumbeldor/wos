@@ -24,6 +24,9 @@ game_admin_building_add:
 game_admin_building_list:
     path:     /batiment/list
     defaults: { _controller: GameBundle:Admin/Building:list }
+game_admin_building_list_by_type:
+    path:     /batiment/l/{id}
+    defaults: { _controller: GameBundle:Admin/Building:listByType }
 game_admin_building_edit:
     path:     /batiment/edit/{id}
     defaults: { _controller: GameBundle:Admin/Building:edit }

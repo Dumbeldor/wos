@@ -39,6 +39,11 @@ class BuildingController extends Controller
         return $this->render('GameBundle:Admin/Building:list.html.twig', array('title' => 'Liste des batiments', 'buildings' => $building));
     }
 
+    public function listByTypeAction($id) {
+        $building = $this->getDoctrine()->getRepository('GameBundle:Building')->getBuildingsByType($id);
+        return $this->render('GameBundle:Admin/Building:list.html.twig', array('title' => 'Liste des batiments', 'buildings' => $building));
+    }
+
     public function editAction($id, Request $request) {
         $building = $this->getDoctrine()->getRepository('GameBundle:Building')->find($id);
 

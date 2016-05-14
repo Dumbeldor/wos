@@ -46,5 +46,18 @@ class BuildingRepository extends \Doctrine\ORM\EntityRepository
             ->getResult();
     }
 
+    public function getBuildingsByType($id) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT b, r, bt FROM GameBundle:Building b
+                     LEFT JOIN b.required r
+                     JOIN b.buildingType bt
+                     WHERE b.buildingType = :type
+                     ORDER BY b.id'
+            )
+            ->setParameter('type', $id)
+            ->getResult();
+    }
+
 
 }

@@ -42,19 +42,21 @@ class BuildingType
      */
     private $descr;
 
-
     /**
      * @ORM\ManyToOne(targetEntity="Ressource")
      * @ORM\JoinColumn(name="ressource_id", referencedColumnName="id")
      */
     private $ressource;
 
-
-
     /**
      * @ORM\OneToMany(targetEntity="Building", mappedBy="buildingType")
      */
     private $buildings;
+
+    /**
+     * @ORM\OneToMany(targetEntity="TownBuilding", mappedBy="building")
+     */
+    private $towns;
 
     /**
      * Get id
@@ -203,4 +205,38 @@ class BuildingType
         return $this->ressource;
     }
 
+
+    /**
+     * Add town
+     *
+     * @param \GameBundle\Entity\TownBuilding $town
+     *
+     * @return BuildingType
+     */
+    public function addTown(\GameBundle\Entity\TownBuilding $town)
+    {
+        $this->towns[] = $town;
+
+        return $this;
+    }
+
+    /**
+     * Remove town
+     *
+     * @param \GameBundle\Entity\TownBuilding $town
+     */
+    public function removeTown(\GameBundle\Entity\TownBuilding $town)
+    {
+        $this->towns->removeElement($town);
+    }
+
+    /**
+     * Get towns
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTowns()
+    {
+        return $this->towns;
+    }
 }
