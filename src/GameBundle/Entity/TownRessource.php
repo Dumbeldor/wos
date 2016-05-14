@@ -127,6 +127,10 @@ class TownRessource
         return $this->add;
     }
 
+    public function addAdd($add) {
+        $this->add += $add;
+    }
+
     /**
      * Set town
      *

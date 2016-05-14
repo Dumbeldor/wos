@@ -84,6 +84,11 @@ class Building
      */
     private $towns;
 
+    /**
+     * @ORM\OneToMany(targetEntity="BuildingBuild", mappedBy="building")
+     */
+    private $buildingBuild;
+
 
 
     public function getName() {
@@ -474,5 +479,39 @@ class Building
     public function getTime()
     {
         return $this->time;
+    }
+
+    /**
+     * Add buildingBuild
+     *
+     * @param \GameBundle\Entity\BuildingBuild $buildingBuild
+     *
+     * @return Building
+     */
+    public function addBuildingBuild(\GameBundle\Entity\BuildingBuild $buildingBuild)
+    {
+        $this->buildingBuild[] = $buildingBuild;
+
+        return $this;
+    }
+
+    /**
+     * Remove buildingBuild
+     *
+     * @param \GameBundle\Entity\BuildingBuild $buildingBuild
+     */
+    public function removeBuildingBuild(\GameBundle\Entity\BuildingBuild $buildingBuild)
+    {
+        $this->buildingBuild->removeElement($buildingBuild);
+    }
+
+    /**
+     * Get buildingBuild
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getBuildingBuild()
+    {
+        return $this->buildingBuild;
     }
 }

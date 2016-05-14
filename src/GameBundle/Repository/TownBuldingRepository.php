@@ -27,7 +27,7 @@ class TownBuldingRepository extends \Doctrine\ORM\EntityRepository
     public function getLvl($building, $town) {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT MAX(b.lvl) AS lvl FROM GameBundle:TownBuilding tb
+                'SELECT PARTIAL tb.{id, lvl} FROM GameBundle:TownBuilding tb
                  INNER JOIN tb.building b
                  WHERE tb.town = :town AND b.buildingType = :building'
             )
