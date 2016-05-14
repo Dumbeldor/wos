@@ -69,6 +69,9 @@ game_admin_building_ressource_edit:
 game_admin_building_ressource_add_id:
     path:    /batiment/ressource/add/{id}
     defaults: { _controller: GameBundle:Admin/BuildingRessource:addId }
+game_admin_building_ressource_delete:
+    path:    /batiment/ressource/delete/{id}
+    defaults: { _controller: GameBundle:Admin/BuildingRessource:delete }
 
 game_admin_building_required:
     path:    /batiment/required

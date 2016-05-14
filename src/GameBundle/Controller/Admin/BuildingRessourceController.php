@@ -59,8 +59,10 @@ class BuildingRessourceController extends Controller
                 return $this->redirectToRoute('game_admin_building_ressource_add_id', array('id' => $b->getId()));
         }
 
+        $buildingR = $this->getDoctrine()->getRepository('GameBundle:BuildingRessource')->findByBuilding($id);
+
         return $this->render('GameBundle:Admin/BuildingRessource:form.html.twig', array('title' => 'Ajout de ressource nécessaire pour '.$building->getBuilding()->getName(),
-            'buildingRessource' => $building,
+            'buildingRessource' => $buildingR,
             'building' => $b,
             'form' => $form->createView()));
     }
@@ -92,6 +94,14 @@ class BuildingRessourceController extends Controller
 
         return $this->render('GameBundle:Admin/BuildingRessource:form.html.twig', array('title' => 'Edit de batiment',
             'form' => $form->createView(), 'building' => $building));
+    }
+
+    public function deleteAction(BuildingRessource $br) {
+        $id = $br->getBuilding()->getId();
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($br);
+        $em->flush();
+        return $this->redirectToRoute('game_admin_building_ressource_add_id', array('id' => $id));
     }
 
 }

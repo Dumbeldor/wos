@@ -8,6 +8,10 @@
 
 {% block body %}
     {{ title }} :<br>
+    Ressource déjà associé :<br>
+    {% for r in buildingRessource %}
+        {{ r.nb }} <strong>{{ r.ressource.name }}</strong> <a href="{{ path('game_admin_building_ressource_delete', {'id': r.id}) }}">Supprimer</a><br>
+    {% endfor %}
     <br>
     <br>
     <a href="{{ path('game_admin_building_required_add', {'id': building.id}) }}">Ajouter des prérequis pour construire {{ building.name }}</a>
