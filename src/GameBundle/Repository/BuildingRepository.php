@@ -13,7 +13,7 @@ class BuildingRepository extends \Doctrine\ORM\EntityRepository
     public function getBuilding($id) {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT PARTIAL b.{id, lvl, add, addHabitant, addPoint},
+                'SELECT PARTIAL b.{id, lvl, add, addHabitant, addPoint, time},
                       PARTIAL r.{id, buildingFather,lvl},
                       PARTIAL bf.{id, buildingChild, lvl},
                       PARTIAL bf2.{id, lvl, buildingType},
