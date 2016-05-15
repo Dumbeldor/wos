@@ -1,0 +1,17 @@
+{% extends 'GameBundle::index.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ title }}:<br><br>
+
+    {% for c in clans %}
+        {{ c.name }}
+    {% endfor %}
+
+
+{% endblock %}

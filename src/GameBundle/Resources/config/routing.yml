@@ -37,6 +37,16 @@ game_town_building_view_specific:
 game_town_building_build:
     path:    /building/build/{id}
     defaults: { _controller: GameBundle:Building:build }
+
 game_haut_conseil:
     path:    /clan
-    defaults: { _controller: GameBundle:}
+    defaults: { _controller: GameBundle:Clan:index}
+game_clan_list:
+    path:    /clan/list
+    defaults: { _controller: GameBundle:Clan:list}
+game_clan_create:
+    path:    /clan/create
+    defaults: { _controller: GameBundle:Clan:create }
+game_clan_info:
+    path:    /clan/info/{id}
+    defaults: { _controller: GameBundle:Clan:info }

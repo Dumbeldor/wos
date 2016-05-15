@@ -36,6 +36,20 @@ class Clan
     private $texte;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="point", type="integer")
+     */
+    private $point;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="xp", type="integer")
+     */
+    private $xp;
+
+    /**
      * @ORM\OneToMany(targetEntity="ClanUser", mappedBy="clan")
      */
     private $users;
@@ -177,5 +191,53 @@ class Clan
     public function getCandidatures()
     {
         return $this->candidatures;
+    }
+
+    /**
+     * Set point
+     *
+     * @param integer $point
+     *
+     * @return Clan
+     */
+    public function setPoint($point)
+    {
+        $this->point = $point;
+
+        return $this;
+    }
+
+    /**
+     * Get point
+     *
+     * @return integer
+     */
+    public function getPoint()
+    {
+        return $this->point;
+    }
+
+    /**
+     * Set xp
+     *
+     * @param integer $xp
+     *
+     * @return Clan
+     */
+    public function setXp($xp)
+    {
+        $this->xp = $xp;
+
+        return $this;
+    }
+
+    /**
+     * Get xp
+     *
+     * @return integer
+     */
+    public function getXp()
+    {
+        return $this->xp;
     }
 }

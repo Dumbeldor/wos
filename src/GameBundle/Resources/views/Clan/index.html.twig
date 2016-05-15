@@ -1,0 +1,43 @@
+{% extends 'GameBundle::index.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ title }}:<br><br>
+
+    Votre haut conseil est lvl {{ building.lvl }}.<br>
+
+    {% if clan is not empty %}
+        <h3>{{ clan.clan.name }}</h3><br>
+        Bienvenue {{ clan.rank.name }} {{ user.username }} !<br>
+        {{ clan.clan.name }} :<br>
+        {{ clan.clan.texte }}<br><br>
+
+        Liste des membres : <br>
+        {% for u in clan.clan.users %}
+            {{ u.user.username }}<br>
+        {% endfor %}
+    {% else %}
+        Vous n'avez pas encore de clan.<br>
+
+        {% if building.lvl < 3 %}
+            Vous ne pouvez pas encore créer de clan.<br>
+        {% else %}
+            <a href="{{ path('game_clan_create') }}">Créer un clan</a><br>
+        {% endif %}
+
+        <a href="{{ path('game_clan_list') }}">Liste des clans</a><br>
+
+        {{ form_start(form) }}<br>
+        Rechercher un clan:
+        {{ form_widget(form) }}<br>
+        <input type="submit" class="button" value="Submit" />
+        {{ form_end(form) }}
+    {% endif %}
+
+
+{% endblock %}

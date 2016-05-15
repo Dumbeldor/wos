@@ -19,6 +19,7 @@ class BuildingController extends Controller
     }
     public function viewAction($id) {
         $building = $this->getDoctrine()->getRepository('GameBundle:BuildingType')->getBuilding($id);
+        $this->container->get('game.building_manager')->getBuildingInBuild($building);
         $infantry = $this->getDoctrine()->getRepository('GameBundle:Infantry')->ifInBuilding($id);
         $townBuilding = $this->container->get('game.building_manager')->getLvlByType($id, $this->getUser()->getTownCurrant()->getId());
 

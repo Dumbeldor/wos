@@ -24,6 +24,10 @@ class BuildingManager{
         return $this->em->getRepository('GameBundle:TownBuilding')->getLvl($idType, $idTown);
     }
 
+    public function getLvlByName($name, $idTown) {
+        return $this->em->getRepository('GameBundle:TownBuilding')->getLvlByName($name, $idTown);
+    }
+
     public function getBuildingInBuild(BuildingType $buildingType) {
         $town = $this->token->getToken()->getUser()->getTownCurrant();
         $buildingBuild = $this->em->getRepository('GameBundle:BuildingBuild')->findOneBy(array('buildingType' => $buildingType, 'town'=>$town));
@@ -79,9 +83,6 @@ class BuildingManager{
         if(count($building->getRequired()) > 0) {
             //var_dump($building->getRequired());
             $nb = $this->em->getRepository('GameBundle:TownBuilding')->building($building->getRequired(), $this->token->getToken()->getUser()->getTownCurrant());
-            var_dump($nb);
-            echo count($building->getRequired());
-
             if($nb == count($building->getRequired()))
                 return true;
             return false;

@@ -28,7 +28,7 @@ class ClanUser
     private $clan;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="clan")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User", inversedBy="clan")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
