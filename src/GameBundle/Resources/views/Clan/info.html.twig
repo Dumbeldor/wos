@@ -9,6 +9,14 @@
 {% block body %}
     {{ title }}:<br><br>
         <h3>{{ clan.name }}</h3><br>
+        {% if user.clan is empty %}
+            {% if clan.candidatures is empty %}
+                <a href="{{ path('game_clan_candidature', {'id': clan.id}) }}">Écrire une candidature</a><br>
+            {% else %}
+                <strong>Ma candidature :</strong><br>
+                {{ clan.candidatures[0].texte }}<br>
+            {% endif %}
+        {% endif %}
         {{ clan.name }} :<br>
         {{ clan.texte }}<br><br>
 

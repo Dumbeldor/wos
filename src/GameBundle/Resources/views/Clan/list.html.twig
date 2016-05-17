@@ -10,7 +10,7 @@
     {{ title }}:<br><br>
 
     {% for c in clans %}
-        {{ c.name }}
+        <a href="{{ path('game_clan_info', {'id': c.id}) }}">{{ c.name }}</a><br>
     {% endfor %}
 
 

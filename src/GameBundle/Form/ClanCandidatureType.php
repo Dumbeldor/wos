@@ -16,8 +16,6 @@ class ClanCandidatureType extends AbstractType
     {
         $builder
             ->add('texte')
-            ->add('clan')
-            ->add('user')
         ;
     }
     

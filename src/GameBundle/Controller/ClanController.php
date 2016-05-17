@@ -3,10 +3,12 @@
 namespace GameBundle\Controller;
 
 use GameBundle\Entity\Clan;
+use GameBundle\Entity\ClanCandidature;
 use GameBundle\Entity\ClanUser;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use GameBundle\Form\ClanType;
+use GameBundle\Form\ClanCandidatureType;
 
 class ClanController extends Controller
 {
@@ -61,7 +63,25 @@ class ClanController extends Controller
     }
 
     public function infoAction($id) {
-        $clan = $this->getDoctrine()->getRepository('GameBundle:Clan')->getClan($id);
-        return $this->render('GameBundle:Clan:info.html.twig', array('title' => 'Info clan', 'clan' => $clan));
+        $clan = $this->getDoctrine()->getRepository('GameBundle:Clan')->getClanInfoForUser($id, $this->getUser()->getId());
+        return $this->render('GameBundle:Clan:info.html.twig', array('title' => 'Info clan', 'clan' => $clan, 'myClan' => $this->getUser()->getClan()));
+    }
+
+    public function candidatureAction($id, Request $request) {
+        $clan = $this->getDoctrine()->getRepository('GameBundle:Clan')->getName($id);
+        $clanCandidature = new ClanCandidature();
+        $form = $this->createForm(ClanCandidatureType::class, $clanCandidature);
+        $form->handleRequest($request);
+
+        if($form->isValid()) {
+            $clanCandidature->setUser($this->getUser());
+            $clanCandidature->setClan($clan);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($clanCandidature);
+            $em->flush();
+            return $this->redirectToRoute('game_clan_info', array('id' => $id));
+        }
+        return $this->render('GameBundle:Clan:candidature.html.twig', array('title' => 'Candidature clan', 'clan' => $clan,
+                                                'form' => $form->createView()));
     }
 }

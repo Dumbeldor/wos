@@ -18,6 +18,16 @@ class ClanRepository extends \Doctrine\ORM\EntityRepository
             ->getResult();
     }
 
+    public function getName($id) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT PARTIAL c.{id, name} FROM GameBundle:Clan c
+                 WHERE c.id = :id'
+            )
+            ->setParameter('id', $id)
+            ->getOneOrNullResult();
+    }
+
     public function getClan($id) {
         return $this->getEntityManager()
             ->createQuery(
@@ -28,6 +38,21 @@ class ClanRepository extends \Doctrine\ORM\EntityRepository
                  '
             )
             ->setParameter('id', $id)
+            ->getOneOrNullResult();
+    }
+
+    public function getClanInfoForUser($id, $user) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT PARTIAL c.{id, name, texte, point, xp}, u, PARTIAL us.{id, username}, PARTIAL ca.{id, texte}  FROM GameBundle:Clan c
+                 JOIN c.users u
+                 JOIN u.user us
+                 LEFT JOIN c.candidatures ca WITH ca.user = :user
+                 WHERE c.id = :id
+                 '
+            )
+            ->setParameter('id', $id)
+            ->setParameter('user', $user)
             ->getOneOrNullResult();
     }
 }

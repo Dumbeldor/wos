@@ -50,3 +50,6 @@ game_clan_create:
 game_clan_info:
     path:    /clan/info/{id}
     defaults: { _controller: GameBundle:Clan:info }
+game_clan_candidature:
+    path:    /clan/candidature/{id}
+    defaults: { _controller: GameBundle:Clan:candidature }
