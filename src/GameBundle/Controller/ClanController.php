@@ -14,8 +14,14 @@ class ClanController extends Controller
 {
     public function indexAction(Request $request) {
         $building = $this->container->get('game.building_manager')->getLvlByName('Haut conseil', $this->getUser()->getTownCurrant()->getId());
-        //$clan = $this->getDoctrine()->getRepository('GameBundle:Clan')->findOneById($this->getUser()->getClan()->getClan()->getId());
-        $clan = new Clan();
+        $clan = $this->getUser()->getClan();
+        echo $clan->getClan()->getId();
+        $clan = $this->getDoctrine()->getRepository('GameBundle:Clan')->getClan($clan->getClan()->getId());
+        /*if($clan instanceof Clan)
+            $clan = $this->getDoctrine()->getRepository('GameBundle:Clan')->getClan($clan->getClan()->getId());
+        else
+            $clan = new Clan();
+*/
         $form = $this->createFormBuilder($clan)
             ->add('name')
             ->getForm();
@@ -83,5 +89,17 @@ class ClanController extends Controller
         }
         return $this->render('GameBundle:Clan:candidature.html.twig', array('title' => 'Candidature clan', 'clan' => $clan,
                                                 'form' => $form->createView()));
+    }
+
+    public function acceptCandidatureAction(ClanCandidature $cc) {
+        $clan = $cc->getClan();
+        $clan->addUser($cc->getUser());
+        $cc->getUser()->setClan($clan);
+        $this->getDoctrine()->getRepository('GameBundle:Clan')->acceptCandidature($cc->getUser());
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($clan);
+        $em->persist($cc->getUser());
+        return $this->redirectToRoute('game_haut_conseil');
     }
 }

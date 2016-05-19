@@ -13,11 +13,21 @@
 
     {% if clan is not empty %}
         <h3>{{ clan.clan.name }}</h3><br>
+        {{ dump(clan) }}
         Bienvenue {{ clan.rank.name }} {{ user.username }} !<br>
         {{ clan.clan.name }} :<br>
         {{ clan.clan.point }} points<br>
         {{ clan.clan.xp }} xp<br>
         {{ clan.clan.texte }}<br><br>
+
+        <strong>Listes des candidatures :</strong><br>
+        {% for c in clan.clan.candidatures %}
+            <i>{{ c.user.username }}</i>:<br>
+            {{ c.texte }}
+        {% endfor %}
+
+        <br>
+        <br>
 
         Liste des membres : <br>
         {% for u in clan.clan.users %}
