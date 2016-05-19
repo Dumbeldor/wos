@@ -50,6 +50,11 @@ class Clan
     private $xp;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Clan", cascade={"persist"})
+     */
+    private $ally;
+
+    /**
      * @ORM\OneToMany(targetEntity="ClanUser", mappedBy="clan")
      */
     private $users;
@@ -239,5 +244,39 @@ class Clan
     public function getXp()
     {
         return $this->xp;
+    }
+
+    /**
+     * Add ally
+     *
+     * @param \GameBundle\Entity\Clan $ally
+     *
+     * @return Clan
+     */
+    public function addAlly(\GameBundle\Entity\Clan $ally)
+    {
+        $this->ally[] = $ally;
+
+        return $this;
+    }
+
+    /**
+     * Remove ally
+     *
+     * @param \GameBundle\Entity\Clan $ally
+     */
+    public function removeAlly(\GameBundle\Entity\Clan $ally)
+    {
+        $this->ally->removeElement($ally);
+    }
+
+    /**
+     * Get ally
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAlly()
+    {
+        return $this->ally;
     }
 }

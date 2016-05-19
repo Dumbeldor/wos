@@ -96,7 +96,7 @@ class ClanController extends Controller
         $clanUser = new ClanUser();
         $clanUser->setClan($clan);
         $clanUser->setUser($cc->getUser());
-        $clanUser->setRank($this->getDoctrine()->getRepository('GameBundle:ClanRank')->findOneById(1));
+        $clanUser->setRank($this->getDoctrine()->getRepository('GameBundle:ClanRank')->findOneById(2));
 
         $this->getDoctrine()->getRepository('GameBundle:ClanCandidature')->acccept($cc->getUser()->getId());
 

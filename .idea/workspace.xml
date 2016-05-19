@@ -24,9 +24,8 @@
 =======
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameBundle/Controller/ClanController.php" afterPath="$PROJECT_DIR$/src/GameBundle/Controller/ClanController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameBundle/Repository/ClanCandidatureRepository.php" afterPath="$PROJECT_DIR$/src/GameBundle/Repository/ClanCandidatureRepository.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameBundle/Entity/Clan.php" afterPath="$PROJECT_DIR$/src/GameBundle/Entity/Clan.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameBundle/Repository/ClanRepository.php" afterPath="$PROJECT_DIR$/src/GameBundle/Repository/ClanRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameBundle/Resources/config/routing.yml" afterPath="$PROJECT_DIR$/src/GameBundle/Resources/config/routing.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameBundle/Resources/views/Clan/index.html.twig" afterPath="$PROJECT_DIR$/src/GameBundle/Resources/views/Clan/index.html.twig" />
 >>>>>>> Accepte / Refus d'une candidature
     </list>
@@ -51,8 +50,8 @@
             <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/GameBundle/Resources/views/Clan/index.html.twig">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.65968585">
-                    <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+                  <state vertical-scroll-proportion="0.5052356">
+                    <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
                     <folding />
                   </state>
                 </provider>
@@ -79,20 +78,48 @@
       <file leaf-file-name="ClanController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GameBundle/Controller/ClanController.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< 14e658217c8729129c22cd046fb095503dfb3168
             <state vertical-scroll-proportion="0.5991091">
               <caret line="102" column="34" selection-start-line="102" selection-start-column="34" selection-end-line="102" selection-end-column="34" />
 >>>>>>> Accepte / Refus d'une candidature
+=======
+            <state vertical-scroll-proportion="0.52115816">
+              <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
+>>>>>>> Debut alliance
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< 14e658217c8729129c22cd046fb095503dfb3168
 <<<<<<< 824de8ebedebff0565d83a8056d2287dd1a948bc
       <file leaf-file-name="BuildingManager.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameBundle/Model/BuildingManager.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="396">
               <caret line="84" column="161" selection-start-line="84" selection-start-column="161" selection-end-line="84" selection-end-column="161" />
+=======
+      <file leaf-file-name="ClanRepository.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GameBundle/Repository/ClanRepository.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-22.0">
+              <caret line="33" column="95" selection-start-line="33" selection-start-column="95" selection-end-line="33" selection-end-column="95" />
+              <folding>
+                <marker date="1463696275158" expanded="true" signature="347:442" placeholder="SELECT PARTI... " />
+                <marker date="1463696275158" expanded="true" signature="599:683" placeholder="SELECT PARTI... " />
+                <marker date="1463696275158" expanded="true" signature="900:1304" placeholder="SELECT PARTI... " />
+                <marker date="1463696275158" expanded="true" signature="1557:1844" placeholder="SELECT PARTI... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Clan.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GameBundle/Entity/Clan.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-57.333332">
+              <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+>>>>>>> Debut alliance
               <folding />
             </state>
           </provider>
@@ -145,12 +172,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< 14e658217c8729129c22cd046fb095503dfb3168
 <<<<<<< 824de8ebedebff0565d83a8056d2287dd1a948bc
         <option value="$PROJECT_DIR$/src/GameBundle/Controller/Admin/DefaultController.php" />
         <option value="$PROJECT_DIR$/src/GameBundle/Resources/views/Admin/Ressource/index.html.twig" />
 =======
 >>>>>>> Accepte / Refus d'une candidature
         <option value="$PROJECT_DIR$/src/GameBundle/Resources/views/Admin/Ressource/form.html.twig" />
+=======
+>>>>>>> Debut alliance
         <option value="$PROJECT_DIR$/src/GameBundle/Resources/views/Admin/Ressource/list.html.twig" />
         <option value="$PROJECT_DIR$/src/GameBundle/Controller/Admin/RessourceController.php" />
         <option value="$PROJECT_DIR$/src/GameBundle/Resources/views/Admin/Batiment/index.html.twig" />
@@ -165,7 +195,6 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/MyUserManager.php" />
         <option value="$PROJECT_DIR$/src/GameBundle/Entity/TownInfantry.php" />
         <option value="$PROJECT_DIR$/src/GameBundle/Entity/Town.php" />
-        <option value="$PROJECT_DIR$/src/GameBundle/Entity/Infantry.php" />
         <option value="$PROJECT_DIR$/src/GameBundle/Form/TownType.php" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/app/config/services.yml" />
@@ -195,6 +224,7 @@
         <option value="$PROJECT_DIR$/src/GameBundle/Resources/views/index.html.twig" />
         <option value="$PROJECT_DIR$/src/GameBundle/Controller/TownController.php" />
         <option value="$PROJECT_DIR$/src/GameBundle/Repository/TownRepository.php" />
+<<<<<<< 14e658217c8729129c22cd046fb095503dfb3168
 <<<<<<< 824de8ebedebff0565d83a8056d2287dd1a948bc
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/GameBundle/Model/BuildingManager.php" />
@@ -202,10 +232,19 @@
 =======
         <option value="$PROJECT_DIR$/src/GameBundle/Resources/views/Clan/index.html.twig" />
         <option value="$PROJECT_DIR$/src/GameBundle/Repository/ClanRepository.php" />
+=======
+>>>>>>> Debut alliance
         <option value="$PROJECT_DIR$/src/GameBundle/Repository/ClanCandidatureRepository.php" />
-        <option value="$PROJECT_DIR$/src/GameBundle/Controller/ClanController.php" />
         <option value="$PROJECT_DIR$/src/GameBundle/Resources/config/routing.yml" />
+<<<<<<< 14e658217c8729129c22cd046fb095503dfb3168
 >>>>>>> Accepte / Refus d'une candidature
+=======
+        <option value="$PROJECT_DIR$/src/GameBundle/Entity/Infantry.php" />
+        <option value="$PROJECT_DIR$/src/GameBundle/Entity/Clan.php" />
+        <option value="$PROJECT_DIR$/src/GameBundle/Repository/ClanRepository.php" />
+        <option value="$PROJECT_DIR$/src/GameBundle/Resources/views/Clan/index.html.twig" />
+        <option value="$PROJECT_DIR$/src/GameBundle/Controller/ClanController.php" />
+>>>>>>> Debut alliance
       </list>
     </option>
   </component>
@@ -599,6 +638,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< 14e658217c8729129c22cd046fb095503dfb3168
 <<<<<<< 824de8ebedebff0565d83a8056d2287dd1a948bc
     <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Doctrine/UserListener.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -616,6 +656,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> Debut alliance
     <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Model/UserManagerInterface.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -654,6 +696,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< 14e658217c8729129c22cd046fb095503dfb3168
     <entry file="file://$PROJECT_DIR$/src/GameBundle/Entity/Infantry.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -661,6 +704,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> Debut alliance
     <entry file="file://$PROJECT_DIR$/app/config/services.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1003,6 +1048,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< 14e658217c8729129c22cd046fb095503dfb3168
 <<<<<<< 824de8ebedebff0565d83a8056d2287dd1a948bc
     <entry file="file://$PROJECT_DIR$/src/GameBundle/Model/BuildingManager.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1014,6 +1060,20 @@
         <state vertical-scroll-proportion="0.65968585">
           <caret line="28" column="16" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
 >>>>>>> Accepte / Refus d'une candidature
+=======
+    <entry file="file://$PROJECT_DIR$/src/GameBundle/Entity/Infantry.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2828507">
+          <caret line="64" column="26" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameBundle/Resources/views/Clan/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5052356">
+          <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
+>>>>>>> Debut alliance
           <folding />
         </state>
       </provider>
@@ -1032,19 +1092,20 @@
 =======
     <entry file="file://$PROJECT_DIR$/src/GameBundle/Repository/ClanRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.05790646">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="28" selection-end-column="5" />
+        <state vertical-scroll-proportion="-22.0">
+          <caret line="33" column="95" selection-start-line="33" selection-start-column="95" selection-end-line="33" selection-end-column="95" />
           <folding>
-            <marker date="1463695049612" expanded="true" signature="347:442" placeholder="SELECT PARTI... " />
-            <marker date="1463695049612" expanded="true" signature="599:683" placeholder="SELECT PARTI... " />
-            <marker date="1463695049612" expanded="true" signature="900:1246" placeholder="SELECT PARTI... " />
-            <marker date="1463695049612" expanded="true" signature="1499:1786" placeholder="SELECT PARTI... " />
+            <marker date="1463696275158" expanded="true" signature="347:442" placeholder="SELECT PARTI... " />
+            <marker date="1463696275158" expanded="true" signature="599:683" placeholder="SELECT PARTI... " />
+            <marker date="1463696275158" expanded="true" signature="900:1304" placeholder="SELECT PARTI... " />
+            <marker date="1463696275158" expanded="true" signature="1557:1844" placeholder="SELECT PARTI... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameBundle/Repository/ClanCandidatureRepository.php">
+    <entry file="file://$PROJECT_DIR$/src/GameBundle/Entity/Clan.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< 14e658217c8729129c22cd046fb095503dfb3168
         <state vertical-scroll-proportion="-12.666667">
           <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
           <folding>
@@ -1052,6 +1113,11 @@
             <marker date="1463695105312" expanded="true" signature="413:450" placeholder="SELECT PARTI... " />
 >>>>>>> Accepte / Refus d'une candidature
           </folding>
+=======
+        <state vertical-scroll-proportion="-57.333332">
+          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+          <folding />
+>>>>>>> Debut alliance
         </state>
       </provider>
     </entry>
@@ -1063,10 +1129,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameBundle/Repository/ClanCandidatureRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.666667">
+          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+          <folding>
+            <marker date="1463695105312" expanded="true" signature="372:450" placeholder="DELETE FROM " />
+            <marker date="1463695105312" expanded="true" signature="413:450" placeholder="SELECT PARTI... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/GameBundle/Controller/ClanController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5991091">
-          <caret line="102" column="34" selection-start-line="102" selection-start-column="34" selection-end-line="102" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.52115816">
+          <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
           <folding />
         </state>
       </provider>

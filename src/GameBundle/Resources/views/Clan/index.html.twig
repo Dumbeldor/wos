@@ -32,9 +32,18 @@
         <br>
         <br>
 
-        Liste des membres : <br>
+        <strong>Listes des clans alliés :<br></strong>
+        {% for a in clan.clan.ally %}
+
+        {% endfor %}
+        <i><a href="">Gérer les alliés</a></i>
+
+        <br>
+        <br>
+
+        <strong>Liste des membres :</strong><br>
         {% for u in clan.clan.users %}
-            {{ u.user.username }}<br>
+            {{ u.user.username }} {{ u.rank.name }}<br>
         {% endfor %}
     {% else %}
         Vous n'avez pas encore de clan.<br>
