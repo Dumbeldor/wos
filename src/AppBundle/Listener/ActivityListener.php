@@ -29,14 +29,16 @@ class ActivityListener
      */
     public function onCoreController(FilterControllerEvent $event)
     {
+      if ($this->token->getToken()) {
         $user = $this->token->getToken()->getUser();
         if($user instanceof User) {
             $town = $user->getTownCurrant();
             $ressources = $this->em->getRepository('GameBundle:Town')->getRessource($town->getId());
 
-	    $interval = 0;
-	    if($user->getLastActivity() != null)
-            	$interval = $user->getLastActivity()->diff(new DateTime())->format('%s');
+	          $interval = 0;
+	          if($user->getLastActivity() != null)
+                $interval = $user->getLastActivity()->diff(new DateTime())->format('%s');
+
             foreach ($ressources as $r) {
                 $nb = $r->getNb();
                 $stockMax = $r->getStock() + $r->getRessource()->getStock();
@@ -56,5 +58,6 @@ class ActivityListener
             $this->em->flush();
             return $ressources;
         }
+      }
     }
 }

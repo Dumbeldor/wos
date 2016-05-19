@@ -22,7 +22,7 @@ class LoadUser implements FixtureInterface
         array('name' => 'Joueur4', 'email' => 'joueur4@mail', 'town' => 'Vivi1', 'role' => 'ROLE_USER'),
         array('name' => 'Joueur5', 'email' => 'joueur5@mail', 'town' => 'Vivi1', 'role' => 'ROLE_USER')
         );
-    
+
     foreach ($list as $names) {
         $user = new user();
         $user->setUsername($names['name']);
@@ -31,18 +31,19 @@ class LoadUser implements FixtureInterface
         $salt = array($user->getSalt());
         $user->setPassword(password_hash('test', PASSWORD_BCRYPT, $salt));
         $user->addRole($names['role']);
-  
+
         $town = new town();
         $town->setName($names['town']);
         $town->setResident(0);
         $town->setPoint(0);
+        $town->setX(0);
+        $town->setY(0);
         $town->setUser($user);
-        
+
         $user->setTownCurrant($town);
-        
-        // On la persiste
+
+        // On les persistes
         $manager->persist($town);
-        // On la persiste
         $manager->persist($user);
     }
 
