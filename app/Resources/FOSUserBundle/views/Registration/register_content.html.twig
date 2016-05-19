@@ -1,0 +1,19 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="row">
+    <div class="span12">
+        <div class="span4 offset2">
+        {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+        {# {{ form_widget(form) }} #}
+            {{ form_errors(form) }}
+            {{ form_row(form.name) }}
+            {{ form_row(form.username) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.plainPassword) }}
+        <br>
+        <input type="submit" value="{{ 'registration.submit'|trans }}"  class="btn btn-primary"/>
+        {{ form_end(form) }}
+        * Champs obligatoires
+        </div>
+    </div>
+</div>
