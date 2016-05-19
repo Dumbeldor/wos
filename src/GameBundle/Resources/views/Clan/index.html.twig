@@ -13,7 +13,6 @@
 
     {% if clan is not empty %}
         <h3>{{ clan.clan.name }}</h3><br>
-        {{ dump(clan) }}
         Bienvenue {{ clan.rank.name }} {{ user.username }} !<br>
         {{ clan.clan.name }} :<br>
         {{ clan.clan.point }} points<br>
@@ -23,7 +22,11 @@
         <strong>Listes des candidatures :</strong><br>
         {% for c in clan.clan.candidatures %}
             <i>{{ c.user.username }}</i>:<br>
-            {{ c.texte }}
+            {{ c.texte }}<br><br>
+            <a href="{{ path('game_clan_accept', {'id': c.id}) }}">Accepter</a>
+            <br>
+            ----------
+            <br>
         {% endfor %}
 
         <br>

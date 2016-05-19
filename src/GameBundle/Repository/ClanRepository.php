@@ -58,4 +58,5 @@ class ClanRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('user', $user)
             ->getOneOrNullResult();
     }
+
 }

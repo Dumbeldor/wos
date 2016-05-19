@@ -15,8 +15,8 @@ class ClanController extends Controller
     public function indexAction(Request $request) {
         $building = $this->container->get('game.building_manager')->getLvlByName('Haut conseil', $this->getUser()->getTownCurrant()->getId());
         $clan = $this->getUser()->getClan();
-        echo $clan->getClan()->getId();
-        $clan = $this->getDoctrine()->getRepository('GameBundle:Clan')->getClan($clan->getClan()->getId());
+        if($clan)
+            $clan = $this->getDoctrine()->getRepository('GameBundle:Clan')->getClan($clan->getClan()->getId());
         /*if($clan instanceof Clan)
             $clan = $this->getDoctrine()->getRepository('GameBundle:Clan')->getClan($clan->getClan()->getId());
         else
@@ -93,13 +93,25 @@ class ClanController extends Controller
 
     public function acceptCandidatureAction(ClanCandidature $cc) {
         $clan = $cc->getClan();
-        $clan->addUser($cc->getUser());
-        $cc->getUser()->setClan($clan);
-        $this->getDoctrine()->getRepository('GameBundle:Clan')->acceptCandidature($cc->getUser());
+        $clanUser = new ClanUser();
+        $clanUser->setClan($clan);
+        $clanUser->setUser($cc->getUser());
+        $clanUser->setRank($this->getDoctrine()->getRepository('GameBundle:ClanRank')->findOneById(1));
+
+        $this->getDoctrine()->getRepository('GameBundle:ClanCandidature')->acccept($cc->getUser()->getId());
+
+        $clan->addUser($clanUser);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($clan);
-        $em->persist($cc->getUser());
+        $em->persist($clanUser);
+        $em->flush();
         return $this->redirectToRoute('game_haut_conseil');
+    }
+
+    public function refuseCandidatureAction(ClanCandidature $cc) {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($cc);
+        $em->flush();
     }
 }

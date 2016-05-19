@@ -53,3 +53,9 @@ game_clan_info:
 game_clan_candidature:
     path:    /clan/candidature/{id}
     defaults: { _controller: GameBundle:Clan:candidature }
+game_clan_accept:
+    path:    /clan/accept/{id}
+    defaults: { _controller: GameBundle:Clan:acceptCandidature }
+game_clan_refuse:
+    path:    /clan/refuse/{id}
+    defaults: { _controller: GameBundle:Clan:refuseCandidature }
