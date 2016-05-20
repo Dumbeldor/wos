@@ -114,4 +114,18 @@ class ClanController extends Controller
         $em->remove($cc);
         $em->flush();
     }
+
+    public function allyListAction() {
+        $ally = $this->getDoctrine()->getRepository('GameBundle:Clan')->getAlly($this->getUser()->getClan()->getClan());
+        //$ally = $this->getUser()->getClan()->getClan()->getAlly();
+        return $this->render('GameBundle:Clan:allyList.html.twig', array('title' => 'Clan allié', 'ally' => $ally));
+    }
+
+    public function allyAddAction($id) {
+
+    }
+
+    public function allyCandidatureAction(Clan $clan) {
+        
+    }
 }

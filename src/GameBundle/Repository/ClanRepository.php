@@ -60,4 +60,15 @@ class ClanRepository extends \Doctrine\ORM\EntityRepository
             ->getOneOrNullResult();
     }
 
+    public function getAlly($id) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT PARTIAL c.{id}, PARTIAL a.{id, name, point, xp} FROM GameBundle:Clan c
+                 JOIN c.ally a
+                 WHERE c.id = :id'
+            )
+            ->setParameter('id', $id)
+            ->getResult();
+    }
+
 }
