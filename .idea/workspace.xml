@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b00f06f8-a28a-435e-aa02-456bb573519b" name="Default" comment="">
+<<<<<<< e0f6ceb9ac65eeb30a7197ee321b9448950630d2
 <<<<<<< 824de8ebedebff0565d83a8056d2287dd1a948bc
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GameBundle/Form/ClanCandidatureType.php" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/GameBundle/Form/ClanType.php" />
@@ -28,6 +29,10 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameBundle/Repository/ClanRepository.php" afterPath="$PROJECT_DIR$/src/GameBundle/Repository/ClanRepository.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameBundle/Resources/views/Clan/index.html.twig" afterPath="$PROJECT_DIR$/src/GameBundle/Resources/views/Clan/index.html.twig" />
 >>>>>>> Accepte / Refus d'une candidature
+=======
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameBundle/Controller/ClanController.php" afterPath="$PROJECT_DIR$/src/GameBundle/Controller/ClanController.php" />
+>>>>>>> Continuation du formulaire ajout ally
     </list>
     <ignored path="wos.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,12 +51,32 @@
     <window id="1">
       <content type="file-editors">
         <state>
-          <leaf>
-            <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="true">
+          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+            <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/GameBundle/Resources/views/Clan/index.html.twig">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state vertical-scroll-proportion="0.5052356">
-                    <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
+                  <state vertical-scroll-proportion="-19.11111">
+                    <caret line="40" column="12" selection-start-line="0" selection-start-column="0" selection-end-line="66" selection-end-column="14" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="allyList.html.twig" pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/src/GameBundle/Resources/views/Clan/allyList.html.twig">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="-14.666667">
+                    <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+                    <folding />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file leaf-file-name="ClanAllyCandidature.php" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/GameBundle/Entity/ClanAllyCandidature.php">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state vertical-scroll-proportion="1.890625">
+                    <caret line="81" column="40" selection-start-line="81" selection-start-column="40" selection-end-line="81" selection-end-column="40" />
                     <folding />
                   </state>
                 </provider>
@@ -68,6 +93,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< e0f6ceb9ac65eeb30a7197ee321b9448950630d2
 <<<<<<< 824de8ebedebff0565d83a8056d2287dd1a948bc
       <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
@@ -86,11 +112,19 @@
             <state vertical-scroll-proportion="0.52115816">
               <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
 >>>>>>> Debut alliance
+=======
+      <file leaf-file-name="ClanController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/GameBundle/Controller/ClanController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.9198218">
+              <caret line="137" column="61" selection-start-line="137" selection-start-column="61" selection-end-line="137" selection-end-column="61" />
+>>>>>>> Continuation du formulaire ajout ally
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< e0f6ceb9ac65eeb30a7197ee321b9448950630d2
 <<<<<<< 14e658217c8729129c22cd046fb095503dfb3168
 <<<<<<< 824de8ebedebff0565d83a8056d2287dd1a948bc
       <file leaf-file-name="BuildingManager.php" pinned="false" current-in-tab="false">
@@ -99,16 +133,39 @@
             <state relative-caret-position="396">
               <caret line="84" column="161" selection-start-line="84" selection-start-column="161" selection-end-line="84" selection-end-column="161" />
 =======
+=======
+      <file leaf-file-name="ClanCandidature.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GameBundle/Entity/ClanCandidature.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-20.0">
+              <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="34" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-18.0">
+              <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+>>>>>>> Continuation du formulaire ajout ally
       <file leaf-file-name="ClanRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameBundle/Repository/ClanRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.0">
-              <caret line="33" column="95" selection-start-line="33" selection-start-column="95" selection-end-line="33" selection-end-column="95" />
+            <state vertical-scroll-proportion="-24.592592">
+              <caret line="66" column="17" selection-start-line="66" selection-start-column="17" selection-end-line="66" selection-end-column="17" />
               <folding>
-                <marker date="1463696275158" expanded="true" signature="347:442" placeholder="SELECT PARTI... " />
-                <marker date="1463696275158" expanded="true" signature="599:683" placeholder="SELECT PARTI... " />
-                <marker date="1463696275158" expanded="true" signature="900:1304" placeholder="SELECT PARTI... " />
-                <marker date="1463696275158" expanded="true" signature="1557:1844" placeholder="SELECT PARTI... " />
+                <marker date="1463783395152" expanded="true" signature="347:442" placeholder="SELECT PARTI... " />
+                <marker date="1463783395152" expanded="true" signature="599:683" placeholder="SELECT PARTI... " />
+                <marker date="1463783395152" expanded="true" signature="900:1304" placeholder="SELECT PARTI... " />
+                <marker date="1463783395152" expanded="true" signature="1557:1844" placeholder="SELECT PARTI... " />
+                <marker date="1463783395152" expanded="true" signature="2121:2263" placeholder="SELECT PARTI... " />
               </folding>
             </state>
           </provider>
@@ -117,7 +174,7 @@
       <file leaf-file-name="Clan.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameBundle/Entity/Clan.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-57.333332">
+            <state vertical-scroll-proportion="0.0">
               <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
 >>>>>>> Debut alliance
               <folding />
@@ -140,7 +197,7 @@
       <file leaf-file-name="ClanCandidatureRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameBundle/Repository/ClanCandidatureRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.666667">
+            <state vertical-scroll-proportion="0.0">
               <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
               <folding>
                 <marker date="1463695105312" expanded="true" signature="372:450" placeholder="DELETE FROM " />
@@ -157,8 +214,12 @@
         <entry file="file://$PROJECT_DIR$/src/GameBundle/Resources/config/routing.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="60" column="45" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="45" />
-              <folding />
+              <caret line="66" column="60" selection-start-line="66" selection-start-column="60" selection-end-line="66" selection-end-column="60" />
+              <folding>
+                <marker date="1463786932382" expanded="true" signature="1811:1914" placeholder="game_clan_ally_list:" />
+                <marker date="1463786932382" expanded="true" signature="1915:2038" placeholder="game_clan_ally_candidature:" />
+                <marker date="1463786932382" expanded="true" signature="1980:2038" placeholder="defaults:" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -172,6 +233,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+<<<<<<< e0f6ceb9ac65eeb30a7197ee321b9448950630d2
 <<<<<<< 14e658217c8729129c22cd046fb095503dfb3168
 <<<<<<< 824de8ebedebff0565d83a8056d2287dd1a948bc
         <option value="$PROJECT_DIR$/src/GameBundle/Controller/Admin/DefaultController.php" />
@@ -184,6 +246,8 @@
         <option value="$PROJECT_DIR$/src/GameBundle/Resources/views/Admin/Ressource/list.html.twig" />
         <option value="$PROJECT_DIR$/src/GameBundle/Controller/Admin/RessourceController.php" />
         <option value="$PROJECT_DIR$/src/GameBundle/Resources/views/Admin/Batiment/index.html.twig" />
+=======
+>>>>>>> Continuation du formulaire ajout ally
         <option value="$PROJECT_DIR$/src/GameBundle/Resources/views/Admin/Batiment/list.html.twig" />
         <option value="$PROJECT_DIR$/src/GameBundle/Resources/views/Admin/Building/index.html.twig" />
         <option value="$PROJECT_DIR$/src/GameBundle/Resources/views/Admin/Infantry/index.html.twig" />
@@ -235,16 +299,28 @@
 =======
 >>>>>>> Debut alliance
         <option value="$PROJECT_DIR$/src/GameBundle/Repository/ClanCandidatureRepository.php" />
+<<<<<<< e0f6ceb9ac65eeb30a7197ee321b9448950630d2
         <option value="$PROJECT_DIR$/src/GameBundle/Resources/config/routing.yml" />
 <<<<<<< 14e658217c8729129c22cd046fb095503dfb3168
 >>>>>>> Accepte / Refus d'une candidature
 =======
+=======
+>>>>>>> Continuation du formulaire ajout ally
         <option value="$PROJECT_DIR$/src/GameBundle/Entity/Infantry.php" />
         <option value="$PROJECT_DIR$/src/GameBundle/Entity/Clan.php" />
-        <option value="$PROJECT_DIR$/src/GameBundle/Repository/ClanRepository.php" />
         <option value="$PROJECT_DIR$/src/GameBundle/Resources/views/Clan/index.html.twig" />
+<<<<<<< e0f6ceb9ac65eeb30a7197ee321b9448950630d2
         <option value="$PROJECT_DIR$/src/GameBundle/Controller/ClanController.php" />
 >>>>>>> Debut alliance
+=======
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
+        <option value="$PROJECT_DIR$/src/GameBundle/Repository/ClanRepository.php" />
+        <option value="$PROJECT_DIR$/src/GameBundle/Resources/views/Clan/allyList.html.twig" />
+        <option value="$PROJECT_DIR$/src/GameBundle/Entity/ClanAlly.php" />
+        <option value="$PROJECT_DIR$/src/GameBundle/Entity/ClanAllyCandidature.php" />
+        <option value="$PROJECT_DIR$/src/GameBundle/Resources/config/routing.yml" />
+        <option value="$PROJECT_DIR$/src/GameBundle/Controller/ClanController.php" />
+>>>>>>> Continuation du formulaire ajout ally
       </list>
     </option>
   </component>
@@ -522,8 +598,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -601,7 +677,11 @@
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
+<<<<<<< e0f6ceb9ac65eeb30a7197ee321b9448950630d2
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16197917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.196875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> Continuation du formulaire ajout ally
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -638,6 +718,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< e0f6ceb9ac65eeb30a7197ee321b9448950630d2
 <<<<<<< 14e658217c8729129c22cd046fb095503dfb3168
 <<<<<<< 824de8ebedebff0565d83a8056d2287dd1a948bc
     <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Doctrine/UserListener.php">
@@ -679,6 +760,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> Continuation du formulaire ajout ally
     <entry file="file://$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle/Model/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -957,7 +1040,6 @@
         <state vertical-scroll-proportion="0.0">
 >>>>>>> Accepte / Refus d'une candidature
           <caret line="268" column="6" selection-start-line="268" selection-start-column="6" selection-end-line="268" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -969,7 +1051,6 @@
         <state vertical-scroll-proportion="0.0">
 >>>>>>> Accepte / Refus d'une candidature
           <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -981,7 +1062,6 @@
         <state vertical-scroll-proportion="0.0">
 >>>>>>> Accepte / Refus d'une candidature
           <caret line="11" column="31" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1003,7 +1083,6 @@
         <state vertical-scroll-proportion="0.0">
 >>>>>>> Accepte / Refus d'une candidature
           <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1015,7 +1094,6 @@
         <state vertical-scroll-proportion="0.922049">
 >>>>>>> Accepte / Refus d'une candidature
           <caret line="46" column="65" selection-start-line="46" selection-start-column="65" selection-end-line="46" selection-end-column="65" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1023,6 +1101,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+<<<<<<< e0f6ceb9ac65eeb30a7197ee321b9448950630d2
           <folding>
 <<<<<<< 824de8ebedebff0565d83a8056d2287dd1a948bc
             <marker date="1468844108005" expanded="true" signature="355:474" ph="SELECT tr, r... GameBundle" />
@@ -1030,6 +1109,8 @@
             <marker date="1460996126662" expanded="true" signature="355:474" placeholder="SELECT tr, r... GameBundle" />
 >>>>>>> Accepte / Refus d'une candidature
           </folding>
+=======
+>>>>>>> Continuation du formulaire ajout ally
         </state>
       </provider>
     </entry>
@@ -1043,8 +1124,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2806236">
           <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+<<<<<<< e0f6ceb9ac65eeb30a7197ee321b9448950630d2
 >>>>>>> Accepte / Refus d'une candidature
           <folding />
+=======
+>>>>>>> Continuation du formulaire ajout ally
         </state>
       </provider>
     </entry>
@@ -1065,19 +1149,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.2828507">
           <caret line="64" column="26" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameBundle/Resources/views/Clan/index.html.twig">
+    <entry file="file://$PROJECT_DIR$/src/GameBundle/Entity/Clan.php">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< e0f6ceb9ac65eeb30a7197ee321b9448950630d2
         <state vertical-scroll-proportion="0.5052356">
           <caret line="45" column="48" selection-start-line="45" selection-start-column="48" selection-end-line="45" selection-end-column="48" />
 >>>>>>> Debut alliance
+=======
+        <state vertical-scroll-proportion="0.0">
+          <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+>>>>>>> Continuation du formulaire ajout ally
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< e0f6ceb9ac65eeb30a7197ee321b9448950630d2
 <<<<<<< 824de8ebedebff0565d83a8056d2287dd1a948bc
     <entry file="file://$PROJECT_DIR$/src/GameBundle/Repository/TownBuildingRepository.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1091,20 +1180,22 @@
             <marker date="1468845655882" expanded="true" signature="2545:2652" ph="SELECT COUNT... GameBundle" />
 =======
     <entry file="file://$PROJECT_DIR$/src/GameBundle/Repository/ClanRepository.php">
+=======
+    <entry file="file://$PROJECT_DIR$/src/GameBundle/Repository/ClanCandidatureRepository.php">
+>>>>>>> Continuation du formulaire ajout ally
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.0">
-          <caret line="33" column="95" selection-start-line="33" selection-start-column="95" selection-end-line="33" selection-end-column="95" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
           <folding>
-            <marker date="1463696275158" expanded="true" signature="347:442" placeholder="SELECT PARTI... " />
-            <marker date="1463696275158" expanded="true" signature="599:683" placeholder="SELECT PARTI... " />
-            <marker date="1463696275158" expanded="true" signature="900:1304" placeholder="SELECT PARTI... " />
-            <marker date="1463696275158" expanded="true" signature="1557:1844" placeholder="SELECT PARTI... " />
+            <marker date="1463695105312" expanded="true" signature="372:450" placeholder="DELETE FROM " />
+            <marker date="1463695105312" expanded="true" signature="413:450" placeholder="SELECT PARTI... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameBundle/Entity/Clan.php">
+    <entry file="file://$PROJECT_DIR$/src/GameBundle/Resources/views/Clan/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< e0f6ceb9ac65eeb30a7197ee321b9448950630d2
 <<<<<<< 14e658217c8729129c22cd046fb095503dfb3168
         <state vertical-scroll-proportion="-12.666667">
           <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
@@ -1116,34 +1207,82 @@
 =======
         <state vertical-scroll-proportion="-57.333332">
           <caret line="86" column="0" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+=======
+        <state vertical-scroll-proportion="-19.11111">
+          <caret line="40" column="12" selection-start-line="0" selection-start-column="0" selection-end-line="66" selection-end-column="14" />
+>>>>>>> Continuation du formulaire ajout ally
           <folding />
 >>>>>>> Debut alliance
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.0">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameBundle/Repository/ClanRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-24.592592">
+          <caret line="66" column="17" selection-start-line="66" selection-start-column="17" selection-end-line="66" selection-end-column="17" />
+          <folding>
+            <marker date="1463783395152" expanded="true" signature="347:442" placeholder="SELECT PARTI... " />
+            <marker date="1463783395152" expanded="true" signature="599:683" placeholder="SELECT PARTI... " />
+            <marker date="1463783395152" expanded="true" signature="900:1304" placeholder="SELECT PARTI... " />
+            <marker date="1463783395152" expanded="true" signature="1557:1844" placeholder="SELECT PARTI... " />
+            <marker date="1463783395152" expanded="true" signature="2121:2263" placeholder="SELECT PARTI... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameBundle/Resources/views/Clan/allyList.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< e0f6ceb9ac65eeb30a7197ee321b9448950630d2
+        <state vertical-scroll-proportion="0.52115816">
+          <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
+=======
+        <state vertical-scroll-proportion="-14.666667">
+          <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameBundle/Entity/ClanCandidature.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.0">
+          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="34" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameBundle/Entity/ClanAllyCandidature.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.890625">
+          <caret line="81" column="40" selection-start-line="81" selection-start-column="40" selection-end-line="81" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GameBundle/Resources/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="60" column="45" selection-start-line="60" selection-start-column="45" selection-end-line="60" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameBundle/Repository/ClanCandidatureRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.666667">
-          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+          <caret line="66" column="60" selection-start-line="66" selection-start-column="60" selection-end-line="66" selection-end-column="60" />
           <folding>
-            <marker date="1463695105312" expanded="true" signature="372:450" placeholder="DELETE FROM " />
-            <marker date="1463695105312" expanded="true" signature="413:450" placeholder="SELECT PARTI... " />
+            <marker date="1463786932382" expanded="true" signature="1811:1914" placeholder="game_clan_ally_list:" />
+            <marker date="1463786932382" expanded="true" signature="1915:2038" placeholder="game_clan_ally_candidature:" />
+            <marker date="1463786932382" expanded="true" signature="1980:2038" placeholder="defaults:" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GameBundle/Controller/ClanController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52115816">
-          <caret line="32" column="42" selection-start-line="32" selection-start-column="42" selection-end-line="32" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.9198218">
+          <caret line="137" column="61" selection-start-line="137" selection-start-column="61" selection-end-line="137" selection-end-column="61" />
+>>>>>>> Continuation du formulaire ajout ally
           <folding />
         </state>
       </provider>

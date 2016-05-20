@@ -3,6 +3,7 @@
 namespace GameBundle\Controller;
 
 use GameBundle\Entity\Clan;
+use GameBundle\Entity\ClanAllyCandidature;
 use GameBundle\Entity\ClanCandidature;
 use GameBundle\Entity\ClanUser;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -125,7 +126,15 @@ class ClanController extends Controller
 
     }
 
-    public function allyCandidatureAction(Clan $clan) {
-        
+    public function allyCandidatureAction(Clan $clan, Request $request) {
+        $clanAC = new ClanAllyCandidature();
+        $form = $this->createForm(ClanAllyType::class, $clan);
+        $form->handleRequest($request);
+
+        if($form->isValid()) {
+
+        }
+
+        return $this->render('GameBundle:Clan:allyCandidature.html.twig', array('title' => 'Clan allié', 'form' => $form->createView()));
     }
 }
