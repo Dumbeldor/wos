@@ -65,3 +65,9 @@ game_clan_ally_list:
 game_clan_ally_candidature:
     path:    /clan/ally/add/{id}
     defaults: { _controller: GameBundle:Clan:allyCandidature }
+game_clan_ally_accept:
+    path:    /clan/ally/accept/{id}
+    defaults: { _controller: GameBundle:Clan:allyAccept }
+game_clan_ally_refuse:
+    path:    /clan/ally/refuse/{id}
+    defaults: { _controller: GameBundle:Clan:allyRefuse }

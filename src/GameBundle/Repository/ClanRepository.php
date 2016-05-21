@@ -31,13 +31,17 @@ class ClanRepository extends \Doctrine\ORM\EntityRepository
     public function getClan($id) {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT PARTIAL c.{id, name, texte, point, xp}, u, PARTIAL us.{id, username}, r, PARTIAL can.{id, texte, user}, PARTIAL a.{id, name} FROM GameBundle:Clan c
-                 JOIN c.users u
-                 JOIN u.user us
-                 JOIN u.rank r
-                 LEFT JOIN c.ally a
-                 LEFT JOIN c.candidatures can
-                 JOIN can.user canUser
+                'SELECT c, PARTIAL ally.{id, name}, PARTIAL users.{id, user, rank}, PARTIAL user.{id, username},
+                 PARTIAL rank.{id, name}, PARTIAL candidatures.{id, texte, user}, PARTIAL candidatureUser.{id, username},
+                 PARTIAL candidatureAlly.{id, texte, clanSource}
+                 FROM GameBundle:Clan c
+                 LEFT JOIN c.ally ally
+                 JOIN c.users users
+                 JOIN users.user user
+                 JOIN users.rank rank
+                 LEFT JOIN c.candidatures candidatures
+                 LEFT JOIN candidatures.user candidatureUser
+                 LEFT JOIN c.candidatureAlly candidatureAlly
                  WHERE c.id = :id
                  '
             )

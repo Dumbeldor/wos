@@ -1,0 +1,18 @@
+{% extends 'GameBundle::index.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ title }}:<br><br>
+    Ecrivez vos motivations pour demander une alliance avec {{ clan.name }}<br>
+
+    {{ form_start(form) }}<br>
+    {{ form_widget(form) }}<br>
+    <input type="submit" class="button" value="Submit" />
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -65,6 +65,11 @@ class Clan
     private $candidatures;
 
     /**
+     * @ORM\OneToMany(targetEntity="ClanAllyCandidature", mappedBy="clanCible")
+     */
+    private $candidatureAlly;
+
+    /**
      * Get id
      *
      * @return int
@@ -278,5 +283,39 @@ class Clan
     public function getAlly()
     {
         return $this->ally;
+    }
+
+    /**
+     * Add candidatureAlly
+     *
+     * @param \GameBundle\Entity\ClanAllyCandidature $candidatureAlly
+     *
+     * @return Clan
+     */
+    public function addCandidatureAlly(\GameBundle\Entity\ClanAllyCandidature $candidatureAlly)
+    {
+        $this->candidatureAlly[] = $candidatureAlly;
+
+        return $this;
+    }
+
+    /**
+     * Remove candidatureAlly
+     *
+     * @param \GameBundle\Entity\ClanAllyCandidature $candidatureAlly
+     */
+    public function removeCandidatureAlly(\GameBundle\Entity\ClanAllyCandidature $candidatureAlly)
+    {
+        $this->candidatureAlly->removeElement($candidatureAlly);
+    }
+
+    /**
+     * Get candidatureAlly
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCandidatureAlly()
+    {
+        return $this->candidatureAlly;
     }
 }

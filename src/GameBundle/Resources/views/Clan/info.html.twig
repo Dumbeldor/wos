@@ -16,7 +16,10 @@
                 <strong>Ma candidature :</strong><br>
                 {{ clan.candidatures[0].texte }}<br>
             {% endif %}
+        {% elseif user.clan.clan.id != clan.id %}
+            <a href="{{ path('game_clan_ally_candidature', {'id': clan.id}) }}">Demande alliance</a><br>
         {% endif %}
+
         {{ clan.name }} :<br>
         {{ clan.texte }}<br><br>
 

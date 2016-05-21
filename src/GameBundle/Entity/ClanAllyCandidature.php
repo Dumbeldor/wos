@@ -79,7 +79,7 @@ class ClanAllyCandidature
     /**
      * Set clanCible
      *
-     * @param \GameBundle\Entity\Clan $clanCible
+     * @param \GameBundle\Entity\Clan $cpu  lanCible
      *
      * @return ClanAllyCandidature
      */

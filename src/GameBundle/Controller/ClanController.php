@@ -10,30 +10,31 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use GameBundle\Form\ClanType;
 use GameBundle\Form\ClanCandidatureType;
+use GameBundle\Form\ClanAllyCandidatureType;
 
 class ClanController extends Controller
 {
     public function indexAction(Request $request) {
         $building = $this->container->get('game.building_manager')->getLvlByName('Haut conseil', $this->getUser()->getTownCurrant()->getId());
+
+        $clanForm = new Clan();
         $clan = $this->getUser()->getClan();
-        if($clan)
-            $clan = $this->getDoctrine()->getRepository('GameBundle:Clan')->getClan($clan->getClan()->getId());
-        /*if($clan instanceof Clan)
+        if($clan instanceof ClanUser)
             $clan = $this->getDoctrine()->getRepository('GameBundle:Clan')->getClan($clan->getClan()->getId());
         else
             $clan = new Clan();
-*/
-        $form = $this->createFormBuilder($clan)
+
+        $form = $this->createFormBuilder($clanForm)
             ->add('name')
             ->getForm();
         $form->handleRequest($request);
 
         //Recherche
         if($form->isValid()) {
-            $clans = $this->getDoctrine()->getRepository('GameBundle:Clan')->findByName($clan->getName());
-            return $this->render('GameBundle:Clan:list.html.twig', array('title' => 'Recherche clan '.$clan->getName(), 'clans' => $clans));
+            $clans = $this->getDoctrine()->getRepository('GameBundle:Clan')->findByName($clanForm->getName());
+            return $this->render('GameBundle:Clan:list.html.twig', array('title' => 'Recherche clan '.$clanForm->getName(), 'clans' => $clans));
         }
-        return $this->render('GameBundle:Clan:index.html.twig', array('title' => 'Clan', 'clan' => $this->getUser()->getClan(),
+        return $this->render('GameBundle:Clan:index.html.twig', array('title' => 'Clan', 'clan' => $clan,
             'building' => $building, 'form' => $form->createView()));
     }
 
@@ -128,13 +129,38 @@ class ClanController extends Controller
 
     public function allyCandidatureAction(Clan $clan, Request $request) {
         $clanAC = new ClanAllyCandidature();
-        $form = $this->createForm(ClanAllyType::class, $clan);
+        $form = $this->createForm(ClanAllyCandidatureType::class, $clanAC);
         $form->handleRequest($request);
 
         if($form->isValid()) {
-
+            $clanAC->setClanCible($clan);
+            $clanAC->setClanSource($this->getUser()->getClan()->getClan());
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($clanAC);
+            $em->flush();
         }
 
-        return $this->render('GameBundle:Clan:allyCandidature.html.twig', array('title' => 'Clan allié', 'form' => $form->createView()));
+        return $this->render('GameBundle:Clan:allyCandidature.html.twig', array('title' => 'Clan allié', 'clan' => $clan,
+            'form' => $form->createView()));
+    }
+
+    public function allyAcceptAction(ClanAllyCandidature $clanAllyC) {
+        $clanB = $clanAllyC->getClanSource();
+        $clanA = $this->getUser()->getClan()->getClan();
+        $clanA->addAlly($clanB);
+        $clanB->addAlly($clanA);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($clanA);
+        $em->persist($clanB);
+        $em->remove($clanAllyC);
+        $em->flush();
+        return $this->redirectToRoute('game_haut_conseil');
+    }
+
+    public function allyRefuseAction(ClanAllyCandidature $clanAllyC) {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($clanAllyC);
+        $em->flush();
+        return $this->redirectToRoute('game_haut_conseil');
     }
 }
