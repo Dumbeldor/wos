@@ -251,7 +251,7 @@ class Clan
         return $this->xp;
     }
 
-  
+
 
     /**
      * Add diplomaty

@@ -71,3 +71,9 @@ game_clan_diplomaty_accept:
 game_clan_diplomaty_refuse:
     path:    /clan/diplomaty/refuse/{id}
     defaults: { _controller: GameBundle:Clan:diplomatyRefuse }
+game_clan_rank_user:
+    path:    /clan/rank/{id}
+    defaults: { _controller: GameBundle:Clan:editRank }
+game_clan_fire_user:
+    path:    /clan/fire/{id}
+    defaults: { _controller: GameBundle:Clan:fireUser }

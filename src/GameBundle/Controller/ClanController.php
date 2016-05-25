@@ -6,6 +6,7 @@ use GameBundle\Entity\Clan;
 use GameBundle\Entity\ClanDiplomatyCandidature;
 use GameBundle\Entity\ClanDiplomaty;
 use GameBundle\Entity\ClanUser;
+use GameBundle\Form\ClanUserType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use GameBundle\Form\ClanType;
@@ -116,6 +117,42 @@ class ClanController extends Controller
         $em->remove($cc);
         $em->flush();
     }
+
+    /*
+     * GÉRER LES MEMBRES CLAN
+     */
+    public function editRankAction($id, Request $request){
+        $userClan = $this->getDoctrine()->getRepository('GameBundle:ClanUser')->getUser($id);
+        if(!($userClan instanceof ClanUser) OR $userClan->getClan() != $this->getUser()->getClan()->getClan())
+            return $this->redirectToRoute('game_haut_conseil');
+        echo "dfd";
+
+        $form = $this->createForm(ClanUserType::class, $userClan);
+        $form->handleRequest($request);
+
+        if($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($userClan);
+            $em->flush();
+            return $this->redirectToRoute('game_haut_conseil');
+        }
+
+        return $this->render('GameBundle:Clan:editRank.html.twig', array('title' => 'Edite rang '.$userClan->getUser()->getUsername(), 'userClan' => $userClan,
+            'form' => $form->createView()));
+    }
+
+    public function fireUserAction(ClanUser $userC) {
+        if($userC->getClan() == $this->getUser()->getClan()->getClan() AND $userC->getUser() != $this->getUser()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($userC);
+            $em->flush();
+        }
+        return $this->redirectToRoute('game_haut_conseil');
+    }
+
+    /*
+     * DIPLOMATY
+     */
 
     public function diplomatyListAction() {
         $ally = $this->getDoctrine()->getRepository('GameBundle:ClanDiplomaty')->getAlly($this->getUser()->getClan()->getClan());
