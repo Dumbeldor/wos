@@ -11,7 +11,7 @@
 
     Votre haut conseil est lvl {{ building.lvl }}.<br>
 
-    {% if clan is not empty %}
+    {% if clan.id is not empty %}
         <h3>{{ clan.name }}</h3><br>
         Bienvenue {{ user.username }} !<br>
         {{ clan.name }} :<br>
@@ -51,7 +51,7 @@
             <i>Aucune candidature reçue</i><br>
         {% else %}
             {% for a in clan.diplomatyCandidature %}
-                <a href="{{ path('game_clan_info', {'id': a.clanSource.id }) }}">{{ a.clanSource.name }}</a><br>
+                <a href="{{ path('game_clan_info', {'id': a.clanSource.id }) }}">{{ a.clanSource.name }}</a> <strong>{{ a.diplomaty.name }}</strong><br>
                 {{ a.texte }}<br>
                 <a href="{{ path('game_clan_diplomaty_accept', {'id': a.id}) }}">Accepter</a> <a href="{{ path('game_clan_diplomaty_refuse', {'id': a.id}) }}">Refuser</a>
                 <br>

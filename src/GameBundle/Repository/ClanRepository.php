@@ -33,9 +33,11 @@ class ClanRepository extends \Doctrine\ORM\EntityRepository
             ->createQuery(
                 'SELECT c, PARTIAL diplomaty.{id, clanCible}, PARTIAL users.{id, user, rank}, PARTIAL user.{id, username},
                  PARTIAL rank.{id, name}, PARTIAL candidatures.{id, texte, user}, PARTIAL candidatureUser.{id, username},
-                 PARTIAL diplomatyCandidature.{id, texte, clanSource}
+                 PARTIAL diplomatyCandidature.{id, texte, clanSource}, PARTIAL clanSource.{id, name}, PARTIAL diplo.{id, name}
                  FROM GameBundle:Clan c
                  LEFT JOIN c.diplomaty diplomaty
+                 LEFT JOIN diplomaty.clanSource clanSource
+                 LEFT JOIN diplomaty.diplomaty diplo
                  JOIN c.users users
                  JOIN users.user user
                  JOIN users.rank rank

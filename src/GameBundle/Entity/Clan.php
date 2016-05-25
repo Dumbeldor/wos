@@ -251,73 +251,7 @@ class Clan
         return $this->xp;
     }
 
-    /**
-     * Add ally
-     *
-     * @param \GameBundle\Entity\Clan $ally
-     *
-     * @return Clan
-     */
-    public function addAlly(\GameBundle\Entity\Clan $ally)
-    {
-        $this->ally[] = $ally;
-
-        return $this;
-    }
-
-    /**
-     * Remove ally
-     *
-     * @param \GameBundle\Entity\Clan $ally
-     */
-    public function removeAlly(\GameBundle\Entity\Clan $ally)
-    {
-        $this->ally->removeElement($ally);
-    }
-
-    /**
-     * Get ally
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getAlly()
-    {
-        return $this->ally;
-    }
-
-    /**
-     * Add candidatureAlly
-     *
-     * @param \GameBundle\Entity\ClanAllyCandidature $candidatureAlly
-     *
-     * @return Clan
-     */
-    public function addCandidatureAlly(\GameBundle\Entity\ClanAllyCandidature $candidatureAlly)
-    {
-        $this->candidatureAlly[] = $candidatureAlly;
-
-        return $this;
-    }
-
-    /**
-     * Remove candidatureAlly
-     *
-     * @param \GameBundle\Entity\ClanAllyCandidature $candidatureAlly
-     */
-    public function removeCandidatureAlly(\GameBundle\Entity\ClanAllyCandidature $candidatureAlly)
-    {
-        $this->candidatureAlly->removeElement($candidatureAlly);
-    }
-
-    /**
-     * Get candidatureAlly
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCandidatureAlly()
-    {
-        return $this->candidatureAlly;
-    }
+  
 
     /**
      * Add diplomaty
