@@ -36,23 +36,24 @@
         <br>
         <br>
 
-        <strong>Listes des clans alliés :<br></strong>
-        {% if clan.ally is empty %}
-            <i>Aucun allié pour le moment pour en rajouter aller sur la page d'un clan et cliquer sur demande d'alliance</i><br>
+        <strong>Diplomatie<br></strong>
+        {% if clan.diplomaty is empty %}
+            <i>Vous n'avez aucun clan dans votre liste de diplomatie</i><br>
+            <a href="{{ path('game_clan_list') }}">Chercher clan</a><br>
         {% else %}
-            {% for a in clan.ally %}
-                <a href="{{ path('game_clan_info', {'id': a.id }) }}">{{ a.name }}</a><br>
+            {% for a in clan.diplomaty %}
+                <a href="{{ path('game_clan_info', {'id': a.clanSource.id }) }}">{{ a.clanSource.name }}</a> {{ a.diplomaty.name }}<br>
             {% endfor %}
         {% endif %}
 
-        <strong>Candidature reçu pour alliance</strong><br>
-        {% if clan.candidatureAlly is empty %}
+        <strong>Candidature reçu diplomatie</strong><br>
+        {% if clan.diplomatyCandidature is empty %}
             <i>Aucune candidature reçue</i><br>
         {% else %}
-            {% for a in clan.candidatureAlly %}
+            {% for a in clan.diplomatyCandidature %}
                 <a href="{{ path('game_clan_info', {'id': a.clanSource.id }) }}">{{ a.clanSource.name }}</a><br>
                 {{ a.texte }}<br>
-                <a href="{{ path('game_clan_ally_accept', {'id': a.id}) }}">Accepter</a> <a href="{{ path('game_clan_ally_refuse', {'id': a.id}) }}">Refuser</a>
+                <a href="{{ path('game_clan_diplomaty_accept', {'id': a.id}) }}">Accepter</a> <a href="{{ path('game_clan_diplomaty_refuse', {'id': a.id}) }}">Refuser</a>
                 <br>
                 ---------<br>
             {% endfor %}

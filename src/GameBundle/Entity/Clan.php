@@ -50,9 +50,9 @@ class Clan
     private $xp;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Clan", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="ClanDiplomaty", mappedBy="clanCible")
      */
-    private $ally;
+    private $diplomaty;
 
     /**
      * @ORM\OneToMany(targetEntity="ClanUser", mappedBy="clan")
@@ -65,9 +65,9 @@ class Clan
     private $candidatures;
 
     /**
-     * @ORM\OneToMany(targetEntity="ClanAllyCandidature", mappedBy="clanCible")
+     * @ORM\OneToMany(targetEntity="ClanDiplomatyCandidature", mappedBy="clanCible")
      */
-    private $candidatureAlly;
+    private $diplomatyCandidature;
 
     /**
      * Get id
@@ -317,5 +317,73 @@ class Clan
     public function getCandidatureAlly()
     {
         return $this->candidatureAlly;
+    }
+
+    /**
+     * Add diplomaty
+     *
+     * @param \GameBundle\Entity\ClanDiplomaty $diplomaty
+     *
+     * @return Clan
+     */
+    public function addDiplomaty(\GameBundle\Entity\ClanDiplomaty $diplomaty)
+    {
+        $this->diplomaty[] = $diplomaty;
+
+        return $this;
+    }
+
+    /**
+     * Remove diplomaty
+     *
+     * @param \GameBundle\Entity\ClanDiplomaty $diplomaty
+     */
+    public function removeDiplomaty(\GameBundle\Entity\ClanDiplomaty $diplomaty)
+    {
+        $this->diplomaty->removeElement($diplomaty);
+    }
+
+    /**
+     * Get diplomaty
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDiplomaty()
+    {
+        return $this->diplomaty;
+    }
+
+    /**
+     * Add diplomatyCandidature
+     *
+     * @param \GameBundle\Entity\ClanDiplomatyCandidature $diplomatyCandidature
+     *
+     * @return Clan
+     */
+    public function addDiplomatyCandidature(\GameBundle\Entity\ClanDiplomatyCandidature $diplomatyCandidature)
+    {
+        $this->diplomatyCandidature[] = $diplomatyCandidature;
+
+        return $this;
+    }
+
+    /**
+     * Remove diplomatyCandidature
+     *
+     * @param \GameBundle\Entity\ClanDiplomatyCandidature $diplomatyCandidature
+     */
+    public function removeDiplomatyCandidature(\GameBundle\Entity\ClanDiplomatyCandidature $diplomatyCandidature)
+    {
+        $this->diplomatyCandidature->removeElement($diplomatyCandidature);
+    }
+
+    /**
+     * Get diplomatyCandidature
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDiplomatyCandidature()
+    {
+        return $this->diplomatyCandidature;
     }
 }

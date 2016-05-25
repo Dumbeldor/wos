@@ -3,14 +3,14 @@
 namespace GameBundle\Controller;
 
 use GameBundle\Entity\Clan;
-use GameBundle\Entity\ClanAllyCandidature;
-use GameBundle\Entity\ClanCandidature;
+use GameBundle\Entity\ClanDiplomatyCandidature;
+use GameBundle\Entity\ClanDiplomaty;
 use GameBundle\Entity\ClanUser;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use GameBundle\Form\ClanType;
 use GameBundle\Form\ClanCandidatureType;
-use GameBundle\Form\ClanAllyCandidatureType;
+use GameBundle\Form\ClanDiplomatyCandidatureType;
 
 class ClanController extends Controller
 {
@@ -118,7 +118,7 @@ class ClanController extends Controller
     }
 
     public function allyListAction() {
-        $ally = $this->getDoctrine()->getRepository('GameBundle:Clan')->getAlly($this->getUser()->getClan()->getClan());
+        $ally = $this->getDoctrine()->getRepository('GameBundle:ClanDiplomaty')->getAlly($this->getUser()->getClan()->getClan());
         //$ally = $this->getUser()->getClan()->getClan()->getAlly();
         return $this->render('GameBundle:Clan:allyList.html.twig', array('title' => 'Clan allié', 'ally' => $ally));
     }
@@ -127,9 +127,9 @@ class ClanController extends Controller
 
     }
 
-    public function allyCandidatureAction(Clan $clan, Request $request) {
-        $clanAC = new ClanAllyCandidature();
-        $form = $this->createForm(ClanAllyCandidatureType::class, $clanAC);
+    public function diplomatyCandidatureAction(Clan $clan, Request $request) {
+        $clanAC = new ClanDiplomatyCandidature();
+        $form = $this->createForm(ClanDiplomatyCandidatureType::class, $clanAC);
         $form->handleRequest($request);
 
         if($form->isValid()) {
@@ -144,22 +144,32 @@ class ClanController extends Controller
             'form' => $form->createView()));
     }
 
-    public function allyAcceptAction(ClanAllyCandidature $clanAllyC) {
+    public function diplomatyAcceptAction(ClanDiplomatyCandidature $clanAllyC) {
         $clanB = $clanAllyC->getClanSource();
         $clanA = $this->getUser()->getClan()->getClan();
-        $clanA->addAlly($clanB);
-        $clanB->addAlly($clanA);
+
+        $clanDiplomatyB = new ClanDiplomaty();
+        $clanDiplomatyA = new ClanDiplomaty();
+
+        $clanDiplomatyB->setDiplomaty($clanAllyC->getDiplomaty());
+        $clanDiplomatyB->setClanSource($clanB);
+        $clanDiplomatyB->setClanCible($clanA);
+
+        $clanDiplomatyA->setDiplomaty($clanAllyC->getDiplomaty());
+        $clanDiplomatyA->setClanSource($clanA);
+        $clanDiplomatyA->setClanCible($clanB);
+
         $em = $this->getDoctrine()->getManager();
-        $em->persist($clanA);
-        $em->persist($clanB);
+        $em->persist($clanDiplomatyB);
+        $em->persist($clanDiplomatyA);
         $em->remove($clanAllyC);
         $em->flush();
         return $this->redirectToRoute('game_haut_conseil');
     }
 
-    public function allyRefuseAction(ClanAllyCandidature $clanAllyC) {
+    public function diplomatyRefuseAction(ClanDiplomatyCandidature $clanAllyC) {
         $em = $this->getDoctrine()->getManager();
-        $em->persist($clanAllyC);
+        $em->remove($clanAllyC);
         $em->flush();
         return $this->redirectToRoute('game_haut_conseil');
     }

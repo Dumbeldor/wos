@@ -59,15 +59,15 @@ game_clan_accept:
 game_clan_refuse:
     path:    /clan/refuse/{id}
     defaults: { _controller: GameBundle:Clan:refuseCandidature }
-game_clan_ally_list:
-    path:    /clan/ally/l/
-    defaults: { _controller: GameBundle:Clan:allyList }
-game_clan_ally_candidature:
+game_clan_diplomaty_list:
+    path:    /clan/diplomaty/l/
+    defaults: { _controller: GameBundle:Clan:diplomatyList }
+game_clan_diplomaty_candidature:
     path:    /clan/ally/add/{id}
-    defaults: { _controller: GameBundle:Clan:allyCandidature }
-game_clan_ally_accept:
-    path:    /clan/ally/accept/{id}
-    defaults: { _controller: GameBundle:Clan:allyAccept }
-game_clan_ally_refuse:
-    path:    /clan/ally/refuse/{id}
-    defaults: { _controller: GameBundle:Clan:allyRefuse }
+    defaults: { _controller: GameBundle:Clan:diplomatyCandidature }
+game_clan_diplomaty_accept:
+    path:    /clan/diplomaty/accept/{id}
+    defaults: { _controller: GameBundle:Clan:diplomatyAccept }
+game_clan_diplomaty_refuse:
+    path:    /clan/diplomaty/refuse/{id}
+    defaults: { _controller: GameBundle:Clan:diplomatyRefuse }
