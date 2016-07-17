@@ -35,7 +35,7 @@ class BuildingBuild
     private $building;
 
     /**
-     * @ORM\ManyToOne(targetEntity="BuildingType", inversedBy="buildingBuild")
+     * @ORM\ManyToOne(targetEntity="BuildingType")
      * @ORM\JoinColumn(name="building_type_id", referencedColumnName="id")
      */
     private $buildingType;

@@ -77,7 +77,10 @@ class BuildingManager{
 
         //Si le batiment a des batiments requis pour être construit
         if(count($building->getRequired()) > 0) {
+            //var_dump($building->getRequired());
             $nb = $this->em->getRepository('GameBundle:TownBuilding')->building($building->getRequired(), $this->token->getToken()->getUser()->getTownCurrant());
+            var_dump($nb);
+            echo count($building->getRequired());
 
             if($nb == count($building->getRequired()))
                 return true;

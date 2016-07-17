@@ -49,11 +49,12 @@ class TownBuldingRepository extends \Doctrine\ORM\EntityRepository
         $i = 0;
         $where = '';
         foreach($batiment as $b) {
+            echo $i;
             if($i == 0) {
-                $where = $where.'tb.building = :building'.$i;
+                $where = $where.'tb.buildingType = :building'.$i.' AND tb.lvl >= :buildingLvl'.$i;
             }
             else
-                $where = $where.' OR tb.building = :building'.$i;
+                $where = $where.' OR tb.buildingType = :building'.$i.' AND tb.lvl >= :buildingLvl'.$i;
             $i++;
         }
         $query = $this->getEntityManager()
@@ -63,7 +64,9 @@ class TownBuldingRepository extends \Doctrine\ORM\EntityRepository
             );
         $i = 0;
         foreach($batiment as $b) {
-            $q = $query->setParameter('building'.$i, $b->getBuildingFather());
+            echo $i;
+            $q = $query->setParameter('building'.$i, $b->getBuildingFather()->getBuildingType());
+            $q = $query->setParameter('buildingLvl'.$i, 1);
             $i++;
         }
 

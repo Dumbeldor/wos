@@ -54,7 +54,7 @@ class BuildingType
     private $buildings;
 
     /**
-     * @ORM\OneToMany(targetEntity="TownBuilding", mappedBy="building")
+     * @ORM\OneToMany(targetEntity="TownBuilding", mappedBy="buildingType")
      */
     private $towns;
 

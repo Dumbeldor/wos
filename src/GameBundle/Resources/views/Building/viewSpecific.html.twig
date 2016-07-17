@@ -47,7 +47,7 @@
     {% if exist %}
         <strong>Vous avez déjà ce batiment.</strong>
     {% elseif buildingBuild is not empty %}
-        Batiment en construction, fini le  {{ buildingBuild.endBuild|date("m/d/Y à H\\h i \\e\\t s \\s\\c")  }}
+        Batiment en construction, fini le  {{ buildingBuild.endBuild|date("d/m/Y à H\\h i \\e\\t s \\s\\c")  }}
     {% else %}
         {% if requis %}
             <a href="{{ path('game_town_building_build', {'id': id}) }}">Construire</a>
