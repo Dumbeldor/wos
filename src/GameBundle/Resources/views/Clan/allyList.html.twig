@@ -1,0 +1,23 @@
+{% extends 'GameBundle::index.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ title }}:<br><br>
+
+    {% if ally is not empty %}
+        {% for a in ally %}
+            <a href="{{ path('game_clan_info', {'id': a.id }) }}">{{ a.name }}</a><br>
+        {% endfor %}
+        <br>
+    {% else %}
+        Aucun allié pour le moment<br>
+    {% endif %}
+
+    Chercher des clans pour ajouter en alliance : <a href="{{ path('game_clan_list') }}">Liste des clans</a>
+
+{% endblock %}

@@ -37,6 +37,43 @@ game_town_building_view_specific:
 game_town_building_build:
     path:    /building/build/{id}
     defaults: { _controller: GameBundle:Building:build }
+
 game_haut_conseil:
     path:    /clan
-    defaults: { _controller: GameBundle:}
+    defaults: { _controller: GameBundle:Clan:index}
+game_clan_list:
+    path:    /clan/list
+    defaults: { _controller: GameBundle:Clan:list}
+game_clan_create:
+    path:    /clan/create
+    defaults: { _controller: GameBundle:Clan:create }
+game_clan_info:
+    path:    /clan/info/{id}
+    defaults: { _controller: GameBundle:Clan:info }
+game_clan_candidature:
+    path:    /clan/candidature/{id}
+    defaults: { _controller: GameBundle:Clan:candidature }
+game_clan_accept:
+    path:    /clan/accept/{id}
+    defaults: { _controller: GameBundle:Clan:acceptCandidature }
+game_clan_refuse:
+    path:    /clan/refuse/{id}
+    defaults: { _controller: GameBundle:Clan:refuseCandidature }
+game_clan_diplomaty_list:
+    path:    /clan/diplomaty/l/
+    defaults: { _controller: GameBundle:Clan:diplomatyList }
+game_clan_diplomaty_candidature:
+    path:    /clan/ally/add/{id}
+    defaults: { _controller: GameBundle:Clan:diplomatyCandidature }
+game_clan_diplomaty_accept:
+    path:    /clan/diplomaty/accept/{id}
+    defaults: { _controller: GameBundle:Clan:diplomatyAccept }
+game_clan_diplomaty_refuse:
+    path:    /clan/diplomaty/refuse/{id}
+    defaults: { _controller: GameBundle:Clan:diplomatyRefuse }
+game_clan_rank_user:
+    path:    /clan/rank/{id}
+    defaults: { _controller: GameBundle:Clan:editRank }
+game_clan_fire_user:
+    path:    /clan/fire/{id}
+    defaults: { _controller: GameBundle:Clan:fireUser }

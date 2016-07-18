@@ -10,4 +10,59 @@ namespace GameBundle\Repository;
  */
 class ClanRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getList() {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT PARTIAL c.{id, name, point, xp} FROM GameBundle:Clan c
+                 ORDER BY c.point')
+            ->getResult();
+    }
+
+    public function getName($id) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT PARTIAL c.{id, name} FROM GameBundle:Clan c
+                 WHERE c.id = :id'
+            )
+            ->setParameter('id', $id)
+            ->getOneOrNullResult();
+    }
+
+    public function getClan($id) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT c, PARTIAL diplomaty.{id, clanCible}, PARTIAL users.{id, user, rank}, PARTIAL user.{id, username},
+                 PARTIAL rank.{id, name}, PARTIAL candidatures.{id, texte, user}, PARTIAL candidatureUser.{id, username},
+                 PARTIAL diplomatyCandidature.{id, texte, clanSource}, PARTIAL clanSource.{id, name}, PARTIAL diplo.{id, name}
+                 FROM GameBundle:Clan c
+                 LEFT JOIN c.diplomaty diplomaty
+                 LEFT JOIN diplomaty.clanSource clanSource
+                 LEFT JOIN diplomaty.diplomaty diplo
+                 JOIN c.users users
+                 JOIN users.user user
+                 JOIN users.rank rank
+                 LEFT JOIN c.candidatures candidatures
+                 LEFT JOIN candidatures.user candidatureUser
+                 LEFT JOIN c.diplomatyCandidature diplomatyCandidature
+                 WHERE c.id = :id
+                 '
+            )
+            ->setParameter('id', $id)
+            ->getOneOrNullResult();
+    }
+
+    public function getClanInfoForUser($id, $user) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT PARTIAL c.{id, name, texte, point, xp}, u, PARTIAL us.{id, username}, PARTIAL ca.{id, texte}  FROM GameBundle:Clan c
+                 JOIN c.users u
+                 JOIN u.user us
+                 LEFT JOIN c.candidatures ca WITH ca.user = :user
+                 WHERE c.id = :id
+                 '
+            )
+            ->setParameter('id', $id)
+            ->setParameter('user', $user)
+            ->getOneOrNullResult();
+    }
 }

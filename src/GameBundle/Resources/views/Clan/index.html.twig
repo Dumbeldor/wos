@@ -1,0 +1,95 @@
+{% extends 'GameBundle::index.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ title }}:<br><br>
+
+    Votre haut conseil est lvl {{ building.lvl }}.<br>
+
+    {% if clan.id is not empty %}
+        <h3>{{ clan.name }}</h3><br>
+        Bienvenue {{ user.username }} !<br>
+        {{ clan.name }} :<br>
+        {{ clan.point }} points<br>
+        {{ clan.xp }} xp<br>
+        {{ clan.texte }}<br><br>
+
+        <strong>Listes des candidatures :</strong><br>
+        {% if clan.candidatures is empty %}
+            <i>Aucune candidature pour le moment</i><br>
+        {% else %}
+            {% for c in clan.candidatures %}
+                <i>{{ c.user.username }}</i>:<br>
+                {{ c.texte }}<br><br>
+                <a href="{{ path('game_clan_accept', {'id': c.id}) }}">Accepter</a>
+                <br>
+                ----------
+                <br>
+            {% endfor %}
+        {% endif %}
+
+        <br>
+        <br>
+
+        <strong>Diplomatie<br></strong>
+        {% if clan.diplomaty is empty %}
+            <i>Vous n'avez aucun clan dans votre liste de diplomatie</i><br>
+            <a href="{{ path('game_clan_list') }}">Chercher clan</a><br>
+        {% else %}
+            {% for a in clan.diplomaty %}
+                <a href="{{ path('game_clan_info', {'id': a.clanSource.id }) }}">{{ a.clanSource.name }}</a> {{ a.diplomaty.name }}<br>
+            {% endfor %}
+        {% endif %}
+
+        <strong>Candidature reçu diplomatie</strong><br>
+        {% if clan.diplomatyCandidature is empty %}
+            <i>Aucune candidature reçue</i><br>
+        {% else %}
+            {% for a in clan.diplomatyCandidature %}
+                <a href="{{ path('game_clan_info', {'id': a.clanSource.id }) }}">{{ a.clanSource.name }}</a> <strong>{{ a.diplomaty.name }}</strong><br>
+                {{ a.texte }}<br>
+                <a href="{{ path('game_clan_diplomaty_accept', {'id': a.id}) }}">Accepter</a> <a href="{{ path('game_clan_diplomaty_refuse', {'id': a.id}) }}">Refuser</a>
+                <br>
+                ---------<br>
+            {% endfor %}
+            <br>
+        {% endif %}
+
+
+        <br>
+        <br>
+
+        <strong>Liste des membres :</strong><br>
+        {% for u in clan.users %}
+            {{ u.user.username }} {{ u.rank.name }}
+            <a href="{{ path('game_clan_rank_user', {'id': u.user.id}) }}">Modifier</a>
+            |
+            <a href="{{ path('game_clan_fire_user', {'id': u.user.id}) }}">Virer</a>
+            <br>
+        {% endfor %}
+
+    {% else %}
+        Vous n'avez pas encore de clan.<br>
+
+        {% if building.lvl < 3 %}
+            Vous ne pouvez pas encore créer de clan.<br>
+        {% else %}
+            <a href="{{ path('game_clan_create') }}">Créer un clan</a><br>
+        {% endif %}
+
+        <a href="{{ path('game_clan_list') }}">Liste des clans</a><br>
+
+        {{ form_start(form) }}<br>
+        Rechercher un clan:
+        {{ form_widget(form) }}<br>
+        <input type="submit" class="button" value="Submit" />
+        {{ form_end(form) }}
+    {% endif %}
+
+
+{% endblock %}

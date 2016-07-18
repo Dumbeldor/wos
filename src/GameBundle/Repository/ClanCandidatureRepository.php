@@ -10,4 +10,13 @@ namespace GameBundle\Repository;
  */
 class ClanCandidatureRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function acccept($id) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'DELETE FROM GameBundle:ClanCandidature cc
+                 WHERE cc.user = :id'
+            )
+            ->setParameter('id', $id)
+            ->execute();
+    }
 }

@@ -26,12 +26,12 @@ class User extends BaseUser
     protected $town;
 
     /**
-     * @ORM\OneToMany(targetEntity="GameBundle\Entity\ClanUser", mappedBy="user")
+     * @ORM\OneToOne(targetEntity="GameBundle\Entity\ClanUser", mappedBy="user")
      */
     protected $clan;
 
     /**
-     * @ORM\OneToMany(targetEntity="GameBundle\Entity\ClanCandidature", mappedBy="user")
+     * @ORM\OneToOne(targetEntity="GameBundle\Entity\ClanCandidature", mappedBy="user")
      */
     protected $clanCandidatures;
 
@@ -47,14 +47,29 @@ class User extends BaseUser
     protected $lastActivity;
 
 
-
-    public function __construct()
+    /**
+     * Set lastActivity
+     *
+     * @param \DateTime $lastActivity
+     *
+     * @return User
+     */
+    public function setLastActivity($lastActivity)
     {
-        parent::__construct();
-        // your own logic
-    }
-    
+        $this->lastActivity = $lastActivity;
 
+        return $this;
+    }
+
+    /**
+     * Get lastActivity
+     *
+     * @return \DateTime
+     */
+    public function getLastActivity()
+    {
+        return $this->lastActivity;
+    }
 
     /**
      * Add town
@@ -91,6 +106,54 @@ class User extends BaseUser
     }
 
     /**
+     * Set clan
+     *
+     * @param \GameBundle\Entity\ClanUser $clan
+     *
+     * @return User
+     */
+    public function setClan(\GameBundle\Entity\ClanUser $clan = null)
+    {
+        $this->clan = $clan;
+
+        return $this;
+    }
+
+    /**
+     * Get clan
+     *
+     * @return \GameBundle\Entity\ClanUser
+     */
+    public function getClan()
+    {
+        return $this->clan;
+    }
+
+    /**
+     * Set clanCandidatures
+     *
+     * @param \GameBundle\Entity\ClanCandidature $clanCandidatures
+     *
+     * @return User
+     */
+    public function setClanCandidatures(\GameBundle\Entity\ClanCandidature $clanCandidatures = null)
+    {
+        $this->clanCandidatures = $clanCandidatures;
+
+        return $this;
+    }
+
+    /**
+     * Get clanCandidatures
+     *
+     * @return \GameBundle\Entity\ClanCandidature
+     */
+    public function getClanCandidatures()
+    {
+        return $this->clanCandidatures;
+    }
+
+    /**
      * Set townCurrant
      *
      * @param \GameBundle\Entity\Town $townCurrant
@@ -112,98 +175,5 @@ class User extends BaseUser
     public function getTownCurrant()
     {
         return $this->townCurrant;
-    }
-    
-
-    /**
-     * Set lastActivity
-     *
-     * @param \DateTime $lastActivity
-     *
-     * @return User
-     */
-    public function setLastActivity($lastActivity)
-    {
-        $this->lastActivity = $lastActivity;
-
-        return $this;
-    }
-
-    /**
-     * Get lastActivity
-     *
-     * @return \DateTime
-     */
-    public function getLastActivity()
-    {
-        return $this->lastActivity;
-    }
-
-    /**
-     * Add clan
-     *
-     * @param \GameBundle\Entity\Clan $clan
-     *
-     * @return User
-     */
-    public function addClan(\GameBundle\Entity\Clan $clan)
-    {
-        $this->clan[] = $clan;
-
-        return $this;
-    }
-
-    /**
-     * Remove clan
-     *
-     * @param \GameBundle\Entity\Clan $clan
-     */
-    public function removeClan(\GameBundle\Entity\Clan $clan)
-    {
-        $this->clan->removeElement($clan);
-    }
-
-    /**
-     * Get clan
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getClan()
-    {
-        return $this->clan;
-    }
-
-    /**
-     * Add clanCandidature
-     *
-     * @param \GameBundle\Entity\ClanCandidature $clanCandidature
-     *
-     * @return User
-     */
-    public function addClanCandidature(\GameBundle\Entity\ClanCandidature $clanCandidature)
-    {
-        $this->clanCandidatures[] = $clanCandidature;
-
-        return $this;
-    }
-
-    /**
-     * Remove clanCandidature
-     *
-     * @param \GameBundle\Entity\ClanCandidature $clanCandidature
-     */
-    public function removeClanCandidature(\GameBundle\Entity\ClanCandidature $clanCandidature)
-    {
-        $this->clanCandidatures->removeElement($clanCandidature);
-    }
-
-    /**
-     * Get clanCandidatures
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getClanCandidatures()
-    {
-        return $this->clanCandidatures;
     }
 }

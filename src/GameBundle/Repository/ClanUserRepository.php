@@ -10,4 +10,14 @@ namespace GameBundle\Repository;
  */
 class ClanUserRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getUser($id) {
+        return $this->getEntityManager()
+            ->createQuery(
+            'SELECT PARTIAL cu.{id, user, rank, clan}, PARTIAL u.{id, username} FROM GameBundle:ClanUser cu
+             JOIN cu.user u
+             WHERE u.id = :id
+            ')
+            ->setParameter('id', $id)
+            ->getOneOrNullResult();
+    }
 }
