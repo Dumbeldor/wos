@@ -28,7 +28,7 @@ class BuildingManager{
         return $this->em->getRepository('GameBundle:TownBuilding')->getLvlByName($name, $idTown);
     }
 
-    public function getBuildingInBuild(BuildingType $buildingType) {
+    public function getBuildingInBuild(BuildingType $buildingType, $town) {
         $town = $this->token->getToken()->getUser()->getTownCurrant();
         $buildingBuild = $this->em->getRepository('GameBundle:BuildingBuild')->findOneBy(array('buildingType' => $buildingType, 'town'=>$town));
         if($buildingBuild instanceof BuildingBuild){

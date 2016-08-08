@@ -19,7 +19,7 @@ class BuildingController extends Controller
     }
     public function viewAction($id) {
         $building = $this->getDoctrine()->getRepository('GameBundle:BuildingType')->getBuilding($id);
-        $this->container->get('game.building_manager')->getBuildingInBuild($building);
+        $this->container->get('game.building_manager')->getBuildingInBuild($building, $this->getUser()->getTownCurrant());
         $infantry = $this->getDoctrine()->getRepository('GameBundle:Infantry')->ifInBuilding($id);
         $townBuilding = $this->container->get('game.building_manager')->getLvlByType($id, $this->getUser()->getTownCurrant()->getId());
 
@@ -29,7 +29,7 @@ class BuildingController extends Controller
 
     public function specificAction($id) {
         $building = $this->getDoctrine()->getRepository('GameBundle:Building')->getBuilding($id);
-        $this->container->get('game.building_manager')->getBuildingInBuild($building->getBuildingType());
+        $this->container->get('game.building_manager')->getBuildingInBuild($building->getBuildingType(), $this->getUser()->getTownCurrant());
         $buildingBuild = $this->getDoctrine()->getRepository('GameBundle:BuildingBuild')->getBuilding($id);
         $requis = $this->container->get('game.building_manager')->isBuildable($building, $this->getUser()->getTownCurrant());
 
