@@ -11,6 +11,12 @@
                 <li><a href="{{ path('game_homepage') }}">Accueil</a></li>
                 <li><a href="{{ path('game_town') }}">Mon village</a></li>
                 <li><a href="{{ path('game_building') }}">Vos batiments</a></li>
+                <li>
+                    <a href="#">Communauté</a>
+                    <ul class="menu vertical">
+                        <li><a href="{{ path('minegame_support_homepage') }}">Support</a></li>
+                    </ul>
+                </li>
 
                 {# SI ADMIN alors afficher le menu ADMIN#}
                 {% if is_granted('ROLE_ADMIN') %}

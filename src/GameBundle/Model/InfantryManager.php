@@ -4,6 +4,7 @@ namespace GameBundle\Model;
 use Doctrine\ORM\EntityManager;
 use GameBundle\Entity\InfantryBuild;
 use GameBundle\Entity\Infantry;
+use GameBundle\Entity\InfantryTown;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class InfantryManager{
@@ -36,7 +37,18 @@ class InfantryManager{
 		echo "testatest<br>";
 
                 $this->em->getRepository('GameBundle:InfantryBuild')->createInfantry($infantry->getId(), $toCreate, $townId);
-                $this->em->getRepository('GameBundle:InfantryTown')->createInfantry($infantry->getId(), $toCreate, $townId);
+                $nb = $this->em->getRepository('GameBundle:InfantryTown')->findBy(array('town' => $townId, 'infantry' => $infantry->getId()));
+
+                if(count($nb) > 0) {
+                    $this->em->getRepository('GameBundle:InfantryTown')->addInfantry($infantry->getId(), $toCreate, $townId);
+                } else {
+                    $infantryTown = new InfantryTown();
+                    $infantryTown->setInfantry($infantry);
+                    $infantryTown->setTown($townId);
+                    $infantryTown->setNb($toCreate);
+                    $this->em->persist($infantryTown);
+                    $this->em->flush();
+                }
             }
             echo "ooo";
             return $infantryBuild;
