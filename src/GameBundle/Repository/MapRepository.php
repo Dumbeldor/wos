@@ -1,6 +1,7 @@
 <?php
 
 namespace GameBundle\Repository;
+use GameBundle\Entity\Map;
 
 /**
  * MapRepository
@@ -10,4 +11,15 @@ namespace GameBundle\Repository;
  */
 class MapRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getMapByPosition(Map $position) {
+        return $this->getEntityManager()
+            ->createQuery(
+                'SELECT m FROM GameBundle:Map m
+                 WHERE m.x BETWEEN :xMini AND :xMax
+                 AND m.y BETWEEN :yMini AND :yMax'
+            )
+            ->setParameters(array('xMini' => $position->getX() - 10, 'xMax' => $position->getX() + 10,
+                                  'yMini' => $position->getY() - 10, 'yMax' => $position->getY() + 10))
+            ->getResult();
+    }
 }

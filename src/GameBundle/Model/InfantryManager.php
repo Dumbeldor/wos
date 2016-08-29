@@ -24,6 +24,7 @@ class InfantryManager{
             $diffTime = time() - $timeBegin;
 
             if ($diffTime >= $timeForm) {
+		echo "Formation terminé";
                 $townId =$this->token->getToken()->getUser()->getTownCurrant();
                 $toCreate = floor($diffTime/$timeForm);
 
@@ -31,6 +32,8 @@ class InfantryManager{
                     $toCreate = $infantryBuild->getNb();
 
                 $infantryBuild->setNb($infantryBuild->getNb() - $toCreate);
+		echo "<br>Le nombre : $toCreate <br>";
+		echo "testatest<br>";
 
                 $this->em->getRepository('GameBundle:InfantryBuild')->createInfantry($infantry->getId(), $toCreate, $townId);
                 $this->em->getRepository('GameBundle:InfantryTown')->createInfantry($infantry->getId(), $toCreate, $townId);

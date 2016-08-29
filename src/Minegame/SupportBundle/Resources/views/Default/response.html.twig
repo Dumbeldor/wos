@@ -1,0 +1,43 @@
+{% extends 'GameBundle::index.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <h2>{{ ticket.title }}</h2>
+
+    <table>
+        <tr>
+            <td>Pseudo</td><td>Texte du support</td>
+        </tr>
+        <tr>
+            <td>{{ ticket.user.username }}</td>
+            <td>{{ ticket.message }}</td>
+        </tr>
+    </table>
+
+    Réponses :<br>
+
+    <table>
+        <tr>
+            <td>Pseudo</td><td>Réponse</td>
+        </tr>
+        {% for m in ticket.messages %}
+            <tr>
+                <td>{{ m.user.username }}</td>
+                <td>{{ m.message }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    Nouvelle réponse :<br>
+    {{ form_start(form) }}<br>
+    {{ form_widget(form) }}<br>
+    <input type="submit" class="button" value="Submit" />
+    {{ form_end(form) }}
+
+
+{% endblock %}
