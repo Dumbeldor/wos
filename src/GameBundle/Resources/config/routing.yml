@@ -77,3 +77,7 @@ game_clan_rank_user:
 game_clan_fire_user:
     path:    /clan/fire/{id}
     defaults: { _controller: GameBundle:Clan:fireUser }
+
+game_map:
+    path:    /map
+    defaults: { _controller: GameBundle:Map:index }

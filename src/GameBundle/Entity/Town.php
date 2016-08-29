@@ -58,7 +58,12 @@ class Town
     private $point;
 
     /**
-     * @ORM\OneToMany(targetEntity="Map", mappedBy="town")
+     *
+     * @ORM\ManyToOne(targetEntity="Map", inversedBy="town")
+     * @ORM\JoinColumns({
+     *     @ORM\JoinColumn(name="x", referencedColumnName="x"),
+     *     @ORM\JoinColumn(name="y", referencedColumnName="y"),
+     * })
      */
     protected $map;
 
@@ -470,5 +475,19 @@ class Town
     public function getBuildingBuild()
     {
         return $this->buildingBuild;
+    }
+
+    /**
+     * Set map
+     *
+     * @param \GameBundle\Entity\Map $map
+     *
+     * @return Town
+     */
+    public function setMap(\GameBundle\Entity\Map $map = null)
+    {
+        $this->map = $map;
+
+        return $this;
     }
 }

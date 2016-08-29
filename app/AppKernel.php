@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new GameBundle\GameBundle(),
+            new Minegame\SupportBundle\MinegameSupportBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -30,9 +30,7 @@ class Map
 
 
     /**
-     *
-     * @ORM\ManyToOne(targetEntity="Town", inversedBy="map")
-     * @ORM\JoinColumn(name="town_id", referencedColumnName="id", nullable=true)
+     * @ORM\OneToMany(targetEntity="Town", mappedBy="map")
      */
     private $town;
 
@@ -117,5 +115,36 @@ class Map
     public function getTown()
     {
         return $this->town;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->town = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add town
+     *
+     * @param \GameBundle\Entity\Town $town
+     *
+     * @return Map
+     */
+    public function addTown(\GameBundle\Entity\Town $town)
+    {
+        $this->town[] = $town;
+
+        return $this;
+    }
+
+    /**
+     * Remove town
+     *
+     * @param \GameBundle\Entity\Town $town
+     */
+    public function removeTown(\GameBundle\Entity\Town $town)
+    {
+        $this->town->removeElement($town);
     }
 }

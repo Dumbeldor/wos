@@ -1,0 +1,18 @@
+{% extends 'GameBundle::index.html.twig' %}
+
+{% block title %}{{ parent() }}{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    {{ title }}:<br><br>
+
+    {% for i in position.x-10..position.x+10 %}
+        {{ i }}<br>
+    {% endfor %}
+    {{ dump(map) }}
+
+
+{% endblock %}
