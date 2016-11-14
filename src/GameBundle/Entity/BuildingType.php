@@ -49,6 +49,11 @@ class BuildingType
     private $ressource;
 
     /**
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", cascade={"persist"})
+     */
+    private $image;
+
+    /**
      * @ORM\OneToMany(targetEntity="Building", mappedBy="buildingType")
      */
     private $buildings;
@@ -238,5 +243,29 @@ class BuildingType
     public function getTowns()
     {
         return $this->towns;
+    }
+
+    /**
+     * Set image
+     *
+     * @param \AppBundle\Entity\Image $image
+     *
+     * @return BuildingType
+     */
+    public function setImage(\AppBundle\Entity\Image $image = null)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return \AppBundle\Entity\Image
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 }

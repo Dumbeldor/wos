@@ -2,6 +2,7 @@
 
 namespace GameBundle\Form;
 
+use AppBundle\Form\ImageType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -33,6 +34,7 @@ class BuildingTypeType extends AbstractType
                 'required' => false,
                 'label' => '(Si batiment de ressource) Choisir ressource ajouté'
             ))
+            ->add('image', ImageType::class)
         ;
     }
     
