@@ -54,7 +54,7 @@ class BuildingTypeController extends Controller
         }
 
         return $this->render('GameBundle:Admin/BuildingType:form.html.twig', array('title' => 'Edit de batiment',
-            'form' => $form->createView()));
+            'form' => $form->createView(), 'edit' => true, 'buildingType' => $buildingType));
     }
 
 }

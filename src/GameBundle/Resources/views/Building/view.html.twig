@@ -20,6 +20,11 @@
     {% else %}
         Vous ne possedez pas {{ building.name }}<br>
     {% endif %}
+
+    {% if building.image %}
+        <img src="{{ asset(building.image.webPath) }}" alt="{{ building.image.alt }}"/>
+    {% endif %}
+
     <br>
     <table>
         <tr>

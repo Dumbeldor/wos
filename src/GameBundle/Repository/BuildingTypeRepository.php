@@ -33,9 +33,10 @@ class BuildingTypeRepository extends \Doctrine\ORM\EntityRepository
     public function getBuilding($id) {
         return $this->getEntityManager()
             ->createQuery(
-                'SELECT bt, b, r, re FROM GameBundle:BuildingType bt
+                'SELECT bt, b, r, re, i FROM GameBundle:BuildingType bt
                  JOIN bt.buildings b
                  LEFT JOIN b.required r
+                 LEFT JOIN bt.image i
                  JOIN b.ressources re
                  WHERE bt.id = :id
                  ORDER BY b.lvl DESC, re.id'

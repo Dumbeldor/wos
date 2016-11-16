@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Image
@@ -37,6 +38,9 @@ class Image
      */
     private $alt;
 
+    /**
+     * @Assert\Image()
+     */
     private $file;
 
     private $tempFilename;
@@ -120,6 +124,11 @@ class Image
     protected function getUploadRootDir()
     {
         return __DIR__.'/../../../web'.$this->getUploadDir();
+    }
+
+    public function getWebPath()
+    {
+        return $this->getUploadDir().'/'.$this->getId().'.'.$this->getUrl();
     }
 
     /**
