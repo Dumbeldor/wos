@@ -1,6 +1,9 @@
 <?php
 
 namespace GameBundle\Repository;
+use GameBundle\Entity\Building;
+use GameBundle\Entity\BuildingRequired;
+use Proxies\__CG__\GameBundle\Entity\Town;
 
 /**
  * TownBuldingRepository
@@ -47,7 +50,7 @@ class TownBuildingRepository extends \Doctrine\ORM\EntityRepository
             ->getOneOrNullResult();
     }
 
-    public function exist($building, $town) {
+    public function exist(Building $building, Town $town) {
         return $this->getEntityManager()
             ->createQuery(
                 'SELECT COUNT(tb.id) AS nb FROM GameBundle:TownBuilding tb
@@ -57,7 +60,7 @@ class TownBuildingRepository extends \Doctrine\ORM\EntityRepository
             ->getOneOrNullResult();
     }
 
-    public function building($batiment, $town) {
+    public function building($batiment, Town $town) {
         $i = 0;
         $where = '';
         foreach($batiment as $b) {
@@ -78,7 +81,7 @@ class TownBuildingRepository extends \Doctrine\ORM\EntityRepository
         foreach($batiment as $b) {
             echo $i;
             $q = $query->setParameter('building'.$i, $b->getBuildingFather()->getBuildingType());
-            $q = $query->setParameter('buildingLvl'.$i, 1);
+            $q = $query->setParameter('buildingLvl'.$i, $b->getBuildingFather()->getLvl());
             $i++;
         }
 

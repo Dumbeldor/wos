@@ -28,7 +28,7 @@ class BuildingTypeController extends Controller
         }
 
         return $this->render('GameBundle:Admin/BuildingType:form.html.twig', array('title' => 'Ajout de Type nécessaire pour les batiments',
-            'form' => $form->createView()));
+            'edit' => false,'form' => $form->createView()));
     }
 
     public function listAction() {

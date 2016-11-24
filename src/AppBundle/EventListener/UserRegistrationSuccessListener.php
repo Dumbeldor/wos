@@ -34,31 +34,31 @@ class UserRegistrationSuccessListener implements EventSubscriberInterface
     public function onRegistrationSuccess(FormEvent $event)
     {
         $user = $event->getForm()->getData();
-	$town = $user->getTownCurrant();
+        $town = $user->getTownCurrant();
 
-	$ressources = $this->em->getRepository('GameBundle:Ressource')->findAll();
+        $ressources = $this->em->getRepository('GameBundle:Ressource')->findAll();
 
-	foreach($ressources as $r) {
-		$townR = new TownRessource();
-		$townR->setRessource($r);
-		$townR->setNb(400);
-		$townR->setAdd(0);
-		$townR->setStock(0);
-		$townR->setTown($town);
-	
-		$this->em->persist($townR);
-		unset($townR);
-	}
+        foreach($ressources as $r) {
+            $townR = new TownRessource();
+            $townR->setRessource($r);
+            $townR->setNb(400);
+            $townR->setAdd(0);
+            $townR->setStock(0);
+            $townR->setTown($town);
 
-	
-        $this->em->persist($user);
-	$town->setResident(0);
-	$town->setPoint(0);
-	$town->setUser($user);
-	$this->em->persist($town);
+            $this->em->persist($townR);
+            unset($townR);
+        }
 
-	
-        $this->em->flush();
-    }
+
+            $this->em->persist($user);
+        $town->setResident(0);
+        $town->setPoint(0);
+        $town->setUser($user);
+        $this->em->persist($town);
+
+
+            $this->em->flush();
+        }
 
 }

@@ -8,7 +8,7 @@
 
 {% block body %}
     {{ title }} :<br>
-    {% if edit %}
+    {% if edit and buildingType.image %}
         <img src="{{ asset(buildingType.image.webPath) }}" alt="{{ buildingType.image.alt }}"/>
     {% endif %}
     {{ form_start(form) }}<br>

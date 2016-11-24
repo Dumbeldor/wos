@@ -5,6 +5,7 @@ namespace AppBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @ORM\Entity
@@ -20,24 +21,64 @@ class User extends BaseUser
     protected $id;
 
     /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Group")
+     * @ORM\JoinTable(name="fos_user_user_group",
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="group_id", referencedColumnName="id")}
+     * )
+     */
+    protected $groups;
+
+    /**
      * @ORM\OneToMany(targetEntity="GameBundle\Entity\Town", mappedBy="user")
      */
     protected $town;
+
+    /**
+     * @ORM\OneToOne(targetEntity="GameBundle\Entity\ClanUser", mappedBy="user")
+     */
+    protected $clan;
+
+    /**
+     * @ORM\OneToOne(targetEntity="GameBundle\Entity\ClanCandidature", mappedBy="user")
+     */
+    protected $clanCandidatures;
 
     /**
      * @ORM\OneToOne(targetEntity="GameBundle\Entity\Town", cascade={"persist"})
      */
     protected $townCurrant;
 
+    /**
+     * @var \DateTime
+     * * @ORM\Column(name="last_activity", type="datetime", nullable=true)
+     */
+    protected $lastActivity;
 
 
-    public function __construct()
+    /**
+     * Set lastActivity
+     *
+     * @param \DateTime $lastActivity
+     *
+     * @return User
+     */
+    public function setLastActivity($lastActivity)
     {
-        parent::__construct();
-        // your own logic
-    }
-    
+        $this->lastActivity = $lastActivity;
 
+        return $this;
+    }
+
+    /**
+     * Get lastActivity
+     *
+     * @return \DateTime
+     */
+    public function getLastActivity()
+    {
+        return $this->lastActivity;
+    }
 
     /**
      * Add town
@@ -71,5 +112,77 @@ class User extends BaseUser
     public function getTown()
     {
         return $this->town;
+    }
+
+    /**
+     * Set clan
+     *
+     * @param \GameBundle\Entity\ClanUser $clan
+     *
+     * @return User
+     */
+    public function setClan(\GameBundle\Entity\ClanUser $clan = null)
+    {
+        $this->clan = $clan;
+
+        return $this;
+    }
+
+    /**
+     * Get clan
+     *
+     * @return \GameBundle\Entity\ClanUser
+     */
+    public function getClan()
+    {
+        return $this->clan;
+    }
+
+    /**
+     * Set clanCandidatures
+     *
+     * @param \GameBundle\Entity\ClanCandidature $clanCandidatures
+     *
+     * @return User
+     */
+    public function setClanCandidatures(\GameBundle\Entity\ClanCandidature $clanCandidatures = null)
+    {
+        $this->clanCandidatures = $clanCandidatures;
+
+        return $this;
+    }
+
+    /**
+     * Get clanCandidatures
+     *
+     * @return \GameBundle\Entity\ClanCandidature
+     */
+    public function getClanCandidatures()
+    {
+        return $this->clanCandidatures;
+    }
+
+    /**
+     * Set townCurrant
+     *
+     * @param \GameBundle\Entity\Town $townCurrant
+     *
+     * @return User
+     */
+    public function setTownCurrant(\GameBundle\Entity\Town $townCurrant = null)
+    {
+        $this->townCurrant = $townCurrant;
+
+        return $this;
+    }
+
+    /**
+     * Get townCurrant
+     *
+     * @return \GameBundle\Entity\Town
+     */
+    public function getTownCurrant()
+    {
+        return $this->townCurrant;
     }
 }

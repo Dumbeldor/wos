@@ -32,6 +32,7 @@ class BuildingController extends Controller
         $this->container->get('game.building_manager')->getBuildingInBuild($building->getBuildingType(), $this->getUser()->getTownCurrant());
         $buildingBuild = $this->getDoctrine()->getRepository('GameBundle:BuildingBuild')->getBuilding($id);
         $requis = $this->container->get('game.building_manager')->isBuildable($building, $this->getUser()->getTownCurrant());
+        echo $requis;
 
         return $this->render('GameBundle:Building:viewSpecific.html.twig', array('title' => $building->getName(), 'user' => $this->getUser(),
             'building' => $building, 'requis' => $requis, 'exist' => false, 'id' => $id, 'buildingBuild' => $buildingBuild));

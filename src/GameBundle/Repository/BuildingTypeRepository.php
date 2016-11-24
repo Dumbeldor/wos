@@ -37,7 +37,7 @@ class BuildingTypeRepository extends \Doctrine\ORM\EntityRepository
                  JOIN bt.buildings b
                  LEFT JOIN b.required r
                  LEFT JOIN bt.image i
-                 JOIN b.ressources re
+                 LEFT JOIN b.ressources re
                  WHERE bt.id = :id
                  ORDER BY b.lvl DESC, re.id'
             )

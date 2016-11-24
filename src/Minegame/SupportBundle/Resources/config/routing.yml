@@ -1,0 +1,9 @@
+minegame_support_homepage:
+    path:     /support
+    defaults: { _controller: MinegameSupportBundle:Default:index }
+minegame_support_create_ticket:
+    path:    /support/add
+    defaults: { _controller: MinegameSupportBundle:Default:add }
+minegame_support_response:
+    path:    /support/r/{id}
+    defaults: { _controller: MinegameSupportBundle:Default:response }
