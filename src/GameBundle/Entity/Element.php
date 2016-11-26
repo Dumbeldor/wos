@@ -59,6 +59,11 @@ class Element
      */
     private $stronger;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="MapType", inversedBy="element")
+     */
+    private $mapType;
+
 
     /**
      * Get id
@@ -229,5 +234,29 @@ class Element
     public function getTown()
     {
         return $this->town;
+    }
+
+    /**
+     * Set mapType
+     *
+     * @param \GameBundle\Entity\MapType $mapType
+     *
+     * @return Element
+     */
+    public function setMapType(\GameBundle\Entity\MapType $mapType = null)
+    {
+        $this->mapType = $mapType;
+
+        return $this;
+    }
+
+    /**
+     * Get mapType
+     *
+     * @return \GameBundle\Entity\MapType
+     */
+    public function getMapType()
+    {
+        return $this->mapType;
     }
 }
