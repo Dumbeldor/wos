@@ -35,7 +35,6 @@ class Town
      */
     private $element;
 
-
     /**
      * @var string
      *
