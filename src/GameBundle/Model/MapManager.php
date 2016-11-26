@@ -10,6 +10,7 @@ namespace GameBundle\Model;
 
 
 use Doctrine\ORM\EntityManager;
+use GameBundle\Entity\Town;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class MapManager
@@ -20,5 +21,9 @@ class MapManager
     public function __construct(TokenStorageInterface $token, EntityManager $entityManager) {
         $this->token = $token;
         $this->em = $entityManager;
+    }
+
+    public function placeTown(Town $town) {
+
     }
 }
