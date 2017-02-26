@@ -72,6 +72,9 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: AppBundle\Entity\User
+    from_email:
+            address: vincent.glize@live.fr
+            sender_name: Vincent
     group:
         group_class: AppBundle\Entity\Group
     registration:
