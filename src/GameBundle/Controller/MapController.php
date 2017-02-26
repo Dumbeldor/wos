@@ -11,7 +11,9 @@ class MapController extends Controller
 {
     public function indexAction(Request $request) {
         $position = $this->getUser()->getTownCurrant()->getMap();
-        $map = $this->getDoctrine()->getRepository('GameBundle:Map')->getMapByPosition($position);
+        $this->container->get('game.map_manager')->placeTown($this->getUser()->getTownCurrant());
+        //$map = $this->getDoctrine()->getRepository('GameBundle:Map')->getMapByPosition($position);
+        $map = array();
         return $this->render('GameBundle:Map:index.html.twig', array('title' => 'Map',
             'position' => $position, 'map' => $map));
     }

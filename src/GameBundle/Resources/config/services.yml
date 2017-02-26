@@ -16,3 +16,9 @@ services:
          arguments:
              token: "@security.token_storage"
              entityManager: "@doctrine.orm.entity_manager"
+
+    game.map_manager:
+         class: GameBundle\Model\MapManager
+         arguments:
+             token: "@security.token_storage"
+             entityManager: "@doctrine.orm.entity_manager"

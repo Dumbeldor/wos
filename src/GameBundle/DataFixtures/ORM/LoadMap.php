@@ -13,9 +13,12 @@ class LoadMap implements FixtureInterface
     public function load(ObjectManager $manager)
     {
         $map = array();
+        $list = array();
+
         for ($x=0; $x < 50; $x++) {
             for ($y=0; $y < 50; $y++) {
-                $map += array($x, $y);
+                $map = array('x' => $x, 'y' => $y);
+                array_push($list, $map);
             }
         }
         $list = array($map);
