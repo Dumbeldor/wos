@@ -15,6 +15,8 @@ use GameBundle\Entity\InfantryBuild;
 use GameBundle\Entity\Infantry;
 use GameBundle\Entity\InfantryTown;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authentication\AuthenticationManagerInterface;
+//use Symfony\Component\Security\Csrf\TokenStorage\TokenStorageInterface;
 
 class InfantryManager{
     private $em,
