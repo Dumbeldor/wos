@@ -24,3 +24,5 @@ Comment contribuer ?
 Installation
 ------------------
 - composer install
+- cd web/foundation && npm install
+- foundation watch
