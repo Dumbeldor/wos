@@ -26,3 +26,4 @@ Installation
 - composer install
 - cd web/foundation && npm install
 - foundation watch
+When you edit scss you must use command : foundation watch
