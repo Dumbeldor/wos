@@ -2,23 +2,23 @@ services:
     game.infantry_manager:
         class: GameBundle\Model\InfantryManager
         arguments:
-            - "@security.token_storage"
-            - "@doctrine.orm.entity_manager"
+            $token: "@security.token_storage"
+            $entityManager: "@doctrine.orm.entity_manager"
 
     game.building_manager:
          class: GameBundle\Model\BuildingManager
          arguments:
-             - "@security.token_storage"
-             - "@doctrine.orm.entity_manager"
+             $token: "@security.token_storage"
+             $entityManager: "@doctrine.orm.entity_manager"
 
     game.ressource_manager:
          class: GameBundle\Model\RessourceManager
          arguments:
-             - "@security.token_storage"
-             - "@doctrine.orm.entity_manager"
+             $token: "@security.token_storage"
+             $entityManager: "@doctrine.orm.entity_manager"
 
     game.map_manager:
          class: GameBundle\Model\MapManager
          arguments:
-             - "@security.token_storage"
-             - "@doctrine.orm.entity_manager"
+             $token: "@security.token_storage"
+             $entityManager: "@doctrine.orm.entity_manager"
