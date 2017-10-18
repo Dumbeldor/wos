@@ -17,3 +17,4 @@
 *~
 .idea/
 composer.lock
+.web-server-pid
